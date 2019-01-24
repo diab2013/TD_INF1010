@@ -1,35 +1,54 @@
 #include "Menu.h"
 
+//constructeurs
 Menu::Menu() {
+	//constructeur par défaut
 	capacite_ = MAXPLAT;
 	//FINIS?
 }
 
 Menu::Menu(string fichier, TypeMenu type){
+	//constructeur avec paramètres
 	lireMenu(fichier);
 	type_ = type;
 }
 
+//getters
 int Menu::getNbPlats() {
+	//retourne le nombre de plat dans le menu
 	return { (int) nbPlats_ };
 }
 
-void Menu::afficher(){
-	//VOIR QUOI AFFICHER
+//méthodes en plus
+Plat * Menu::trouverPlat(string& nom) {
+	//chercher le plat dans la liste par son nom et retourné le pointeur du plat
+	Plat* platTemp;
+	//if (found) {
+		return { platTemp };
+	//} else {
+		return { nullptr };	//return nullptr si le plat n'est pas trouver
+	//}
 }
 
-Plat * Menu::trouverPlat(string & nom){
-	return nullptr;
+void Menu::ajouterPlat(Plat& plat){
+	//ajoute le plat à listePlats_ en utilisant le plat lui-même
 }
 
-void Menu::ajouterPlat(Plat & plat){
-
+void Menu::ajouterPlat(string& nom, double montant, double cout){
+	//créer le plat avant de l'ajouter à la liste?
+	Plat plat(nom, montant, cout); //?
+	ajouterPlat(plat); //?
 }
 
-void Menu::ajouterPlat(string & nom, double montant, double cout){
-
-}
-
-bool Menu::lireMenu(string & fichier){
+bool Menu::lireMenu(string& fichier){
+	//lire le fichier texte et mettre les infos dans les variables
+	//ne pas oublier le type de menu (matin, midi, soir)
+	ifstream source(fichier);
+	//....
 	return false;
+}
+
+//affichage
+void Menu::afficher() {
+	//VOIR QUOI AFFICHER
 }

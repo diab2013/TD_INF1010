@@ -8,6 +8,7 @@
 #define RESTAURANT_H
 
 #include "Table.h"
+
 const int INTTABLES = 6;
 class Restaurant {
 public: 

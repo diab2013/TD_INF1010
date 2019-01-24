@@ -21,8 +21,8 @@ public:
 	bool estOccupee(); 
 
 	//setters 
-	void libererTable(); //why setter?
-	void placerClient(); //why setter?
+	void libererTable(); //why setter? good question
+	void placerClient(); //why setter? good question
 	void setId(int id); 
 
 	//autres methodes 
