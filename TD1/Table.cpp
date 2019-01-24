@@ -36,7 +36,8 @@ bool Table::estOccupee() {
 
 //setters
 void Table::libererTable() {
-	*commande_ = new Plat[MAXPLAT];//maybe?
+	commande_ = new Plat*[MAXPLAT];//maybe?
+	occupee_ = false;
 }
 
 void Table::placerClient() {
@@ -52,13 +53,41 @@ void Table::setId(int id) {
 
 //autres methodes
 void Table::commander(Plat * plat) {
+	nbPlats_++;
+	commande_[nbPlats_] = plat;
+}
 
 double Table::getChiffreAffaire() {
 	//Calcul le chiffre d'affaire de la table et le retourne
-	return 0.0;
+	double chiffreAffaire = 0.0;
+	for (int i = 0; i < nbPlats_; i++){
+		chiffreAffaire += (commande_[i]->getPrix - 
+						   commande_[i]->getCout);
+	}
+	return chiffreAffaire;
 }
 
 //affichage
 void Table::afficher() {
 	//Affichage de la table
+	//Si table occupee
+	cout << "Voici les tables :" << endl;
+	if (occupee_) {
+		cout << "La table numero " << id_ << " est occupee.";
+		//Si commande
+		if (nbPlats_ > 0) {
+			cout << "Voici la commande passee par les clients : " << endl;
+			for (int i = 0; i < nbPlats_; i++) {
+				cout << commande_[i]->afficher << endl;
+			}
+		}
+		//Si aucune commande
+		else {
+			cout << "Mais ils n'ont rien commende pour l'instant." << endl;
+		}
+	}
+	//Si table vide
+	else {
+		cout << "La table numero " << id_ << " est libre." << endl;
+	}
 }

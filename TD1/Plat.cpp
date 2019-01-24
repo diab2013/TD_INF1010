@@ -44,7 +44,8 @@ void Plat::setPrix(double prix){
 
 //affichage
 void Plat::afficher() {
-	//TO_DO
+	cout << nom_ << " - " << prix_ << "$ (" << cout_ 
+		 << "$ pour le restaurant)" << endl;
 }
 
 
