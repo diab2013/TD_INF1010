@@ -6,7 +6,7 @@ Table::Table() {
 	id_ = -1;
 	nbPlaces_ = 1;
 	occupee_ = false;
-	*commande_ = new Plat[MAXPLAT];
+	commande_ = new Plat*[MAXPLAT];
 }
 
 Table::Table(int id, int nbPlaces) {
@@ -34,7 +34,7 @@ bool Table::estOccupee() {
 
 //setters
 void Table::libererTable() {
-	*commande_ = new Plat[MAXPLAT];//maybe?
+	commande_ = new Plat*[MAXPLAT];//maybe?
 }
 
 void Table::placerClient() {
@@ -46,12 +46,11 @@ void Table::setId(int id) {
 }
 
 //autres methodes
-void Table::commander(Plat * plat) {
+void Table::commander(Plat* plat) {
 
 }
 
 //affichage
-
 void Table::afficher() {
 
 }
