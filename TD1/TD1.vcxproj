@@ -167,6 +167,7 @@
     </ClCompile>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Plat.cpp" />
+    <ClCompile Include="Restaurant.cpp" />
     <ClCompile Include="Table.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
