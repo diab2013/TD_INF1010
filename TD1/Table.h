@@ -17,12 +17,12 @@ public:
 
 	//getters 
 	int getId(); 
-	int getNbPlaces(); 
+	unsigned int getNbPlaces(); //ajout unsigned
 	bool estOccupee(); 
 
 	//setters 
-	void libererTable(); 
-	void placerClient(); 
+	void libererTable(); //why setter?
+	void placerClient(); //why setter?
 	void setId(int id); 
 
 	//autres methodes 

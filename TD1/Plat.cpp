@@ -2,7 +2,9 @@
 
 // constructeurs
 Plat::Plat() {
-	
+	nom_ = "inconnu";
+	prix_ = 0;
+	cout_ = 0;
 }
 
 Plat::Plat(string nom, double prix, double cout) {
@@ -23,4 +25,20 @@ double Plat::getPrix() {
 double Plat::getCout() {
 	return{ cout_ };
 }
+
+//setters
+void Plat::setNom(string nom){
+	nom_ = nom;
+}
+
+void Plat::setPrix(double prix){
+	prix_ = prix;
+}
+
+//affichage
+void Plat::afficher() {
+	//TO_DO
+}
+
+
 
