@@ -5,7 +5,6 @@
 */
 
 #include "Restaurant.h"
-#include "pch.h"
 #include <iostream>
 using namespace std;
 
