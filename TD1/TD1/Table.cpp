@@ -1,4 +1,4 @@
-#include "Table.h"<
+#include "Table.h"
 //Vérifier si d'autres include sont nécéssaires (Menu.h?)
 
 //constructeurs
@@ -60,7 +60,7 @@ void Table::commander(Plat * plat) {
 double Table::getChiffreAffaire() {
 	//Calcul le chiffre d'affaire de la table et le retourne
 	double chiffreAffaire = 0.0;
-	for (int i = 0; i < nbPlats_; i++){
+	for (unsigned i = 0; i < nbPlats_; i++){
 		chiffreAffaire += (commande_[i]->getPrix - 
 						   commande_[i]->getCout);
 	}
@@ -77,7 +77,7 @@ void Table::afficher() {
 		//Si commande
 		if (nbPlats_ > 0) {
 			cout << "Voici la commande passee par les clients : " << endl;
-			for (int i = 0; i < nbPlats_; i++) {
+			for (unsigned i = 0; i < nbPlats_; i++) {
 				cout << commande_[i]->afficher << endl;
 			}
 		}

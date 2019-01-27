@@ -22,9 +22,8 @@ int Menu::getNbPlats() {
 //méthodes en plus
 Plat * Menu::trouverPlat(string& nom) {
 	//chercher le plat dans la liste par son nom et retourné le pointeur du plat
-	Plat* platTemp;
 	//if (found) {
-		return { platTemp };
+		return { /*plat*/ };
 	//} else {
 		return { nullptr };	//return nullptr si le plat n'est pas trouver
 	//}
