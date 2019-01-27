@@ -18,6 +18,11 @@ Restaurant::Restaurant(string& fichier, string& nom, TypeMenu moment){
 
 }
 
+//destructeur
+Restaurant::~Restaurant(){
+	//je feel ca a besoin d'un destructeur
+}
+
 //setters
 void Restaurant::setMoment(TypeMenu moment){
 	momentJournee_ = moment;
@@ -48,7 +53,7 @@ void Restaurant::ajouterTable(int id, int nbPlaces){
 
 void Restaurant::libererTable(int id){
 	for (unsigned i = 0; i < nbTables_; i++) {
-		if (id == tables_[i]->getId && tables_[i]->estOccupee) {
+		if ((id == &tables_[i]->getId) && tables_[i]->estOccupee()) {
 			tables_[i]->libererTable();
 			delete tables_[i];
 			tables_[i] = nullptr;
@@ -56,7 +61,7 @@ void Restaurant::libererTable(int id){
 	}
 }
 
-void Restaurant::commanderPlat(string & nom, int idTable){
+void Restaurant::commanderPlat(string& nom, int idTable){
 
 }
 

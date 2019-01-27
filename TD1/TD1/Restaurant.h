@@ -16,6 +16,9 @@ public:
 	Restaurant(); 
 	Restaurant(string& fichier, string& nom,  TypeMenu moment); 
 
+	//destructeur
+	~Restaurant();
+
 	//setters 
 	void setMoment(TypeMenu moment); 
 

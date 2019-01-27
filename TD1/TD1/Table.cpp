@@ -8,7 +8,7 @@ Table::Table() {
 	id_ = -1;
 	nbPlaces_ = 1;
 	occupee_ = false;
-	commande_ = new Plat*[MAXPLAT];
+	commande_ = new Plat*[MAXCAP];
 }
 
 Table::Table(int id, int nbPlaces) {
@@ -16,6 +16,7 @@ Table::Table(int id, int nbPlaces) {
 	id_ = id;
 	nbPlaces_ = nbPlaces;
 	//Construire Menu avec methode de lecture
+
 }
 
 //getters
@@ -36,13 +37,14 @@ bool Table::estOccupee() {
 
 //setters
 void Table::libererTable() {
-	commande_ = new Plat*[MAXPLAT];//maybe?
+	delete commande_;
+	commande_ = new Plat*[MAXCAP];//maybe?
 	occupee_ = false;
 }
 
 void Table::placerClient() {
 	//la table devient occupé
-	occupee_ = true; //vu que la table devient occupée par qqun?
+	occupee_ = true;
 
 }
 
