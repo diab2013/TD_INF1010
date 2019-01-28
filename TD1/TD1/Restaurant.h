@@ -16,12 +16,15 @@ public:
 	Restaurant(); 
 	Restaurant(string& fichier, string& nom,  TypeMenu moment); 
 
+	//destructeur
+	~Restaurant();
+
 	//setters 
 	void setMoment(TypeMenu moment); 
 
 	//getters 
-	string getNom(); 
-	TypeMenu getMoment(); 
+	string getNom() const; 
+	TypeMenu getMoment() const; 
 
 	//Autres methodes 
 	void lireTable(string& fichier); 

@@ -1,4 +1,4 @@
-#include "Table.h"<
+#include "Table.h"
 //Vérifier si d'autres include sont nécéssaires (Menu.h?)
 
 //constructeurs
@@ -8,7 +8,7 @@ Table::Table() {
 	id_ = -1;
 	nbPlaces_ = 1;
 	occupee_ = false;
-	commande_ = new Plat*[MAXPLAT];
+	commande_ = new Plat*[MAXCAP];
 }
 
 Table::Table(int id, int nbPlaces) {
@@ -16,6 +16,7 @@ Table::Table(int id, int nbPlaces) {
 	id_ = id;
 	nbPlaces_ = nbPlaces;
 	//Construire Menu avec methode de lecture
+
 }
 
 //getters
@@ -36,13 +37,14 @@ bool Table::estOccupee() {
 
 //setters
 void Table::libererTable() {
-	commande_ = new Plat*[MAXPLAT];//maybe?
+	delete commande_;
+	commande_ = new Plat*[MAXCAP];//maybe?
 	occupee_ = false;
 }
 
 void Table::placerClient() {
 	//la table devient occupé
-	occupee_ = true; //vu que la table devient occupée par qqun?
+	occupee_ = true;
 
 }
 
@@ -60,7 +62,7 @@ void Table::commander(Plat * plat) {
 double Table::getChiffreAffaire() {
 	//Calcul le chiffre d'affaire de la table et le retourne
 	double chiffreAffaire = 0.0;
-	for (int i = 0; i < nbPlats_; i++){
+	for (unsigned i = 0; i < nbPlats_; i++){
 		chiffreAffaire += (commande_[i]->getPrix - 
 						   commande_[i]->getCout);
 	}
@@ -77,7 +79,7 @@ void Table::afficher() {
 		//Si commande
 		if (nbPlats_ > 0) {
 			cout << "Voici la commande passee par les clients : " << endl;
-			for (int i = 0; i < nbPlats_; i++) {
+			for (unsigned i = 0; i < nbPlats_; i++) {
 				cout << commande_[i]->afficher << endl;
 			}
 		}

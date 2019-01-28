@@ -5,15 +5,15 @@
 */
 
 #include "Restaurant.h"
-#include "pch.h"
 #include <iostream>
-
 using namespace std;
 
 int main() {
 
 	//creation du restaurant - avec le fichier donne - le nom : PolyFood - moment de la journee : soir. 
-
+	string nom = "Polyfood";
+	string filename = "polyfood.txt";
+	Restaurant poly(filename, nom, Soir);
 	//creer plusieurs clients -- des entiers 
 
 	int client1 = 1;

@@ -20,7 +20,7 @@ public:
 
 
 	//getters
-	int getNbPlats(); 
+	unsigned int getNbPlats() const; //ajout unsigned
 	
 	//affichage 
 	void afficher(); 
