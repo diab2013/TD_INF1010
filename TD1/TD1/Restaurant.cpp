@@ -62,14 +62,37 @@ void Restaurant::libererTable(int id){
 }
 
 void Restaurant::commanderPlat(string& nom, int idTable){
-
+	tables_[idTable]->commander.commander(nom);//maybe???
 }
 
 void Restaurant::placerClients(int nbClients){
-
+	//on fait comment sans le id de la table?
+	int nbTablesOccupees = 0;
+	int tableOptimale = 0;
+	for (int i = 0; i < nbTables_; i++) {
+		if (tables_[i]->estOccupee) {
+			nbTablesOccupees++;
+			if (nbTablesOccupees == nbTables_) {
+				cout << "Il n'y a pas de places disponible" << endl;
+			}
+		}
+		else {
+			if (tables_[i]->getNbPlaces < tables_[tableOptimale]->getNbPlaces && nbClients <= tables_[i]->getNbPlaces) {
+				//pour la premiere partie du int, je veux quil check si la nouvelle table quil check a moins de place que celle
+				//choisie pour linstant, mais sa pourrait causer des problemes comme la variable tableOptimale est
+				//initialisee a 0
+				//exemple: si table_[0] est occupee et a autant de place que de client->rip
+				tableOptimale = i;
+			}
+		}
+	}
+	tables_[tableOptimale]->placerClient();
 }
 
 //affichage
 void Restaurant::afficher(){
 
+	for (int i = 0; i < nbTables_; i++) {
+		tables_[i]->afficher();
+	}
 }

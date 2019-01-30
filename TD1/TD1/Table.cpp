@@ -45,7 +45,6 @@ void Table::libererTable() {
 void Table::placerClient() {
 	//la table devient occupé
 	occupee_ = true;
-
 }
 
 void Table::setId(int id) {
