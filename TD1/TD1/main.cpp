@@ -11,8 +11,9 @@ using namespace std;
 int main() {
 
 	//creation du restaurant - avec le fichier donne - le nom : PolyFood - moment de la journee : soir. 
-	string nom = "Polyfood";
-	string filename = "polyfood.txt";
+	string nom,filename;
+	nom == "Polyfood";
+	filename == "polyfood.txt";
 	Restaurant poly(filename, nom, Soir);
 	//creer plusieurs clients -- des entiers 
 
@@ -38,8 +39,10 @@ int main() {
 
 	cout << "-------------------------------------------------" << endl;
 
-	//liberer les tables 
-
+	//liberer les tables
+	for (int i = 0; i < 4; i++) {
+		poly.libererTable(i-1);//comment on peut faire sa sans get le nombre de table
+	}
 	//afficher le restaurant 
 	poly.afficher();
 	return 0;

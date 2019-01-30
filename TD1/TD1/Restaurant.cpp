@@ -61,7 +61,7 @@ void Restaurant::ajouterTable(int id, int nbPlaces){
 	Table tempTable(id, nbPlaces);
 	if (nbTables_ < capaciteTables_) { //maybe utiliser INTTABLES???
 		nbTables_++;
-		tables_[id - 1] = &tempTable;
+		tables_[id - 1] = &tempTable; //pcq id = position + 1
 	} else {
 		cout << "La table n'a pas pu être ajouter" << endl;
 	}
@@ -71,6 +71,7 @@ void Restaurant::libererTable(int id){
 	for (unsigned i = 0; i < nbTables_; i++) {
 		if ((id == &tables_[i]->getId) && tables_[i]->estOccupee()) {
 			tables_[i]->libererTable();
+			chiffreAffaire_ += tables_[i]->getChiffreAffaire();
 			delete tables_[i];
 			tables_[i] = nullptr;
 		}
@@ -106,6 +107,9 @@ void Restaurant::placerClients(int nbClients){
 	}
 	if (peutPlacer) { 
 		tables_[tableOptimale]->placerClient();
+	}
+	if (!peutPlacer && nbTablesOccupees < nbTables_) {
+		cout << "Il n'y a pas de table ayant asser de place pour ces clients." << endl;
 	}
 }
 
