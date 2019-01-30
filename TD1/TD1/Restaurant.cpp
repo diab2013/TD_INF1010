@@ -1,10 +1,12 @@
 #include "Restaurant.h"
 
 //constructeurs
+string nomResto = "inconnu"; //a changer?
+
 Restaurant::Restaurant(){
 	//constructeur par défaut<
 	nom_ = new string;
-	*nom_ = "inconnu";
+	*nom_ = nomResto;
 	momentJournee_ = Matin;
 	chiffreAffaire_ = NULL;
 	menuMatin_ = nullptr;
@@ -15,7 +17,7 @@ Restaurant::Restaurant(){
 Restaurant::Restaurant(string& fichier, string& nom, TypeMenu moment){
 	//Menu::lireMenu(fichier);
 	nom_ = &nom;
-
+	momentJournee_ = moment;
 }
 
 //destructeur
