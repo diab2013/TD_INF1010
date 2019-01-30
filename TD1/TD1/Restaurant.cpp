@@ -50,9 +50,7 @@ void Restaurant::lireTable(string & fichier){
 			renduTable = true;
 			while (!lireFichier.eof) {
 				lireFichier >> id >> nbPLace;
-				Table table(id,nbPLace);
-				tables_[numeroTable] = &table;
-				numeroTable++;
+				ajouterTable(id, nbPLace);
 			}
 		}
 	}
@@ -62,7 +60,8 @@ void Restaurant::lireTable(string & fichier){
 void Restaurant::ajouterTable(int id, int nbPlaces){
 	Table tempTable(id, nbPlaces);
 	if (nbTables_ < capaciteTables_) { //maybe utiliser INTTABLES???
-
+		nbTables_++;
+		tables_[id - 1] = &tempTable;
 	} else {
 		cout << "La table n'a pas pu être ajouter" << endl;
 	}
