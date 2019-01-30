@@ -84,6 +84,8 @@ void Restaurant::commanderPlat(string& nom, int idTable){
 void Restaurant::placerClients(int nbClients){
 	int nbTablesOccupees = 0;
 	int tableOptimale = 0;
+	bool peutPlacer = false;
+
 	for (int i = 0; i < nbTables_; i++) {
 		if (tables_[i]->estOccupee) {
 			nbTablesOccupees++;
@@ -97,11 +99,12 @@ void Restaurant::placerClients(int nbClients){
 			}			
 			if (tables_[i]->getNbPlaces < tables_[tableOptimale]->getNbPlaces && nbClients <= tables_[i]->getNbPlaces) {
 				tableOptimale = i;
+				peutPlacer = true;
 			}
 
 		}	
 	}
-	if (nbTablesOccupees < nbTables_) { //si il y a au moins une table de libre
+	if (peutPlacer) { 
 		tables_[tableOptimale]->placerClient();
 	}
 }
