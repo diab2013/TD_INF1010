@@ -2,7 +2,6 @@
 
 //constructeurs
 string nomResto = "inconnu"; //a changer?
-
 Restaurant::Restaurant(){
 	//constructeur par défaut<
 	nom_ = new string;
@@ -41,6 +40,22 @@ TypeMenu Restaurant::getMoment() const{
 
 //autres méthodes
 void Restaurant::lireTable(string & fichier){
+	ifstream lireFichier(fichier + ".txt");
+	string mot;
+	int numeroTable = 0,id,nbPLace;
+	bool renduTable = false;
+	while (!renduTable) {
+		lireFichier >> mot;
+		if (mot == "-TABLES") {
+			renduTable = true;
+			while (!lireFichier.eof) {
+				lireFichier >> id >> nbPLace;
+				Table table(id,nbPLace);
+				tables_[numeroTable] = &table;
+				numeroTable++;
+			}
+		}
+	}
 
 }
 
@@ -68,7 +83,6 @@ void Restaurant::commanderPlat(string& nom, int idTable){
 }
 
 void Restaurant::placerClients(int nbClients){
-	//on fait comment sans le id de la table?
 	int nbTablesOccupees = 0;
 	int tableOptimale = 0;
 	for (int i = 0; i < nbTables_; i++) {
@@ -79,16 +93,18 @@ void Restaurant::placerClients(int nbClients){
 			}
 		}
 		else {
+			while (tables_[tableOptimale]->estOccupee) { //si tables_[0] est occupee
+				tableOptimale++;
+			}			
 			if (tables_[i]->getNbPlaces < tables_[tableOptimale]->getNbPlaces && nbClients <= tables_[i]->getNbPlaces) {
-				//pour la premiere partie du int, je veux quil check si la nouvelle table quil check a moins de place que celle
-				//choisie pour linstant, mais sa pourrait causer des problemes comme la variable tableOptimale est
-				//initialisee a 0
-				//exemple: si table_[0] est occupee et a autant de place que de client->rip
 				tableOptimale = i;
 			}
-		}
+
+		}	
 	}
-	tables_[tableOptimale]->placerClient();
+	if (nbTablesOccupees < nbTables_) { //si il y a au moins une table de libre
+		tables_[tableOptimale]->placerClient();
+	}
 }
 
 //affichage
