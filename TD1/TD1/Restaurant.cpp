@@ -116,7 +116,7 @@ void Restaurant::placerClients(int nbClients){
 //affichage
 void Restaurant::afficher(){
 
-	for (int i = 0; i < nbTables_; i++) {
+	for (unsigned i = 0; i < nbTables_; i++) {
 		tables_[i]->afficher();
 	}
 }
