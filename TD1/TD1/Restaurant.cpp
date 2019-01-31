@@ -48,7 +48,7 @@ void Restaurant::lireTable(string & fichier){
 		lireFichier >> mot;
 		if (mot == "-TABLES") {
 			renduTable = true;
-			while (!lireFichier.eof) {
+			while (!lireFichier.eof()) {
 				lireFichier >> id >> nbPLace;
 				ajouterTable(id, nbPLace);
 			}
@@ -87,18 +87,18 @@ void Restaurant::placerClients(int nbClients){
 	int tableOptimale = 0;
 	bool peutPlacer = false;
 
-	for (int i = 0; i < nbTables_; i++) {
-		if (tables_[i]->estOccupee) {
+	for (unsigned i = 0; i < nbTables_; i++) {
+		if (&tables_[i]->estOccupee) {
 			nbTablesOccupees++;
 			if (nbTablesOccupees == nbTables_) {
 				cout << "Il n'y a pas de places disponible" << endl;
 			}
 		}
 		else {
-			while (tables_[tableOptimale]->estOccupee) { //si tables_[0] est occupee
+			while (&tables_[tableOptimale]->estOccupee) { //si tables_[0] est occupee
 				tableOptimale++;
 			}			
-			if (tables_[i]->getNbPlaces < tables_[tableOptimale]->getNbPlaces && nbClients <= tables_[i]->getNbPlaces) {
+			if (&tables_[i]->getNbPlaces < &tables_[tableOptimale]->getNbPlaces && nbClients <= &tables_[i]->getNbPlaces) {
 				tableOptimale = i;
 				peutPlacer = true;
 			}

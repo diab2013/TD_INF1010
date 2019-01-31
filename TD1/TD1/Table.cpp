@@ -62,8 +62,9 @@ double Table::getChiffreAffaire() {
 	//Calcul le chiffre d'affaire de la table et le retourne
 	double chiffreAffaire = 0.0;
 	for (unsigned i = 0; i < nbPlats_; i++){
-		chiffreAffaire += (commande_[i]->getPrix - 
-						   commande_[i]->getCout);
+		double *prix = commande_[i]->getPrix;//car getPrix est const
+		double *cout = commande_[i]->getCout;//car getCout est const
+		chiffreAffaire += (prix - cout);
 	}
 	return chiffreAffaire;
 }

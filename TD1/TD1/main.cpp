@@ -31,19 +31,19 @@ int main() {
 	poly.placerClients(client5);
 
 	// commander des plats
-	string *plat1, *plat2, *plat3, *plat4, *plat5, *plat6; //idk anymore
-	*plat1 = "Poisson";
-	*plat2 = "Poulet";
-	*plat3 = "Pizza";
-	*plat4 = "Poulet";
-	*plat5 = "Muffin";
-	*plat6 = "Oeuf";
-	poly.commanderPlat(*plat1, 1);
-	poly.commanderPlat(*plat2, 2);
-	poly.commanderPlat(*plat3, 2);
-	poly.commanderPlat(*plat4, 4);
-	poly.commanderPlat(*plat5, 4);
-	poly.commanderPlat(*plat6, 4);
+	string plat1, plat2, plat3, plat4, plat5, plat6; //idk anymore
+	plat1 = "Poisson";
+	plat2 = "Poulet";
+	plat3 = "Pizza";
+	plat4 = "Poulet";
+	plat5 = "Muffin";
+	plat6 = "Oeuf";
+	poly.commanderPlat(plat1, 1);
+	poly.commanderPlat(plat2, 2);
+	poly.commanderPlat(plat3, 2);
+	poly.commanderPlat(plat4, 4);
+	poly.commanderPlat(plat5, 4);
+	poly.commanderPlat(plat6, 4);
 	//Poisson - Table 1 
 	//Poulet - Table 2 
 	//Pizza - Table 2 
