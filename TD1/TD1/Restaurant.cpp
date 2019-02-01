@@ -23,6 +23,8 @@ Restaurant::Restaurant(string& fichier, string& nom, TypeMenu moment){
 	menuMatin_ = new Menu(fichier, Matin);
 	menuMidi_ = new Menu(fichier, Midi);
 	menuSoir_ = new Menu(fichier, Soir);
+	lireTable(fichier);
+	afficher();
 }
 
 //destructeur
@@ -60,13 +62,18 @@ void Restaurant::lireTable(string & fichier){
 			}
 		}
 	}
+	cout << "toute les tables ajoutes " << endl;
 }
 
 void Restaurant::ajouterTable(int id, int nbPlaces){
-	Table tempTable(id, nbPlaces);
+	Table tempTable(id, nbTables_);
+	Table* temp = &tempTable;
+	//tempTable.afficher();
 	if (nbTables_ < capaciteTables_) { //maybe utiliser INTTABLES???
+		tables_[nbTables_] = new Table();
+		tables_[nbTables_] = temp;
 		nbTables_++;
-		tables_[id - 1] = &tempTable; //pcq id = position + 1
+		cout << "table ajouter" << endl;
 	} else {
 		cout << "La table n'a pas pu être ajouter" << endl;
 	}
@@ -110,8 +117,7 @@ void Restaurant::placerClients(int nbClients){
 			if (nbTablesOccupees == nbTables_) {
 				cout << "Il n'y a pas de places disponible" << endl;
 			}
-		}
-		else {
+		} else {
 			while (tables_[tableOptimale]->estOccupee()) { //si tables_[0] est occupee
 				tableOptimale++;
 			}			

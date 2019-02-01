@@ -31,7 +31,6 @@ unsigned int Menu::getNbPlats() const{
 Plat* Menu::trouverPlat(string& nom) {
 	//chercher le plat dans la liste par son nom et retourné le pointeur du plat
 	for (unsigned i = 0; i < nbPlats_; i++) {
-		cout << i << " looking for plat " << nom << endl;
 		listePlats_[i]->afficher();
 		if (listePlats_[i]->getNom() == nom) { //maybe changer le & de place
 			cout << "Plat " << listePlats_[i]->getNom() << " trouver" << endl;

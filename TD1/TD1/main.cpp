@@ -15,8 +15,8 @@ int main() {
 	nom = "Polyfood";
 	filename = "polyfood.txt";
 	Restaurant poly(filename, nom, Soir);
-	//creer plusieurs clients -- des entiers 
 
+	//creer plusieurs clients -- des entiers 
 	int client1 = 1;
 	int client2 = 5;
 	int client3 = 15;
@@ -24,11 +24,11 @@ int main() {
 	int client5 = 2;
 
 	//placer les clients 
-	poly.placerClients(client1);
-	poly.placerClients(client2);
-	poly.placerClients(client3);
-	poly.placerClients(client4);
-	poly.placerClients(client5);
+	//poly.placerClients(client1);
+	//poly.placerClients(client2);
+	//poly.placerClients(client3);
+	//poly.placerClients(client4);
+	//poly.placerClients(client5);
 
 
 	// commander des plats

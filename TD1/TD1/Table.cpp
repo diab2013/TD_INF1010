@@ -17,6 +17,9 @@ Table::Table(int id, int nbPlaces) {
 	id_ = id;
 	nbPlaces_ = nbPlaces;
 	nbPlats_ = 0;
+	occupee_ = false;
+	capacite_ = MAXCAP;
+	commande_ = new Plat*[capacite_];
 	//Construire Menu avec methode de lecture
 }
 
@@ -55,9 +58,9 @@ void Table::setId(int id) {
 
 //autres methodes
 void Table::commander(Plat* plat) {
-	nbPlats_++;
 	commande_[nbPlats_] = new Plat();
 	commande_[nbPlats_] = plat;
+	nbPlats_++;
 }
 
 double Table::getChiffreAffaire() {
@@ -74,11 +77,11 @@ double Table::getChiffreAffaire() {
 //affichage
 void Table::afficher() {
 	//Affichage de la table
+	cout << "Voici la table " << getId() << endl;
 	//Si table occupee
-	cout << "Voici les tables :" << endl;
-	if (occupee_) {
-		cout << "La table numero " << id_ << " est occupee.";
-		//Si commande
+	if (estOccupee()) {
+		cout << "La table est occupée!" << endl;
+		//Si les clients ont fait des commandes ou pas
 		if (nbPlats_ > 0) {
 			cout << "Voici la commande passee par les clients : " << endl;
 			for (unsigned i = 0; i < nbPlats_; i++) {
@@ -89,9 +92,7 @@ void Table::afficher() {
 		else {
 			cout << "Mais ils n'ont rien commende pour l'instant." << endl;
 		}
-	}
-	//Si table vide
-	else {
-		cout << "La table numero " << id_ << " est libre." << endl;
+	} else{
+		cout << "La table est libre!" << endl;
 	}
 }
