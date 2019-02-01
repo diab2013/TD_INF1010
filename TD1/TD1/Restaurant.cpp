@@ -16,7 +16,11 @@ Restaurant::Restaurant(string& fichier, string& nom, TypeMenu moment){
 	nom_ = &nom;
 	momentJournee_ = moment;
 	//jpense c'est de même qu'il faut faire, a reverifier
-	menuMatin_ = new Menu(fichier, Matin);
+	cout << "before matin" << endl;
+	Menu matin(fichier, Matin);
+	cout << "before" << endl;
+	menuMatin_ = &matin;
+	cout << "menu matin finit" << endl;
 	menuMidi_ = new Menu(fichier, Midi);
 	menuSoir_ = new Menu(fichier, Soir);
 }

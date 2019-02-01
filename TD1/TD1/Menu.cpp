@@ -4,7 +4,8 @@
 Menu::Menu() {
 	//constructeur par défaut
 	capacite_ = MAXPLAT;
-	*listePlats_ = new Plat[capacite_];
+	Plat* liste = new Plat[capacite_];
+	listePlats_ = &liste;
 	nbPlats_ = 0;
 	//FINIS?
 }
@@ -12,7 +13,14 @@ Menu::Menu() {
 Menu::Menu(string fichier, TypeMenu type){
 	//constructeur avec paramètres
 	type_ = type;
+	capacite_ = MAXPLAT;
+	nbPlats_ = 0;
+	Plat* liste[MAXPLAT];
+	listePlats_ = liste;
 	lireMenu(fichier);
+	string nom = "Pain";
+	trouverPlat(nom)->afficher();
+	cout << "fin menu" << endl;
 }
 
 //getters
@@ -33,8 +41,9 @@ Plat* Menu::trouverPlat(string& nom) {
 }
 
 void Menu::ajouterPlat(Plat& plat){
-	if (nbPlats_ < capacite_) {
-		*listePlats_[nbPlats_] = plat;
+	cout << plat.getNom() << endl;
+	if (nbPlats_ <= capacite_) {
+		listePlats_[nbPlats_] = &plat;
 		nbPlats_++;
 	} else {
 		cout << "Il n'y a plus de place dans la liste de plat!" << endl;
@@ -61,43 +70,50 @@ bool Menu::lireMenu(string& fichier){
 		//j'ai pas une bonne méthode pour bien lire le file efficacement
 		switch (type_) {
 			case Matin:
+				cout << "we matin" << endl;
 				renduMenu = false;
 				while (!renduMenu) {
 					source >> mot;
-					if (mot == "-Matin") {
+					if (mot == "-MATIN") {
 						renduMenu = true;
-						while (!source.eof()) {
+						while (nomPlat != "-MIDI") {
+							cout << "nomPlat = " << nomPlat << endl;
 							source >> nomPlat >> montantPlat >> coutPlat;
 							ajouterPlat(nomPlat, montantPlat, coutPlat);
 						}
 					}
 				}
+				cout << "we matin done" << endl;
 				break;
 			case Midi:
+				cout << "we midi" << endl;
 				renduMenu = false;
 				while (!renduMenu) {
 					source >> mot;
-					if (mot == "-Midi") {
+					if (mot == "-MIDI") {
 						renduMenu = true;
-						while (!source.eof()) {
+						while (nomPlat != "-SOIR") {
 							source >> nomPlat >> montantPlat >> coutPlat;
 							ajouterPlat(nomPlat, montantPlat, coutPlat);
 						}
 					}
 				}
+				cout << "we matin done" << endl;
 				break;
 			case Soir:
+				cout << "we soir" << endl;
 				renduMenu = false;
 				while (!renduMenu) {
 					source >> mot;
-					if (mot == "-Soir") {
+					if (mot == "-SOIR") {
 						renduMenu = true;
-						while (!source.eof()) {
+						while (nomPlat != "-TABLES") {
 							source >> nomPlat >> montantPlat >> coutPlat;
 							ajouterPlat(nomPlat, montantPlat, coutPlat);
 						}
 					}
 				}
+				cout << "we soir done" << endl;
 				break;
 		}
 		return true; //return true si le fichier a bien était lu
