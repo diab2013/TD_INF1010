@@ -16,7 +16,6 @@ Table::Table(int id, int nbPlaces) {
 	id_ = id;
 	nbPlaces_ = nbPlaces;
 	//Construire Menu avec methode de lecture
-
 }
 
 //getters

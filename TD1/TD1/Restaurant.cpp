@@ -1,11 +1,10 @@
 #include "Restaurant.h"
 
 //constructeurs
-string nomResto = "inconnu"; //a changer?
 Restaurant::Restaurant(){
-	//constructeur par défaut<
-	nom_ = new string;
-	*nom_ = nomResto;
+	//constructeur par défaut
+	string nom = "inconnu";
+	*nom_ = nom;
 	momentJournee_ = Matin;
 	chiffreAffaire_ = NULL;
 	menuMatin_ = nullptr;
@@ -14,9 +13,12 @@ Restaurant::Restaurant(){
 }
 
 Restaurant::Restaurant(string& fichier, string& nom, TypeMenu moment){
-	//Menu::lireMenu(fichier);
 	nom_ = &nom;
 	momentJournee_ = moment;
+	//jpense c'est de même qu'il faut faire, a reverifier
+	menuMatin_ = new Menu(fichier, Matin);
+	menuMidi_ = new Menu(fichier, Midi);
+	menuSoir_ = new Menu(fichier, Soir);
 }
 
 //destructeur
@@ -40,9 +42,9 @@ TypeMenu Restaurant::getMoment() const{
 
 //autres méthodes
 void Restaurant::lireTable(string & fichier){
-	ifstream lireFichier(fichier + ".txt");
+	ifstream lireFichier(fichier);
 	string mot;
-	int numeroTable = 0,id,nbPLace;
+	int numeroTable = 0, id , nbPLace;
 	bool renduTable = false;
 	while (!renduTable) {
 		lireFichier >> mot;

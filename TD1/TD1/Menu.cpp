@@ -6,14 +6,13 @@ Menu::Menu() {
 	capacite_ = MAXPLAT;
 	*listePlats_ = new Plat[capacite_];
 	nbPlats_ = 0;
-	//type_ = NULL; //le mettre à quoi?
 	//FINIS?
 }
 
 Menu::Menu(string fichier, TypeMenu type){
 	//constructeur avec paramètres
-	lireMenu(fichier);
 	type_ = type;
+	lireMenu(fichier);
 }
 
 //getters
@@ -52,6 +51,9 @@ void Menu::ajouterPlat(string& nom, double montant, double cout){
 bool Menu::lireMenu(string& fichier){
 	//lire le fichier texte et mettre les infos dans les variables
 	//ne pas oublier le type de menu (matin, midi, soir)
+	string mot, nomPlat;
+	double montantPlat, coutPlat;
+	bool renduMenu;
 	ifstream source(fichier);
 	if (source.fail()) {
 		cout << "Echec de lecture du fichier!" << endl;
@@ -59,13 +61,43 @@ bool Menu::lireMenu(string& fichier){
 		//j'ai pas une bonne méthode pour bien lire le file efficacement
 		switch (type_) {
 			case Matin:
-
+				renduMenu = false;
+				while (!renduMenu) {
+					source >> mot;
+					if (mot == "-Matin") {
+						renduMenu = true;
+						while (!source.eof()) {
+							source >> nomPlat >> montantPlat >> coutPlat;
+							ajouterPlat(nomPlat, montantPlat, coutPlat);
+						}
+					}
+				}
 				break;
 			case Midi:
-
+				renduMenu = false;
+				while (!renduMenu) {
+					source >> mot;
+					if (mot == "-Midi") {
+						renduMenu = true;
+						while (!source.eof()) {
+							source >> nomPlat >> montantPlat >> coutPlat;
+							ajouterPlat(nomPlat, montantPlat, coutPlat);
+						}
+					}
+				}
 				break;
 			case Soir:
-
+				renduMenu = false;
+				while (!renduMenu) {
+					source >> mot;
+					if (mot == "-Soir") {
+						renduMenu = true;
+						while (!source.eof()) {
+							source >> nomPlat >> montantPlat >> coutPlat;
+							ajouterPlat(nomPlat, montantPlat, coutPlat);
+						}
+					}
+				}
 				break;
 		}
 		return true; //return true si le fichier a bien était lu
