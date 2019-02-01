@@ -50,15 +50,16 @@ TypeMenu Restaurant::getMoment() const{
 void Restaurant::lireTable(string & fichier){
 	ifstream lireFichier(fichier);
 	string mot;
-	int numeroTable = 0, id , nbPLace;
+	
 	bool renduTable = false;
 	while (!renduTable) {
 		lireFichier >> mot;
 		if (mot == "-TABLES") {
 			renduTable = true;
 			while (!lireFichier.eof()) {
-				lireFichier >> id >> nbPLace;
-				ajouterTable(id, nbPLace);
+				int id, nbPlace;
+				lireFichier >> id >> nbPlace;
+				ajouterTable(id, nbPlace);
 			}
 		}
 	}

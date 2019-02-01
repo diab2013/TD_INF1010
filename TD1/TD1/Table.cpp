@@ -9,7 +9,7 @@ Table::Table() {
 	nbPlaces_ = 1;
 	nbPlats_ = 0;
 	occupee_ = false;
-	commande_ = new Plat*[MAXCAP];
+	commande_ = new Plat*[capacite_];
 }
 
 Table::Table(int id, int nbPlaces) {
@@ -20,7 +20,6 @@ Table::Table(int id, int nbPlaces) {
 	occupee_ = false;
 	capacite_ = MAXCAP;
 	commande_ = new Plat*[capacite_];
-	//Construire Menu avec methode de lecture
 }
 
 //getters
@@ -36,11 +35,12 @@ unsigned int Table::getNbPlaces() const { //ajout unsigned
 
 bool Table::estOccupee() const {
 	//retourne si la table est occupée ou pas
-	return occupee_;
+	return { occupee_ };
 }
 
 //setters
 void Table::libererTable() {
+	delete[] commande_;
 	delete commande_;
 	commande_ = new Plat*[MAXCAP];//maybe?
 	occupee_ = false;
@@ -82,7 +82,7 @@ void Table::afficher() {
 	if (estOccupee()) {
 		cout << "La table est occupée!" << endl;
 		//Si les clients ont fait des commandes ou pas
-		if (nbPlats_ > 0) {
+		if (nbPlats_ != 0) {
 			cout << "Voici la commande passee par les clients : " << endl;
 			for (unsigned i = 0; i < nbPlats_; i++) {
 				commande_[i]->afficher();
