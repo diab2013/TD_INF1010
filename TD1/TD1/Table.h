@@ -16,9 +16,9 @@ public:
 	Table(int id, int nbPlaces);
 
 	//getters 
-	int getId(); 
-	unsigned int getNbPlaces(); //ajout unsigned
-	bool estOccupee(); 
+	int getId() const; 
+	unsigned int getNbPlaces() const; //ajout unsigned
+	bool estOccupee() const; 
 
 	//setters 
 	void libererTable(); //why setter? good question

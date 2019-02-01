@@ -20,17 +20,17 @@ Table::Table(int id, int nbPlaces) {
 }
 
 //getters
-int Table::getId(){
+int Table::getId() const {
 	//retourne le id de la table
 	return { id_ };
 }
 
-unsigned int Table::getNbPlaces() { //ajout unsigned
+unsigned int Table::getNbPlaces() const { //ajout unsigned
 	//retourne le nombre de place sur la table
 	return { nbPlaces_ };
 }
 
-bool Table::estOccupee() {
+bool Table::estOccupee() const {
 	//retourne si la table est occupée ou pas
 	return occupee_;
 }
@@ -53,7 +53,7 @@ void Table::setId(int id) {
 }
 
 //autres methodes
-void Table::commander(Plat * plat) {
+void Table::commander(Plat* plat) {
 	nbPlats_++;
 	commande_[nbPlats_] = plat;
 }
@@ -62,8 +62,8 @@ double Table::getChiffreAffaire() {
 	//Calcul le chiffre d'affaire de la table et le retourne
 	double chiffreAffaire = 0.0;
 	for (unsigned i = 0; i < nbPlats_; i++){
-		double *prix = commande_[i]->getPrix;//car getPrix est const
-		double *cout = commande_[i]->getCout;//car getCout est const
+		double prix = commande_[i]->getPrix();//car getPrix est const
+		double cout = commande_[i]->getCout();//car getCout est const
 		chiffreAffaire += (prix - cout);
 	}
 	return chiffreAffaire;
@@ -80,7 +80,7 @@ void Table::afficher() {
 		if (nbPlats_ > 0) {
 			cout << "Voici la commande passee par les clients : " << endl;
 			for (unsigned i = 0; i < nbPlats_; i++) {
-				cout << commande_[i]->afficher << endl;
+				commande_[i]->afficher();
 			}
 		}
 		//Si aucune commande
