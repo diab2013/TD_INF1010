@@ -10,17 +10,17 @@ Restaurant::Restaurant(){
 	menuMatin_ = nullptr;
 	menuMidi_ = nullptr;
 	menuSoir_ = nullptr;
+	capaciteTables_ = INTTABLES;
+	tables_ = new Table*[capaciteTables_];
 }
 
 Restaurant::Restaurant(string& fichier, string& nom, TypeMenu moment){
 	nom_ = &nom;
 	momentJournee_ = moment;
 	//jpense c'est de même qu'il faut faire, a reverifier
-	cout << "before matin" << endl;
-	Menu matin(fichier, Matin);
-	cout << "before" << endl;
-	menuMatin_ = &matin;
-	cout << "menu matin finit" << endl;
+	capaciteTables_ = INTTABLES;
+	tables_ = new Table*[capaciteTables_];
+	menuMatin_ = new Menu(fichier, Matin);
 	menuMidi_ = new Menu(fichier, Midi);
 	menuSoir_ = new Menu(fichier, Soir);
 }
@@ -84,7 +84,7 @@ void Restaurant::libererTable(int id){
 }
 
 void Restaurant::commanderPlat(string& nom, int idTable){
-	Plat* platTemp = nullptr;
+	Plat* platTemp = new Plat();
 	switch(momentJournee_) {
 		case Matin:
 			platTemp = menuMatin_->trouverPlat(nom);
@@ -96,7 +96,7 @@ void Restaurant::commanderPlat(string& nom, int idTable){
 			platTemp = menuSoir_->trouverPlat(nom);
 			break;
 	}
-	tables_[idTable - 1]->commander(platTemp);//maybe???
+	tables_[idTable]->commander(platTemp);//maybe???
 	cout << "le plat " << nom << " a été commande pour la table " << idTable << endl;
 }
 
@@ -104,7 +104,6 @@ void Restaurant::placerClients(int nbClients){
 	unsigned int nbTablesOccupees = 0;
 	int tableOptimale = 0;
 	bool peutPlacer = false;
-
 	for (unsigned i = 0; i < nbTables_; i++) {
 		if (tables_[i]->estOccupee()) {
 			nbTablesOccupees++;

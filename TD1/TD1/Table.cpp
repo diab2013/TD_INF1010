@@ -7,6 +7,7 @@ Table::Table() {
 	capacite_ = MAXCAP;
 	id_ = -1;
 	nbPlaces_ = 1;
+	nbPlats_ = 0;
 	occupee_ = false;
 	commande_ = new Plat*[MAXCAP];
 }
@@ -15,6 +16,7 @@ Table::Table(int id, int nbPlaces) {
 	//constructeur avec paramètres
 	id_ = id;
 	nbPlaces_ = nbPlaces;
+	nbPlats_ = 0;
 	//Construire Menu avec methode de lecture
 }
 
@@ -54,6 +56,7 @@ void Table::setId(int id) {
 //autres methodes
 void Table::commander(Plat* plat) {
 	nbPlats_++;
+	commande_[nbPlats_] = new Plat();
 	commande_[nbPlats_] = plat;
 }
 

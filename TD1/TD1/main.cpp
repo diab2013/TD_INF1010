@@ -30,6 +30,7 @@ int main() {
 	poly.placerClients(client4);
 	poly.placerClients(client5);
 
+
 	// commander des plats
 	string plat1, plat2, plat3, plat4, plat5, plat6; //idk anymore
 	plat1 = "Poisson";
@@ -38,7 +39,9 @@ int main() {
 	plat4 = "Poulet";
 	plat5 = "Muffin";
 	plat6 = "Oeuf";
+	cout << "commande plat 1" << endl;
 	poly.commanderPlat(plat1, 1);
+	cout << "commande plat 2" << endl;
 	poly.commanderPlat(plat2, 2);
 	poly.commanderPlat(plat3, 2);
 	poly.commanderPlat(plat4, 4);

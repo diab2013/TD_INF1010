@@ -15,12 +15,10 @@ Menu::Menu(string fichier, TypeMenu type){
 	type_ = type;
 	capacite_ = MAXPLAT;
 	nbPlats_ = 0;
-	Plat* liste[MAXPLAT];
-	listePlats_ = liste;
+	//Plat* liste[MAXPLAT];
+	listePlats_ = new Plat*[capacite_];
 	lireMenu(fichier);
-	string nom = "Pain";
-	trouverPlat(nom)->afficher();
-	cout << "fin menu" << endl;
+	afficher();
 }
 
 //getters
@@ -33,7 +31,10 @@ unsigned int Menu::getNbPlats() const{
 Plat* Menu::trouverPlat(string& nom) {
 	//chercher le plat dans la liste par son nom et retourné le pointeur du plat
 	for (unsigned i = 0; i < nbPlats_; i++) {
+		cout << i << " looking for plat " << nom << endl;
+		listePlats_[i]->afficher();
 		if (listePlats_[i]->getNom() == nom) { //maybe changer le & de place
+			cout << "Plat " << listePlats_[i]->getNom() << " trouver" << endl;
 			return { listePlats_[i] }; //return le plat si trouver
 		}
 	}
@@ -41,9 +42,10 @@ Plat* Menu::trouverPlat(string& nom) {
 }
 
 void Menu::ajouterPlat(Plat& plat){
-	cout << plat.getNom() << endl;
+	//cout << plat.getNom() << endl;
 	if (nbPlats_ <= capacite_) {
-		listePlats_[nbPlats_] = &plat;
+		listePlats_[nbPlats_] = new Plat();
+		*listePlats_[nbPlats_] = plat;
 		nbPlats_++;
 	} else {
 		cout << "Il n'y a plus de place dans la liste de plat!" << endl;
@@ -54,14 +56,13 @@ void Menu::ajouterPlat(Plat& plat){
 void Menu::ajouterPlat(string& nom, double montant, double cout){
 	//créer le plat avant de l'ajouter à la liste?
 	Plat plat(nom, montant, cout);
+	//plat.afficher();
 	ajouterPlat(plat); //jpense c'est de même
 }
 
 bool Menu::lireMenu(string& fichier){
 	//lire le fichier texte et mettre les infos dans les variables
 	//ne pas oublier le type de menu (matin, midi, soir)
-	string mot, nomPlat;
-	double montantPlat, coutPlat;
 	bool renduMenu;
 	ifstream source(fichier);
 	if (source.fail()) {
@@ -70,50 +71,57 @@ bool Menu::lireMenu(string& fichier){
 		//j'ai pas une bonne méthode pour bien lire le file efficacement
 		switch (type_) {
 			case Matin:
-				cout << "we matin" << endl;
-				renduMenu = false;
-				while (!renduMenu) {
+				while (!ws(source).eof()) {
+					string mot;
 					source >> mot;
 					if (mot == "-MATIN") {
-						renduMenu = true;
-						while (nomPlat != "-MIDI") {
-							cout << "nomPlat = " << nomPlat << endl;
-							source >> nomPlat >> montantPlat >> coutPlat;
-							ajouterPlat(nomPlat, montantPlat, coutPlat);
+						while (mot != "-MIDI") {
+							string mot;
+							double montantPlat, coutPlat;
+							source >> mot >> montantPlat >> coutPlat;
+							if (mot == "-MIDI") {
+								return true;
+							}
+							ajouterPlat(mot, montantPlat, coutPlat);
 						}
 					}
 				}
-				cout << "we matin done" << endl;
-				break;
+				break;	
 			case Midi:
-				cout << "we midi" << endl;
-				renduMenu = false;
-				while (!renduMenu) {
+				while (!ws(source).eof()) {
+					string mot;
 					source >> mot;
 					if (mot == "-MIDI") {
-						renduMenu = true;
-						while (nomPlat != "-SOIR") {
-							source >> nomPlat >> montantPlat >> coutPlat;
-							ajouterPlat(nomPlat, montantPlat, coutPlat);
+						while (mot != "-SOIR") {
+							string mot;
+							double montantPlat, coutPlat;
+							source >> mot >> montantPlat >> coutPlat;
+							//cout << mot << "-" << montantPlat << "-" << coutPlat << endl;
+							if (mot == "-SOIR") {
+								return true;
+							}
+							ajouterPlat(mot, montantPlat, coutPlat);
 						}
 					}
 				}
-				cout << "we matin done" << endl;
 				break;
 			case Soir:
-				cout << "we soir" << endl;
-				renduMenu = false;
-				while (!renduMenu) {
+				while (!ws(source).eof()) {
+					string mot;
 					source >> mot;
 					if (mot == "-SOIR") {
-						renduMenu = true;
-						while (nomPlat != "-TABLES") {
-							source >> nomPlat >> montantPlat >> coutPlat;
-							ajouterPlat(nomPlat, montantPlat, coutPlat);
+						while (mot != "-TABLES") {
+							string mot;
+							double montantPlat, coutPlat;
+							source >> mot >> montantPlat >> coutPlat;
+							//cout << mot << "-" << montantPlat << "-" << coutPlat << endl;
+							if (mot == "-TABLES") {
+								return true;
+							}
+							ajouterPlat(mot, montantPlat, coutPlat);
 						}
 					}
 				}
-				cout << "we soir done" << endl;
 				break;
 		}
 		return true; //return true si le fichier a bien était lu
@@ -123,6 +131,19 @@ bool Menu::lireMenu(string& fichier){
 
 //affichage
 void Menu::afficher() {
-
+	switch (type_) {
+		case Matin:
+			cout << "Voici le menu du MATIN :" << endl;
+			break;
+		case Midi:
+			cout << "Voici le menu du MIDI :" << endl;
+			break;
+		case Soir:
+			cout << "Voici le menu du SOIR :" << endl;
+			break;
+	}
+	for (unsigned i = 0; i < nbPlats_; i++) {
+		listePlats_[i]->afficher();
+	}
 	//VOIR QUOI AFFICHER
 }
