@@ -18,7 +18,6 @@ Menu::Menu(string fichier, TypeMenu type){
 	//Plat* liste[MAXPLAT];
 	listePlats_ = new Plat*[capacite_];
 	lireMenu(fichier);
-	afficher();
 }
 
 //getters
@@ -31,9 +30,7 @@ unsigned int Menu::getNbPlats() const{
 Plat* Menu::trouverPlat(string& nom) {
 	//chercher le plat dans la liste par son nom et retourné le pointeur du plat
 	for (unsigned i = 0; i < nbPlats_; i++) {
-		listePlats_[i]->afficher();
-		if (listePlats_[i]->getNom() == nom) { //maybe changer le & de place
-			cout << "Plat " << listePlats_[i]->getNom() << " trouver" << endl;
+		if (listePlats_[i]->getNom() == nom) {
 			return { listePlats_[i] }; //return le plat si trouver
 		}
 	}
@@ -55,7 +52,6 @@ void Menu::ajouterPlat(Plat& plat){
 void Menu::ajouterPlat(string& nom, double montant, double cout){
 	//créer le plat avant de l'ajouter à la liste?
 	Plat plat(nom, montant, cout);
-	//plat.afficher();
 	ajouterPlat(plat); //jpense c'est de même
 }
 
@@ -144,5 +140,6 @@ void Menu::afficher() {
 	for (unsigned i = 0; i < nbPlats_; i++) {
 		listePlats_[i]->afficher();
 	}
+	cout << "---------------------------------------------" << endl;
 	//VOIR QUOI AFFICHER
 }

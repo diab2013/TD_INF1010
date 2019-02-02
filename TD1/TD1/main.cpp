@@ -24,46 +24,50 @@ int main() {
 	int client5 = 2;
 
 	//placer les clients 
-	//poly.placerClients(client1);
-	//poly.placerClients(client2);
-	//poly.placerClients(client3);
-	//poly.placerClients(client4);
-	//poly.placerClients(client5);
-
+	poly.placerClients(client1);
+	poly.placerClients(client2);
+	poly.placerClients(client3);
+	poly.placerClients(client4);
+	poly.placerClients(client5);
 
 	// commander des plats
-	string plat1, plat2, plat3, plat4, plat5, plat6; //idk anymore
-	plat1 = "Poisson";
-	plat2 = "Poulet";
-	plat3 = "Pizza";
-	plat4 = "Poulet";
-	plat5 = "Muffin";
-	plat6 = "Oeuf";
-	cout << "commande plat 1" << endl;
-	poly.commanderPlat(plat1, 1);
-	cout << "commande plat 2" << endl;
-	poly.commanderPlat(plat2, 2);
-	poly.commanderPlat(plat3, 2);
-	poly.commanderPlat(plat4, 4);
-	poly.commanderPlat(plat5, 4);
-	poly.commanderPlat(plat6, 4);
-	//Poisson - Table 1 
-	//Poulet - Table 2 
-	//Pizza - Table 2 
-	//Poulet - Table 4
-	//Muffin - Table 4 
-	//Oeuf - Table 4 
+	string plat1, plat2, plat3, plat4, plat5, plat6;
 
+	//Poisson - Table 1
+	plat1 = "Poisson";
+	poly.commanderPlat(plat1, 1);
+
+	//Poulet - Table 2
+	plat2 = "Poulet";
+	poly.commanderPlat(plat2, 2);
+
+	//Pizza - Table 2 
+	plat3 = "Pizza";
+	poly.commanderPlat(plat3, 2);
+
+	//Poulet - Table 4
+	plat4 = "Poulet";
+	poly.commanderPlat(plat4, 4);
+
+	//Muffin - Table 4
+	plat5 = "Muffin";
+	poly.commanderPlat(plat5, 4);
+
+	//Oeuf - Table 4 
+	plat6 = "Oeuf";
+	poly.commanderPlat(plat6, 4);
 
 	//afficher le restaurant
 	poly.afficher();
 
-	cout << "-------------------------------------------------" << endl;
+	cout << "-------------------------AFFICHAGE DU RESTO------------------------" << endl;
 
 	//liberer les tables
-	for (int i = 0; i < 4; i++) {
-		poly.libererTable(i-1);//comment on peut faire sa sans get le nombre de table
-	}
+	poly.libererTable(1);
+	//for (int i = 0; i < 4; i++) {
+	//	poly.libererTable(i-1);//comment on peut faire sa sans get le nombre de table
+	//}
+
 	//afficher le restaurant 
 	poly.afficher();
 	return 0;
