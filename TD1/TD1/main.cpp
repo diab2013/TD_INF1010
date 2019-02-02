@@ -9,7 +9,6 @@
 using namespace std;
 
 int main() {
-
 	//creation du restaurant - avec le fichier donne - le nom : PolyFood - moment de la journee : soir. 
 	string nom,filename;
 	nom = "Polyfood";

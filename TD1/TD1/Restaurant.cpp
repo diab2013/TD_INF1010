@@ -1,6 +1,10 @@
 #include "Restaurant.h"
 
-//constructeurs
+/*
+* Constructeur par défaut de la classe Restaurant
+* Le nom sera "inconnu", le moment de la journée est MATIN et le chiffre d'affaire est null
+* Les menu du matin, midi et soir pointent vers rien
+*/
 Restaurant::Restaurant(){
 	//constructeur par défaut
 	string nom = "inconnu";
@@ -14,6 +18,14 @@ Restaurant::Restaurant(){
 	tables_ = new Table*[capaciteTables_];
 }
 
+/*
+* Constructeur avec paramétres de la classe Restauraut
+* Prend en paramètre l'adresse d'un fichier, l'addresse d'un nom et le moment de la journée (Matin, midi, soir)
+* Les variables correspondantes au paramètres sont initialisées
+* La liste de table est initialisé avec une capacité
+* Les différents menu de la journée sont initialisés
+* La fonction lireTable charge les valeurs des tables provenant du document 
+*/
 Restaurant::Restaurant(string& fichier, string& nom, TypeMenu moment){
 	nom_ = new string(nom);
 	momentJournee_ = moment;
@@ -167,5 +179,7 @@ void Restaurant::afficher(){
 	menuSoir_->afficher();
 	for (unsigned i = 0; i < nbTables_; i++) {
 		tables_[i]->afficher();
+		chiffreAffaire_ += tables_[i]->getChiffreAffaire();
 	}
+	cout << "Le chiffre d'affaire est de " << chiffreAffaire_ << "$" << endl;
 }
