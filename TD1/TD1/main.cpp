@@ -1,7 +1,8 @@
 /*
 * Titre : main.cpp - Travail Pratique #1
-* Date : 09 Janvier 2019
-* Auteur : David Dratwa
+* Date : 04 Fevrier 2019
+* Auteurs : Diab Khanafer et Charles-Etienne Desormeaux
+* Description : Classe principale
 */
 
 #include "Restaurant.h"
