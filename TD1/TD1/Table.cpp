@@ -1,3 +1,10 @@
+/*
+* Titre : Table.cpp - Travail Pratique #1
+* Date : 04 Fevrier 2019
+* Auteurs : Diab Khanafer et Charles-Etienne Desormeaux
+* Description : Creer une table ainsi que ses attributs.
+*/
+
 #include "Table.h"
 //Vérifier si d'autres include sont nécéssaires (Menu.h?)
 
