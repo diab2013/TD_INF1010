@@ -134,6 +134,7 @@
     <Text Include="polyFood.txt" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Questions du TP1.docx" />
     <None Include="TP1-H19.pdf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

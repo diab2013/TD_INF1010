@@ -6,7 +6,6 @@
 */
 
 #include "Table.h"
-//Vérifier si d'autres include sont nécéssaires (Menu.h?)
 
 //constructeurs
 Table::Table() {
