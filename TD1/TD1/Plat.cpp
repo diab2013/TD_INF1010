@@ -8,6 +8,11 @@
 #include "Plat.h"
 
 // constructeurs
+/*
+* Constructeur par défaut de la classe Plat
+* Ìnitialise les attributs à des valeurs par défaut
+* 
+*/
 Plat::Plat() {
 	//constructeur par défaut
 	nom_ = "inconnu";
