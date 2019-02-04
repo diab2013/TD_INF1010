@@ -57,18 +57,18 @@ int main() {
 	plat6 = "Oeuf";
 	poly.commanderPlat(plat6, 4);
 
+	cout << "-------------------------AFFICHAGE DU RESTO------------------------" << endl;
+
 	//afficher le restaurant
 	poly.afficher();
 
-	cout << "-------------------------AFFICHAGE DU RESTO------------------------" << endl;
-
 	//liberer les tables
-	poly.libererTable(1);
+	//poly.libererTable(1);
 	//for (int i = 0; i < 4; i++) {
 	//	poly.libererTable(i-1);//comment on peut faire sa sans get le nombre de table
 	//}
 
 	//afficher le restaurant 
-	poly.afficher();
+	//poly.afficher();
 	return 0;
 }

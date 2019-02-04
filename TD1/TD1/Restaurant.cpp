@@ -31,7 +31,7 @@ Restaurant::Restaurant(){
 * Les variables correspondantes au paramètres sont initialisées
 * La liste de table est initialisé avec une capacité
 * Les différents menu de la journée sont initialisés
-* La fonction lireTable charge les valeurs des tables provenant du document 
+* La fonction lireTable charge les valeurs des tables progvenant du document 
 */
 Restaurant::Restaurant(string& fichier, string& nom, TypeMenu moment){
 	nom_ = new string(nom);
@@ -116,9 +116,7 @@ void Restaurant::ajouterTable(int id, int nbPlaces){
 void Restaurant::libererTable(int id){
 	for (unsigned i = 0; i < nbTables_; i++) {
 		if ((id == tables_[i]->getId()) && tables_[i]->estOccupee()) {
-			cout << "table " << tables_[i]->getId() << " va etre liberer!" << endl;
 			tables_[i]->libererTable();
-			cout << "table liberer" << endl;
 			chiffreAffaire_ += tables_[i]->getChiffreAffaire();
 			delete tables_[i];
 			tables_[i] = nullptr;
@@ -148,7 +146,6 @@ void Restaurant::commanderPlat(string& nom, int idTable){
 	} else {
 		cout << "Le plat commander n'est pas disponible en ce moment de la journee!" << endl;
 	}
-	
 }
 
 /*
@@ -160,7 +157,6 @@ void Restaurant::placerClients(int nbClients){
 	int tableOptimale = 0;
 	int minDiff = INT_MAX;
 	bool peutPlacer = false;
-
 	for (unsigned i = 0; i < nbTables_; i++) {
 		if (!tables_[i]->estOccupee() && (nbClients <= tables_[i]->getNbPlaces())) {
 			if (minDiff > (tables_[i]->getNbPlaces() - nbClients) && (tables_[i]->getNbPlaces() - nbClients) >= 0) {
@@ -169,35 +165,10 @@ void Restaurant::placerClients(int nbClients){
 			}
 		}
 	}
-	//La méthode ne marchait pas pour tout
-	/*
-	for (unsigned i = 0; i < nbTables_; i++) {
-		if (tables_[i]->estOccupee()) {
-			nbTablesOccupees++;
-			if (nbTablesOccupees == nbTables_) {
-				cout << "Il n'y a pas de table disponible ..." << endl;
-			}
-		} else {
-			if (tables_[tableOptimale]->estOccupee()) { //si tables_[0] est occupee
-				tableOptimale++;
-			}			
-			if ((tables_[i]->getNbPlaces() < tables_[tableOptimale]->getNbPlaces()) && (nbClients <= tables_[i]->getNbPlaces())) {
-				if (minDiff > (tables_[i]->getNbPlaces() - nbClients)) {
-					minDiff = tables_[i]->getNbPlaces() - nbClients;
-					tableOptimale = i;
-				}
-				peutPlacer = true;
-			}
-		}	
-	}
-	*/
 	if (peutPlacer) { 
 		tables_[tableOptimale]->placerClient();
 		cout << "Le client à ete ajouter a la table " << tables_[tableOptimale]->getId() << " !" << endl;
 	}
-	//if (!peutPlacer && (nbTablesOccupees < nbTables_)) {
-	//	cout << "Il n'y a pas de table ayant asser de place pour ces clients." << endl;
-	//}
 	if (!peutPlacer) {
 		cout << "Il n'y a pas de table ayant asser de place pour ces clients." << endl;
 	}
@@ -207,7 +178,7 @@ void Restaurant::placerClients(int nbClients){
 * Affiche le nom du restaurant, tous les menus ainsi que toutes les informations des tables
 */
 void Restaurant::afficher(){
-	cout << "| Bienvenue chez " << &nom_ << "! |" <<endl;
+	cout << "| Bienvenue chez " << nom_ << "! |" <<endl;
 	cout << "---------------------------------------------" << endl;
 	menuMatin_->afficher();
 	menuMidi_->afficher();
