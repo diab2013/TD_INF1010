@@ -66,8 +66,8 @@ bool Table::estOccupee() const {
 */
 void Table::libererTable() {
 	delete[] commande_;
-	delete commande_;
 	commande_ = new Plat*[capacite_]; //reinitialise la commande de la table
+	nbPlats_ = 0;
 	occupee_ = false;
 }
 
@@ -101,7 +101,6 @@ void Table::commander(Plat* plat) {
 	} else {
 		cout << "Plus de place pour commander" << endl;
 	}
-	
 }
 
 /*
@@ -129,7 +128,7 @@ double Table::getChiffreAffaire() {
 */
 void Table::afficher() {
 	//Affichage de la table
-	cout << "La table " << getId() << ", avec " << nbPlaces_ << " places, ";
+	cout << "La table " << id_ << ", avec " << nbPlaces_ << " places, ";
 	//Si table occupee
 	if (estOccupee()) {
 		cout << " est occupee." << endl;

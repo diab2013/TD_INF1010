@@ -116,10 +116,8 @@ void Restaurant::ajouterTable(int id, int nbPlaces){
 void Restaurant::libererTable(int id){
 	for (unsigned i = 0; i < nbTables_; i++) {
 		if ((id == tables_[i]->getId()) && tables_[i]->estOccupee()) {
-			tables_[i]->libererTable();
 			chiffreAffaire_ += tables_[i]->getChiffreAffaire();
-			delete tables_[i];
-			tables_[i] = nullptr;
+			tables_[i]->libererTable();
 		}
 	}
 }
@@ -178,7 +176,8 @@ void Restaurant::placerClients(int nbClients){
 * Affiche le nom du restaurant, tous les menus ainsi que toutes les informations des tables
 */
 void Restaurant::afficher(){
-	cout << "| Bienvenue chez " << nom_ << "! |" <<endl;
+	cout << "----------------AFFICHAGE DU RESTAURANT----------------" << endl;
+	cout << "| Bienvenue chez " << *nom_ << "! |" <<endl;
 	cout << "---------------------------------------------" << endl;
 	menuMatin_->afficher();
 	menuMidi_->afficher();
@@ -188,4 +187,5 @@ void Restaurant::afficher(){
 		chiffreAffaire_ += tables_[i]->getChiffreAffaire();
 	}
 	cout << "Le chiffre d'affaire est de " << chiffreAffaire_ << "$" << endl;
+	cout << "--------------FIN AFFICHAGE DU RESTAURANT--------------" << endl;
 }
