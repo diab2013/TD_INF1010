@@ -7,33 +7,44 @@
 
 #include "Menu.h"
 
-//constructeurs
+/*
+* Constructeur par défaut de la classe Menu
+* Crée une nouvelle liste de plat vide avec une capacité de MAXPLAT
+* Le nombre de plat est zéro et le type de menu est Matin
+*/
 Menu::Menu() {
-	//constructeur par défaut
 	capacite_ = MAXPLAT;
-	Plat* liste = new Plat[capacite_];
-	listePlats_ = &liste;
 	nbPlats_ = 0;
-	//FINIS?
+	type_ = Matin;
+	listePlats_ = new Plat*[capacite_];
 }
 
+/*
+* Constructeur par paramètre de la classe Menu
+* Initialise les attributs à des valeurs passées en paramètres
+*/
 Menu::Menu(string fichier, TypeMenu type){
-	//constructeur avec paramètres
 	type_ = type;
 	capacite_ = MAXPLAT;
 	nbPlats_ = 0;
-	//Plat* liste[MAXPLAT];
 	listePlats_ = new Plat*[capacite_];
 	lireMenu(fichier);
 }
 
-//getters
+/*
+* Getter de la variable nbPlats_
+* Return l'attributs nbPlats_ de la classe
+*/
 unsigned int Menu::getNbPlats() const{
 	//retourne le nombre de plat dans le menu
 	return { nbPlats_ };
 }
 
-//méthodes en plus
+/*
+* Méthode qui permet de trouver un certain plat dans la liste dynamique
+* de plat selon un variable nom passée en paramètre
+* return un pointeur vers le plat s'il a été trouver, sinon return nullptr
+*/
 Plat* Menu::trouverPlat(string& nom) {
 	//chercher le plat dans la liste par son nom et retourné le pointeur du plat
 	for (unsigned i = 0; i < nbPlats_; i++) {
@@ -44,8 +55,12 @@ Plat* Menu::trouverPlat(string& nom) {
 	return { nullptr };	//return nullptr si le plat n'est pas trouver
 }
 
+/*
+* Méthode qui permet d'ajouter un plat, passé en paramètre, à la liste de plat listePlats_
+* si le nombre de plat n'a pas atteint la capacité maximale
+* Le paramètre passé est l'adresse d'un plat déjà créé
+*/
 void Menu::ajouterPlat(Plat& plat){
-	//cout << plat.getNom() << endl;
 	if (nbPlats_ <= capacite_) {
 		listePlats_[nbPlats_] = new Plat();
 		*listePlats_[nbPlats_] = plat;
@@ -53,15 +68,25 @@ void Menu::ajouterPlat(Plat& plat){
 	} else {
 		cout << "Il n'y a plus de place dans la liste de plat!" << endl;
 	}
-	//ajoute le plat à listePlats_ en utilisant le plat lui-même
 }
 
+/*
+* Méthode qui permet d'ajouter un plat à la liste, mais cette fois-ci en passant le nom, le
+* montant et le cout en paramètre
+* Les paramètres sont utilisés pour créer un plat et ensuite le passer à la première méthode 
+* ajouterPlat pour l'ajouter à la liste
+*/
 void Menu::ajouterPlat(string& nom, double montant, double cout){
 	//créer le plat avant de l'ajouter à la liste?
 	Plat plat(nom, montant, cout);
 	ajouterPlat(plat); //jpense c'est de même
 }
 
+/*
+* Méthode qui permet de lire le fichier, passé en paramètre, contenant les menus selon chaque moment 
+* de la journée et les tables du restaurant
+* return true/false si l'ouverture du fichier à été possible
+*/
 bool Menu::lireMenu(string& fichier){
 	//lire le fichier texte et mettre les infos dans les variables
 	//ne pas oublier le type de menu (matin, midi, soir)
@@ -98,7 +123,6 @@ bool Menu::lireMenu(string& fichier){
 							string mot;
 							double montantPlat, coutPlat;
 							source >> mot >> montantPlat >> coutPlat;
-							//cout << mot << "-" << montantPlat << "-" << coutPlat << endl;
 							if (mot == "-SOIR") {
 								return true;
 							}
@@ -116,7 +140,6 @@ bool Menu::lireMenu(string& fichier){
 							string mot;
 							double montantPlat, coutPlat;
 							source >> mot >> montantPlat >> coutPlat;
-							//cout << mot << "-" << montantPlat << "-" << coutPlat << endl;
 							if (mot == "-TABLES") {
 								return true;
 							}
@@ -131,7 +154,11 @@ bool Menu::lireMenu(string& fichier){
 	return false;	//return false si le fichier a mal était lu
 }
 
-//affichage
+/*
+* Méthode d'affichage de la classe Menu
+* Affiche les attributs de l'objet lorsque la méthode est appelée
+* Présente le moment de la journée, et les plats selon ce dernier
+*/
 void Menu::afficher() {
 	switch (type_) {
 		case Matin:
@@ -148,5 +175,4 @@ void Menu::afficher() {
 		listePlats_[i]->afficher();
 	}
 	cout << "---------------------------------------------" << endl;
-	//VOIR QUOI AFFICHER
 }
