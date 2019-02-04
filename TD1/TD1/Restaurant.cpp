@@ -47,24 +47,37 @@ Restaurant::Restaurant(string& fichier, string& nom, TypeMenu moment){
 
 //destructeur
 Restaurant::~Restaurant(){
-	//je feel ca a besoin d'un destructeur
 }
 
-//setters
+/*
+* in: moment de la journee de type TypeMenu
+* out: variable privee de la classe ayant la valeur du in
+* Set la variable privee momentJournee à la variable in
+*/
 void Restaurant::setMoment(TypeMenu moment){
 	momentJournee_ = moment;
 }
 
-//getters
+/*
+* out: pointeur string
+* Renvoie un pointeur string privee
+*/
 string Restaurant::getNom() const{
 	return *nom_;
 }
 
+/*
+* out: variable TypeMenu
+* Renvoie une variable TypeMenu privee
+*/
 TypeMenu Restaurant::getMoment() const{
 	return momentJournee_;
 }
 
-//autres méthodes
+/*
+* in: nom du fichier .txt
+* Lit les tables du fichier et envoie leurs donnees a une autre fonction
+*/
 void Restaurant::lireTable(string & fichier){
 	ifstream lireFichier(fichier);
 	string mot;
@@ -82,6 +95,10 @@ void Restaurant::lireTable(string & fichier){
 	}
 }
 
+/*
+* in: id d'une table, nombre de place d'une table
+* Creer une table selon les donnees recues en parametre
+*/
 void Restaurant::ajouterTable(int id, int nbPlaces){
 	Table* temp = new Table(id, nbPlaces);
 	if (nbTables_ < capaciteTables_) { //maybe utiliser INTTABLES???
@@ -93,7 +110,10 @@ void Restaurant::ajouterTable(int id, int nbPlaces){
 	}
 }
 
-//revoir comment liberer table
+/*
+* in: id d'une table
+* Libere une table occupee, l'enleve de la liste de table ainsi que son pointeur
+*/
 void Restaurant::libererTable(int id){
 	for (unsigned i = 0; i < nbTables_; i++) {
 		if ((id == tables_[i]->getId()) && tables_[i]->estOccupee()) {
@@ -107,6 +127,10 @@ void Restaurant::libererTable(int id){
 	}
 }
 
+/*
+* in: nom d'un plat, id d'une table
+* Envoie a une autre fonction, selon le type de menu, un nom plat commande.
+*/
 void Restaurant::commanderPlat(string& nom, int idTable){
 	Plat* platTemp = new Plat();
 	switch(momentJournee_) {
@@ -128,7 +152,10 @@ void Restaurant::commanderPlat(string& nom, int idTable){
 	
 }
 
-//REVOIR CETTE FONCTION ...........
+/*
+* in: nombre int de client a placer a une table
+* Place le groupe de client selon la table la plus optimale s'il y a de la place
+*/
 void Restaurant::placerClients(int nbClients){
 	//unsigned int nbTablesOccupees = 0;
 	int tableOptimale = 0;
@@ -177,7 +204,9 @@ void Restaurant::placerClients(int nbClients){
 	}
 }
 
-//affichage
+/*
+* Affiche le nom du restaurant, tous les menus ainsi que toutes les informations des tables
+*/
 void Restaurant::afficher(){
 	cout << "| Bienvenue chez " << &nom_ << "! |" <<endl;
 	cout << "---------------------------------------------" << endl;
