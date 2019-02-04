@@ -22,6 +22,7 @@ Menu::Menu() {
 /*
 * Constructeur par paramètre de la classe Menu
 * Initialise les attributs à des valeurs passées en paramètres
+* Aussi, fait appelle à la méthode lireMenu
 */
 Menu::Menu(string fichier, TypeMenu type){
 	type_ = type;
@@ -36,7 +37,6 @@ Menu::Menu(string fichier, TypeMenu type){
 * Return l'attributs nbPlats_ de la classe
 */
 unsigned int Menu::getNbPlats() const{
-	//retourne le nombre de plat dans le menu
 	return { nbPlats_ };
 }
 

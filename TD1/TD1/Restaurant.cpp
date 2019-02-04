@@ -36,7 +36,6 @@ Restaurant::Restaurant(){
 Restaurant::Restaurant(string& fichier, string& nom, TypeMenu moment){
 	nom_ = new string(nom);
 	momentJournee_ = moment;
-	//jpense c'est de même qu'il faut faire, a reverifier
 	capaciteTables_ = INTTABLES;
 	tables_ = new Table*[capaciteTables_];
 	menuMatin_ = new Menu(fichier, Matin);

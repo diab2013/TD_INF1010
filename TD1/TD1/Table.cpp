@@ -7,9 +7,13 @@
 
 #include "Table.h"
 
-//constructeurs
+/*
+* Constructeur par défaut de la classe Table
+* Crée une nouvelle liste de plat vide avec une capacité de MAXCAP 
+* Le nombre de plat est zéro, le id de la table est -1, le nombre de places à 1
+* et la table n'est pas occupée
+*/
 Table::Table() {
-	//constructeur par défaut
 	capacite_ = MAXCAP;
 	id_ = -1;
 	nbPlaces_ = 1;
@@ -18,8 +22,11 @@ Table::Table() {
 	commande_ = new Plat*[capacite_];
 }
 
+/*
+* Constructeur par paramétres de la classe Table
+* Initialise les attributs à des valeurs passées en paramètres
+*/
 Table::Table(int id, int nbPlaces) {
-	//constructeur avec paramètres
 	id_ = id;
 	nbPlaces_ = nbPlaces;
 	nbPlats_ = 0;
@@ -28,41 +35,64 @@ Table::Table(int id, int nbPlaces) {
 	commande_ = new Plat*[capacite_];
 }
 
-//getters
+/*
+* Getter de la variable id
+* Return l'attribut id_ de la classe
+*/
 int Table::getId() const {
-	//retourne le id de la table
 	return { id_ };
 }
 
-unsigned int Table::getNbPlaces() const { //ajout unsigned
-	//retourne le nombre de place sur la table
+/*
+* Getter de la variable nbPlaces_
+* Return l'attribut nbPlaces_ de la classe
+*/
+unsigned int Table::getNbPlaces() const {
 	return { nbPlaces_ };
 }
 
+/*
+* Getter de la variable occupee_
+* Return l'attribut occupee_ de la classe
+*/
 bool Table::estOccupee() const {
 	//retourne si la table est occupée ou pas
 	return { occupee_ };
 }
 
-//setters
+/*
+* Méthode qui permet de liberer une table et la reset
+* Supprime la commande actuelle et met la table comme libre
+*/
 void Table::libererTable() {
 	delete[] commande_;
 	delete commande_;
-	commande_ = new Plat*[capacite_];//maybe?
+	commande_ = new Plat*[capacite_]; //reinitialise la commande de la table
 	occupee_ = false;
 }
 
+/*
+* Méthode qui permet de placer la table comme occupee
+*/
 void Table::placerClient() {
 	//la table devient occupé
 	occupee_ = true;
 }
 
+/*
+* Méthode qui set le id
+* à la valeur passée en paramètre
+*/
 void Table::setId(int id) {
 	//set le id de la table
 	id_ = id;
 }
 
-//autres methodes
+/*
+* Méthode qui permer de commande un plat pour les clients assis à la table
+* Si le nombre de plats commander n'est pas dépassé, ajoute le plat passé
+* en paramètre à la liste de commande 
+*/
 void Table::commander(Plat* plat) {
 	if (nbPlats_ < capacite_) {
 		commande_[nbPlats_] = new Plat();
@@ -74,6 +104,11 @@ void Table::commander(Plat* plat) {
 	
 }
 
+/*
+* Méthode qu perment de calculer le chiffre d'affaire fait par la liste de commande
+* de la table
+* return le chiffre d'affaire après le calcul
+*/
 double Table::getChiffreAffaire() {
 	//Calcul le chiffre d'affaire de la table et le retourne
 	double chiffreAffaire = 0.0;
@@ -85,7 +120,13 @@ double Table::getChiffreAffaire() {
 	return chiffreAffaire;
 }
 
-//affichage
+/*
+* Méthode d'affichage de la classe Table
+* Affiche les attributs de l'objet lorsque la méthode est appelée
+* Présente l'id de la table, ainsi que le nombre de place à cette derniere
+* Présente aussi si elle est occupée et la liste des plats commandés si les clients
+* ont commander de quoi
+*/
 void Table::afficher() {
 	//Affichage de la table
 	cout << "La table " << getId() << ", avec " << nbPlaces_ << " places, ";
