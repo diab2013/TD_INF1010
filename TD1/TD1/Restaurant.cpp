@@ -165,7 +165,7 @@ void Restaurant::placerClients(int nbClients){
 	}
 	if (peutPlacer) { 
 		tables_[tableOptimale]->placerClient();
-		cout << "Le client à ete ajouter a la table " << tables_[tableOptimale]->getId() << " !" << endl;
+		cout << "Le client a ete ajouter a la table " << tables_[tableOptimale]->getId() << " !" << endl;
 	}
 	if (!peutPlacer) {
 		cout << "Il n'y a pas de table ayant asser de place pour ces clients." << endl;
