@@ -77,6 +77,7 @@ void Plat::setPrix(double prix){
 /*
 * Méthode d'affichage de la classe Plat
 * Affiche les attributs de l'objet lorsque la méthode est appelée
+* Présente le nom, le prix et le coût du plat
 */
 void Plat::afficher() const{
 	cout << "\t" << nom_ << " - " << prix_ << "$ (" << cout_ 
