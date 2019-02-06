@@ -31,6 +31,10 @@ double Plat::getPrix() const {
 double Plat::getCout() const {
 	return cout_;
 }
+double Plat::getPetitPrix(double a, double b) const{
+	//maybe??
+	return 0;
+}
 //setters
 void Plat::setNom(string nom) {
 	nom_ = nom;

@@ -22,6 +22,7 @@ public:
 	string getNom() const;
 	double getPrix() const;
 	double getCout() const;
+	double getPetitPrix(double a, double b) const;//maybe?
 
 	///setters
 	void setNom(string nom);
