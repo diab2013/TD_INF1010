@@ -32,8 +32,13 @@ double Plat::getCout() const {
 	return cout_;
 }
 double Plat::getPetitPrix(double a, double b) const{
-	//maybe??
-	return 0;
+	if (a < b) {
+		return a;
+	}
+	else {
+		return b;
+	}
+	
 }
 //setters
 void Plat::setNom(string nom) {
