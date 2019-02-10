@@ -5,6 +5,7 @@
 */
 
 #include "Restaurant.h"
+#include <vector>
 using namespace std;
 
 int main() {
@@ -19,10 +20,17 @@ int main() {
 	int nbclient4 = 3;
 	int nbclient5 = 2;
 	
+	//test perso
 	Plat plat("diab", 4.0, 1.0);
+	Plat* plat2 = &plat;
 	Plat plat1("lol", 1.0, 1.0);
 	cout << (plat < plat1) << endl; // 0 = false; 1 = true
 	cout << plat << plat1;
+
+	Table table(3, 4);
+	table.placerClient(1);
+	table.commander(plat2);
+	cout << table;
 
 	//placer les clients 
 	//poly.placerClients(nbclient1);

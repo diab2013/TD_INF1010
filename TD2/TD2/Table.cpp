@@ -9,7 +9,6 @@
 //constructeurs
 Table::Table() {
 	capacite_ = MAXCAP;
-	commande_ = new Plat*[MAXCAP];
 	nbPlats_ = 0;
 	id_ = -1;
 	nbPlaces_ = 1;
@@ -18,7 +17,6 @@ Table::Table() {
 
 Table::Table(int id, int nbPlaces) {
 	capacite_ = MAXCAP;
-	commande_ = new Plat*[capacite_];
 	nbPlats_ = 0;
 	id_ = id;
 	nbPlaces_ = nbPlaces;
@@ -28,7 +26,7 @@ Table::Table(int id, int nbPlaces) {
 //destructeur
 Table::~Table() {
 	//A MODIFIER
-	delete[] commande_;
+	//delete[] commande_;
 }
 
 //getters
@@ -40,8 +38,7 @@ int Table::getNbPlaces() const {
 	return nbPlaces_;
 }
 
-int Table::getnbClientATable() const
-{
+int Table::getnbClientATable() const{
 	return nbClientsATable_;
 }
 
@@ -49,8 +46,7 @@ bool Table::estPleine() const {
 	return nbPlaces_==0;
 }
 
-bool Table::estOccupee() const
-{
+bool Table::estOccupee() const{
 	return nbClientsATable_!=0;
 }
 
@@ -81,14 +77,14 @@ void Table::commander(Plat* plat) {
 		capacite_ *= 2;
 		Plat** temp = new Plat*[capacite_];
 		for (int i = 0; i < nbPlats_; i++) {
-			temp[i] = commande_[i];
+			//temp[i] = commande_[i];
 		}
 
-		delete[] commande_;
-		commande_ = temp;
+		//delete[] commande_;
+		//commande_ = temp;
 	}
 
-	commande_[nbPlats_] = plat;
+	commande_.push_back(plat);
 	nbPlats_++;
 }
 
@@ -100,22 +96,22 @@ double Table::getChiffreAffaire() const {
 	return chiffre;
 }
 
-//affichage
-void Table::afficher() const {
-	cout << "La table numero " << id_;
-	if (estOccupee()) {
+//override
+ostream & operator<<(ostream & o, const Table & table){
+	cout << "La table numero " << table.getId();
+	if (table.estOccupee()) {
 		cout << " est occupee. ";
-		if (nbPlats_ != 0) {
+		if (table.nbPlats_ != 0) {
 			cout << "Voici la commande passee par les clients : " << endl;
-			for (int i = 0; i < nbPlats_; i++) {
+			for (int i = 0; i < table.nbPlats_; i++) {
 				cout << "\t";
-				//commande_[i]->afficher();
+				cout << *table.commande_[i];
 			}
-		}
-		else
+		} else {
 			cout << "Mais ils n'ont rien conmmande pour l'instant. " << endl;
-	}
-	else {
+		}
+	} else {
 		cout << " est libre. " << endl;
 	}
+	return o;
 }
