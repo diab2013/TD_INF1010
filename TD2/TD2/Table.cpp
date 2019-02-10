@@ -25,8 +25,8 @@ Table::Table(int id, int nbPlaces) {
 
 //destructeur
 Table::~Table() {
-	//A MODIFIER
-	//delete[] commande_;
+	//A MODIFIER¸
+	libererTable();
 }
 
 //getters
@@ -58,9 +58,8 @@ void Table::setId(int id) {
 void Table::libererTable() {
 	nbPlaces_ += nbClientsATable_;
 	nbClientsATable_ = 0;
-	//A MODIFIER
 	for (int i = 0; i < nbPlats_; i++) {
-		commande_[i] = nullptr;
+		commande_.pop_back();
 	}
 	nbPlats_ = 0;
 }
@@ -72,18 +71,9 @@ void Table::placerClient(int nbClients) {
 
 //autres methodes
 void Table::commander(Plat* plat) {
-	// A MODIFIER
 	if (nbPlats_ == capacite_) {
 		capacite_ *= 2;
-		Plat** temp = new Plat*[capacite_];
-		for (int i = 0; i < nbPlats_; i++) {
-			//temp[i] = commande_[i];
-		}
-
-		//delete[] commande_;
-		//commande_ = temp;
 	}
-
 	commande_.push_back(plat);
 	nbPlats_++;
 }

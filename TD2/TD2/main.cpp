@@ -31,6 +31,9 @@ int main() {
 	table.placerClient(1);
 	table.commander(plat2);
 	cout << table;
+	table.libererTable();
+	cout << table;
+	delete &table;
 
 	//placer les clients 
 	//poly.placerClients(nbclient1);

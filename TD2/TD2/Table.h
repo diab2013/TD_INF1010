@@ -27,12 +27,12 @@ public:
 	bool estOccupee() const;
 
 	///setters
-	void libererTable(); // A MODIFIER
+	void libererTable();
 	void placerClient(int nbClients);
 	void setId(int id);
 
 	///autres methodes
-	void commander(Plat* plat); // A MODIFIER
+	void commander(Plat* plat);
 	double getChiffreAffaire() const;
 
 	///override
