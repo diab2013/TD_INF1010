@@ -82,7 +82,10 @@ void Restaurant::libererTable(int id) {
 		}
 	}
 }
-void Restaurant::afficher() const {
+
+void Restaurant::afficher(const Restaurant& resto) const {
+	cout << "Diab est bon!" << endl;
+	/*
 	cout << "Le restaurant " << *nom_;
 	if (chiffreAffaire_ != 0)
 		cout << " a fait un chiffre d'affaire de : " << chiffreAffaire_ << "$" << endl;
@@ -104,6 +107,7 @@ void Restaurant::afficher() const {
 	menuMidi_->afficher();
 	cout << "Soir : " << endl;
 	menuSoir_->afficher();
+	*/
 }
 
 void Restaurant::commanderPlat(const string& nom, int idTable) {
@@ -206,4 +210,9 @@ void Restaurant::placerClients(int nbClients) {
 		cout << "Erreur : il n'y a plus/pas de table disponible pour le client. " << endl;
 	}else
 	tables_[indexTable]->placerClient(nbClients);
+}
+
+ostream & operator<<(ostream & o, const Restaurant & resto){
+	resto.afficher(resto);
+	return o;
 }

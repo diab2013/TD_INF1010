@@ -161,11 +161,10 @@ bool Menu::lireMenu(const string& fichier) {
 	}
 }
 
-Plat * Menu::trouverPlatMoinsCher() const
-{
+Plat * Menu::trouverPlatMoinsCher() const{
 	Plat minimum(*listePlats_[0]);
 	int found = -1;
-
+	/*
 	for (unsigned i = 0; i < listePlats_.size(); ++i)
 	{
 		if (*listePlats_[i] < minimum)
@@ -174,7 +173,7 @@ Plat * Menu::trouverPlatMoinsCher() const
 			found = i;
 		}
 	}
-
+	*/
 	return listePlats_[found];
 
 }

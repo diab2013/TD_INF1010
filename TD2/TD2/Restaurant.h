@@ -30,8 +30,9 @@ public:
 	void lireTable(const string& fichier);
 	void ajouterTable(int id, int nbPlaces); // A MODIFIER
 	void libererTable(int id);
-	void afficher() const ; // A MODIFIER
+	void afficher(const Restaurant& resto) const ; // A MODIFIER
 	void commanderPlat(const string& nom, int idTable); 
+	friend ostream& operator<<(ostream& o, const Restaurant& resto);
 
 	void placerClients(int nbClients);
 

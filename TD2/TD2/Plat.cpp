@@ -18,8 +18,8 @@ Plat::Plat(string nom, double prix, double cout) {
 	prix_ = prix;
 	cout_ = cout;
 }
-//getters
 
+//getters
 string Plat::getNom() const {
 	return nom_;
 }
@@ -31,6 +31,7 @@ double Plat::getPrix() const {
 double Plat::getCout() const {
 	return cout_;
 }
+
 double Plat::getPetitPrix(double a, double b) const{
 	if (a < b) {
 		return a;
@@ -40,6 +41,7 @@ double Plat::getPetitPrix(double a, double b) const{
 	}
 	
 }
+
 //setters
 void Plat::setNom(string nom) {
 	nom_ = nom;
@@ -49,9 +51,19 @@ void Plat::setPrix(double prix) {
 	prix_ = prix;
 }
 
-
 //methodes en plus
+string Plat::afficher() const {
+	string affichage;
+	affichage += nom_;
+	affichage += " - ";
+	affichage += prix_;
+	affichage += " $ (";
+	affichage += cout_;
+	affichage += "$ pour le restaurant)";
+	return { affichage };
+}
 
-void Plat::afficher() const {
-	cout << nom_ << " - " << prix_ << " $ (" << cout_ << "$ pour le restaurant)" << endl;
+ostream & operator<<(ostream & o, const Plat & plat){
+	string affichage = plat.afficher();
+	return o << affichage << endl;
 }
