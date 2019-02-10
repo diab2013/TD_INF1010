@@ -22,15 +22,14 @@ public:
 	string getNom() const;
 	double getPrix() const;
 	double getCout() const;
-	double getPetitPrix(double a, double b) const;//maybe?
 
 	///setters
 	void setNom(string nom);
 	void setPrix(double prix);
 
-	///methodes en plus
-	string afficher() const; // A MODIFIER
+	//override d'opérateur
 	friend ostream& operator<<(ostream& o, const Plat& plat);
+	friend bool operator<(const Plat& a, const Plat& b);
 
 private:
 	string nom_;

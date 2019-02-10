@@ -45,7 +45,7 @@ void Menu::afficher() const {
 
 	for (int i = 0; i < nbPlats_; i++) {
 		cout << "\t";
-		listePlats_[i]->afficher();
+		//listePlats_[i]->afficher();
 
 	}
 }

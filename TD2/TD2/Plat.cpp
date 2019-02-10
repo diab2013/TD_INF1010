@@ -32,15 +32,6 @@ double Plat::getCout() const {
 	return cout_;
 }
 
-double Plat::getPetitPrix(double a, double b) const{
-	if (a < b) {
-		return a;
-	}
-	else {
-		return b;
-	}
-	
-}
 
 //setters
 void Plat::setNom(string nom) {
@@ -51,19 +42,16 @@ void Plat::setPrix(double prix) {
 	prix_ = prix;
 }
 
-//methodes en plus
-string Plat::afficher() const {
-	string affichage;
-	affichage += nom_;
-	affichage += " - ";
-	affichage += prix_;
-	affichage += " $ (";
-	affichage += cout_;
-	affichage += "$ pour le restaurant)";
-	return { affichage };
+//override
+ostream & operator<<(ostream & o, const Plat & plat){
+	return o << plat.nom_ << " - " << plat.prix_ << " $ (" << plat.cout_ 
+			 << "$ pour le restaurant)" << endl;
 }
 
-ostream & operator<<(ostream & o, const Plat & plat){
-	string affichage = plat.afficher();
-	return o << affichage << endl;
+bool operator<(const Plat & a, const Plat & b){
+	if (a.getPrix() < b.getPrix()) {
+		return true;
+	} else {
+		return false;
+	}
 }

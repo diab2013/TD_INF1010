@@ -109,7 +109,7 @@ void Table::afficher() const {
 			cout << "Voici la commande passee par les clients : " << endl;
 			for (int i = 0; i < nbPlats_; i++) {
 				cout << "\t";
-				commande_[i]->afficher();
+				//commande_[i]->afficher();
 			}
 		}
 		else

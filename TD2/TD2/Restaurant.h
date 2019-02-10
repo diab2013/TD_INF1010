@@ -32,6 +32,8 @@ public:
 	void libererTable(int id);
 	void afficher(const Restaurant& resto) const ; // A MODIFIER
 	void commanderPlat(const string& nom, int idTable); 
+
+	//override d'opérateurs
 	friend ostream& operator<<(ostream& o, const Restaurant& resto);
 
 	void placerClients(int nbClients);

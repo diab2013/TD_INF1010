@@ -19,15 +19,17 @@ int main() {
 	int nbclient4 = 3;
 	int nbclient5 = 2;
 	
-	Plat plat("diab", 3.0, 4.0);
-	cout << plat;
+	Plat plat("diab", 4.0, 1.0);
+	Plat plat1("lol", 1.0, 1.0);
+	cout << (plat < plat1) << endl; // 0 = false; 1 = true
+	cout << plat << plat1;
 
 	//placer les clients 
-	poly.placerClients(nbclient1);
-	poly.placerClients(nbclient2);
-	poly.placerClients(nbclient3);
-	poly.placerClients(nbclient4);
-	poly.placerClients(nbclient5);
+	//poly.placerClients(nbclient1);
+	//poly.placerClients(nbclient2);
+	//poly.placerClients(nbclient3);
+	//poly.placerClients(nbclient4);
+	//poly.placerClients(nbclient5);
 
 	// commander des plats 
 	//poly.commanderPlat("Poisson", 1);
@@ -49,10 +51,10 @@ int main() {
 
 
 	//liberer les tables et calcule du chiffre d'affaire
-	poly.libererTable(1);
-	poly.libererTable(2);
-	poly.libererTable(3);
-	poly.libererTable(4);
+	//poly.libererTable(1);
+	//poly.libererTable(2);
+	//poly.libererTable(3);
+	//poly.libererTable(4);
 
 	cout << poly;
 
