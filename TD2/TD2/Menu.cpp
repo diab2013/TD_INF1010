@@ -208,7 +208,7 @@ ostream & operator<<(ostream & o, const Menu & menu){
 	for (int i = 0; i < menu.getNbPlats(); i++) {
 		cout << "\t";
 		cout << *menu.listePlats_[i];
-	}
+	} 
 	return o;
 }
 
