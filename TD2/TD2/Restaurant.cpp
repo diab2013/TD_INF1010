@@ -81,11 +81,17 @@ string Restaurant::getNom() const {
 	return *nom_;
 }
 
+
 TypeMenu Restaurant::getMoment() const {
 	return momentJournee_;
 }
 
 //autres methodes
+/*
+* In: id de la table
+* Libere un table de ses clients, calcule le chiffre d'affaire produit par cette table
+* et la "reset"
+*/
 void Restaurant::libererTable(int id) {
 	for (int i = 0; i < nbTables_; i++) {
 		if (id == tables_[i]->getId()) {
@@ -95,6 +101,10 @@ void Restaurant::libererTable(int id) {
 	}
 }
 
+/*
+* In: nom du plat et l'id de la table
+* Commande un plat pout la table selon l'id recu en paramètre, ajoute le plat à la liste de commande
+*/
 void Restaurant::commanderPlat(const string& nom, int idTable) {
 	Plat* plat = nullptr;
 	int index;
@@ -120,6 +130,10 @@ void Restaurant::commanderPlat(const string& nom, int idTable) {
 	else cout << "Erreur : table non occupee ou plat introuvable" << endl;
 }
 
+/*
+* In: nom du fichier
+* Lit les tables provenant du fichier, les creer et les place dans la liste de table
+*/
 void Restaurant::lireTable(const string& fichier) {
 	ifstream file(fichier, ios::in);
 
@@ -152,6 +166,10 @@ void Restaurant::lireTable(const string& fichier) {
 	}
 }
 
+/*
+* In: nombre de client
+* Place les clients à la table approprié, sinon affiche qu'il n'est pas possible
+*/
 void Restaurant::placerClients(int nbClients) {
 	int indexTable = -1;
 	int minimum = 100;
@@ -168,6 +186,12 @@ void Restaurant::placerClients(int nbClients) {
 	tables_[indexTable]->placerClient(nbClients);
 }
 
+/*
+* In/out: stream de l'output
+* In: Restaurant a afficher
+* Out: string contenant les informations du menu
+* Surcharge de l'operateur <<. Remplace la methode d'affichage.
+*/
 ostream & operator<<(ostream & o, const Restaurant & resto){
 	cout << "Le restaurant " << *resto.nom_;
 	if (resto.chiffreAffaire_ != 0) {
@@ -187,15 +211,29 @@ ostream & operator<<(ostream & o, const Restaurant & resto){
 	return o;
 }
 
+/*
+* In: Table a ajouter
+* Surcharge de l'operateur +=. Ajoute la table a la liste de table
+*/
 void Restaurant::operator+=(Table* table) {
 	tables_.push_back(table);
 	nbTables_++;
 }
 
+/*
+* In: Restaurant a comparer
+* Out: Return vrai ou faux si le restaurant en parametre a un plus gros chiffre d'affaire
+* Surcharge de l'operateur <. Compare les deux chiffres d'affaires
+*/
 bool Restaurant::operator<(const Restaurant & resto) {
 	return (chiffreAffaire_ < resto.chiffreAffaire_);
 }
 
+/*
+* In: Restaurant a copier
+* Out: Return la reference au restaurant copie
+* Surcharge de l'operateur =. Copie le restaurant dans un autre objet.
+*/
 Restaurant& Restaurant::operator=(const Restaurant& resto) {
 	menuMatin_ = new Menu(*resto.menuMatin_);
 	menuMidi_ = new Menu(*resto.menuMidi_);
