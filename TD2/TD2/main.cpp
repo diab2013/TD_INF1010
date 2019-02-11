@@ -1,7 +1,8 @@
 /*
-* Titre : main.cpp - Travail Pratique #1
-* Date : 18 Janvier 2019
-* Auteur : Allan BEDDOUK
+* Titre : main.cpp - Travail Pratique #2
+* Date : 11 Fevrier 2019
+* Auteurs : Diab Khanafer et Charles-Etienne Desormeaux
+* Description : Classe principale du projet.
 */
 
 #include "Restaurant.h"

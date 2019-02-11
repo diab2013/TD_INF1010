@@ -1,7 +1,8 @@
 /*
 * Titre : Menu.cpp - Travail Pratique #2
-* Date : 18 Janvier 2019
-* Auteur : Allan BEDDOUK
+* Date : 11 Fevrier 2019
+* Auteurs : Diab Khanafer et Charles-Etienne Desormeaux
+* Description : Creer un menu ainsi que ses attributs.
 */
 #include "Menu.h"
 
