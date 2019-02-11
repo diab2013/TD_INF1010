@@ -6,13 +6,22 @@
 */
 #include "Menu.h"
 
-//constructeurs
+/*
+* Constructeur par défaut de la classe Menu
+* Crée une nouvelle liste de plat vide avec une capacité de MAXPLAT
+* Le nombre de plat est zéro et le type de menu est Matin
+*/
 Menu::Menu() {
 	capacite_ = MAXPLAT;
 	nbPlats_ = 0;
 	type_ = Matin;
 }
 
+/*
+* Constructeur par paramètre de la classe Menu
+* Initialise les attributs à des valeurs passées en paramètres
+* Aussi, fait appelle à la méthode lireMenu
+*/
 Menu::Menu(string fichier, TypeMenu type) {
 	capacite_ = MAXPLAT;
 	nbPlats_ = 0;
@@ -22,16 +31,19 @@ Menu::Menu(string fichier, TypeMenu type) {
 	lireMenu(fichier);
 }
 
-Menu::Menu(const Menu& menu)
+/*
+* In: Variable de type Menu
+* Creer un objet Menu ayant les memes attributs que ce menu-ci
+* et ajoute ses plats dans le vecteur de plats
+*/
+Menu::Menu(const Menu & menu)
 	: capacite_(menu.capacite_), nbPlats_(menu.nbPlats_), type_(menu.type_){
 	for (int i = 0; i < menu.nbPlats_; i++) {
-		Plat* plat = new Plat(menu.listePlats_[i]->getNom(), menu.listePlats_[i]->getPrix(),
-			menu.listePlats_[i]->getCout());
-		listePlats_.push_back(plat);
+		listePlats_.push_back(menu.listePlats_[i]);
 	}
 }
 
-//destructeur
+//destructeur de la classe
 Menu::~Menu() {
 	// A MODIFIER
 	for (int i = 0; i < nbPlats_; i++)
@@ -39,16 +51,27 @@ Menu::~Menu() {
 	//delete[] listePlats_;
 }
 
-//getters
+/*
+* Getter de la variable nbPlats_
+* Return l'attributs nbPlats_ de la classe
+*/
 int Menu::getNbPlats() const {
 	return nbPlats_;
 }
 
+/*
+* Methode qui return le vecteur de la liste de plats
+*/
 vector<Plat*> Menu::getListePlat() const{
 	return { listePlats_ };
 }
 
-//méthode en plus
+/*
+* In: Nom du fichier de lecture
+* Méthode qui permet de lire le fichier, passé en paramètre, contenant les menus selon chaque moment
+* de la journée et les tables du restaurant
+* return true/false si l'ouverture du fichier à été possible
+*/
 bool Menu::lireMenu(const string& fichier) {
 	ifstream file(fichier, ios::in);
 	if (!file) {
@@ -121,6 +144,11 @@ bool Menu::lireMenu(const string& fichier) {
 	}
 }
 
+/*
+* Méthode qui permet de trouver le plat le moins cher dans 
+*la liste dynamique de plat. 
+* return un pointeur vers le plat le moins cher
+*/
 Plat * Menu::trouverPlatMoinsCher() const{
 	Plat minimum(*listePlats_[0]);
 	int found = -1;
@@ -133,11 +161,24 @@ Plat * Menu::trouverPlatMoinsCher() const{
 	return listePlats_[found];
 }
 
+/*
+* In: plat a ajouter
+* Méthode qui permet d'ajouter un plat à la liste, mais cette fois-ci en passant le nom, le
+* montant et le cout en paramètre
+* Les paramètres sont utilisés pour créer un plat et ensuite le passer à la première méthode
+* ajouterPlat pour l'ajouter à la liste
+*/
 void Menu::ajouterPlat(const Plat& plat){
 	listePlats_.push_back(new Plat(plat));
 	nbPlats_++;
 }
 
+/*
+* In: nom du plat a trouver
+* Méthode qui permet de trouver un certain plat dans la liste dynamique
+* de plat selon un variable nom passée en paramètre
+* return un pointeur vers le plat s'il a été trouver, sinon return nullptr
+*/
 Plat* Menu::trouverPlat(const string& nom) const {
 	for (int i = 0; i < nbPlats_; i++) {
 		if (listePlats_[i]->getNom() == nom)
@@ -146,6 +187,12 @@ Plat* Menu::trouverPlat(const string& nom) const {
 	return nullptr;
 }
 
+/*
+* In/out: stream de l'output
+* In: Menu a afficher
+* Out: string contenant les informations du menu
+* Surcharge de l'operateur <<. Remplace la methode d'affichage.
+*/
 ostream & operator<<(ostream & o, const Menu & menu){
 	switch (menu.type_) {
 		case Matin: 
@@ -161,10 +208,15 @@ ostream & operator<<(ostream & o, const Menu & menu){
 	for (int i = 0; i < menu.getNbPlats(); i++) {
 		cout << "\t";
 		cout << *menu.listePlats_[i];
-	}
+	} 
 	return o;
 }
 
+/*
+* In: Plat a ajouter
+* Out: Return la reference au menu modifie
+* Surcharge de l'operateur +=. Ajoute un plat dans la liste de plat.
+*/
 Menu& Menu::operator+=(Plat* plat){
 	if (nbPlats_ < capacite_) {
 		listePlats_.push_back(plat);
@@ -175,16 +227,19 @@ Menu& Menu::operator+=(Plat* plat){
 	return *this;
 }
 
+/*
+* In: Menu a copier
+* Out: Return la reference au menu copie
+* Surcharge de l'operateur =. Copie le menu dans un autre objet.
+*/
 Menu& Menu::operator=(Menu & menu){
-	if (this != &menu) {
-		capacite_ = menu.capacite_;
-		nbPlats_ = menu.nbPlats_;
-		type_ = menu.type_;
+	capacite_ = menu.capacite_;
+	nbPlats_ = menu.nbPlats_;
+	type_ = menu.type_;
 
-		listePlats_.clear();
-		for (int i = 0; i < menu.nbPlats_; i++) {
-			listePlats_.push_back(menu.listePlats_[i]);
-		}
+	listePlats_.clear();
+	for (int i = 0; i < menu.nbPlats_; i++) {
+		listePlats_.push_back(menu.listePlats_[i]);
 	}
 	return *this;
 }
