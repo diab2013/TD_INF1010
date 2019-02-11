@@ -19,7 +19,14 @@ Menu::Menu(string fichier, TypeMenu type) {
 	type_ = type;
 
 	//lecture du fichier -- creation du menu
-	//lireMenu(fichier);
+	lireMenu(fichier);
+}
+
+Menu::Menu(const Menu & menu)
+	: capacite_(menu.capacite_), nbPlats_(menu.nbPlats_), type_(menu.type_){
+	for (int i = 0; i < menu.nbPlats_; i++) {
+		listePlats_.push_back(menu.listePlats_[i]);
+	}
 }
 
 //destructeur
@@ -35,43 +42,15 @@ int Menu::getNbPlats() const {
 	return nbPlats_;
 }
 
-//autres methodes
-void Menu::afficher() const {
-	for (int i = 0; i < nbPlats_; i++) {
-		cout << "\t";
-		//listePlats_[i]->afficher();
-	}
+vector<Plat*> Menu::getListePlat() const{
+	return { listePlats_ };
 }
 
-/*
-void Menu::ajouterPlat(const Plat &  plat) {
-	// A MODIFIER
-	if (nbPlats_ == capacite_) {
-		if (capacite_ == 0) {
-			capacite_ = 1;
-			delete[] listePlats_;
-			listePlats_ = new Plat*[1];
-		}
-		else {
-			capacite_ *= 2;
-			Plat** listeTemp = new Plat*[capacite_];
-			for (int i = 0; i < nbPlats_; i++) {
-				listeTemp[i] = listePlats_[i];
-			}
-			delete[] listePlats_;
-			listePlats_ = listeTemp;
-		}
-	}
-	listePlats_[nbPlats_] = new Plat(plat);
-	nbPlats_++;
-}
-*/
-
-
+//méthode en plus
 bool Menu::lireMenu(const string& fichier) {
 	ifstream file(fichier, ios::in);
 	if (!file) {
-		//cout << "ERREUR : le fichier n'a pas pu etre ouvert" << endl;
+		cout << "ERREUR : le fichier n'a pas pu etre ouvert" << endl;
 		return false;
 	} else {
 		string type;
@@ -125,6 +104,8 @@ bool Menu::lireMenu(const string& fichier) {
 						coutString += ligne[i];
 					}
 					cout = int( stof(coutString.c_str()));
+					Plat* plat = new Plat(nom, prix, cout);
+					*this += plat;
 					//ajouterPlat(Plat(nom, prix, cout));
 					nom = "";
 					prixString = "";
@@ -148,6 +129,11 @@ Plat * Menu::trouverPlatMoinsCher() const{
 		}
 	}
 	return listePlats_[found];
+}
+
+void Menu::ajouterPlat(const Plat& plat){
+	listePlats_.push_back(new Plat(plat));
+	nbPlats_++;
 }
 
 Plat* Menu::trouverPlat(const string& nom) const {
@@ -177,11 +163,24 @@ ostream & operator<<(ostream & o, const Menu & menu){
 	return o;
 }
 
-void operator+=(Menu& menu, Plat* plat){
-	//if (menu.nbPlats_ < menu.capacite_) {
-		menu.listePlats_.push_back(plat);
-		menu.nbPlats_++;
-	//} else {
-		//cout << "Capacité de plat atteinte!" << endl;
-	//}
+Menu& Menu::operator+=(Plat* plat){
+	if (nbPlats_ < capacite_) {
+		listePlats_.push_back(plat);
+		nbPlats_++;
+	} else {
+		cout << "Capacité de plat atteinte!" << endl;
+	}
+	return *this;
+}
+
+Menu& Menu::operator=(Menu & menu){
+	capacite_ = menu.capacite_;
+	nbPlats_ = menu.nbPlats_;
+	type_ = menu.type_;
+
+	listePlats_.clear();
+	for (int i = 0; i < menu.nbPlats_; i++) {
+		listePlats_.push_back(menu.listePlats_[i]);
+	}
+	return *this;
 }

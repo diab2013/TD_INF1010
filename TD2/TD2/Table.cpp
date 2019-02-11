@@ -59,9 +59,7 @@ void Table::setId(int id) {
 void Table::libererTable() {
 	nbPlaces_ += nbClientsATable_;
 	nbClientsATable_ = 0;
-	for (int i = 0; i < nbPlats_; i++) {
-		commande_.pop_back();
-	}
+	commande_.clear();
 	nbPlats_ = 0;
 }
 
@@ -88,7 +86,7 @@ double Table::getChiffreAffaire() const {
 }
 
 //override
-ostream & operator<<(ostream & o, const Table & table){
+ostream& operator<<(ostream & o, const Table & table){
 	cout << "La table numero " << table.getId();
 	if (table.estOccupee()) {
 		cout << " est occupee. ";

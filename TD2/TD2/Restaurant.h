@@ -28,19 +28,18 @@ public:
 
 	//Autres methodes
 	void lireTable(const string& fichier);
-	void ajouterTable(int id, int nbPlaces); // A MODIFIER
+	void ajouterTable(int id, int nbPlaces);
 	void libererTable(int id);
 	void afficher(const Restaurant& resto) const ; // A MODIFIER
 	void commanderPlat(const string& nom, int idTable); 
 
 	//override d'opérateurs
 	friend ostream& operator<<(ostream& o, const Restaurant& resto);
-	void operator+=(const Table& table);
+	void operator+=(Table* table);
 	bool operator<(const Restaurant & resto);
 	Restaurant& operator=(const Restaurant& resto);
 
 	void placerClients(int nbClients);
-
 private:
 	string* nom_;
 
@@ -56,7 +55,8 @@ private:
 
 	//liste des tables
 	int capaciteTables_;
-	Table** tables_;
+	vector<Table*> tables_;
 	int nbTables_;
 };
+
 #endif // !RESTAURANT_H
