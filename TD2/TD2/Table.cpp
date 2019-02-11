@@ -119,3 +119,22 @@ void Table::afficher() const {
 		cout << " est libre. " << endl;
 	}
 }
+
+ostream & operator<<(ostream & o, const Table & table) {
+	string siOccupee = "";
+	string siCommande = "";
+	if (table.estOccupee) {
+		siOccupee = "est occupee. ";
+		if () {//if(vecteurTable.size() != 0)
+			siCommande = "Voici la commande passee par les clients : ";
+			//for qui add tous les elements du output au string
+		}
+		else {
+
+		}
+	}
+	else {
+		siOccupee = "est libre. ";
+	}
+	return o << "Le numero de table "<< table.getId << siOccupee << endl;
+}

@@ -35,6 +35,9 @@ public:
 
 	//override d'opérateurs
 	friend ostream& operator<<(ostream& o, const Restaurant& resto);
+	void operator+=(const Table& table);
+	bool operator<(const Restaurant & resto);
+	Restaurant& operator=(const Restaurant& resto);
 
 	void placerClients(int nbClients);
 

@@ -216,3 +216,16 @@ ostream & operator<<(ostream & o, const Restaurant & resto){
 	resto.afficher(resto);
 	return o;
 }
+
+void Restaurant::operator+=(const Table& table) {
+
+	Table *ajoutTable = new Table(table.getId(),table.getNbPlaces());
+	//(vecteur table).push_back(ajoutTable);
+}
+bool Restaurant::operator<(const Restaurant & resto) {
+	return (chiffreAffaire_ < resto.chiffreAffaire_);
+}
+
+Restaurant& Restaurant::operator=(const Restaurant& resto) {
+
+}
