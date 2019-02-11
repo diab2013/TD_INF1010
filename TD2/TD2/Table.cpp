@@ -114,9 +114,6 @@ void Table::placerClient(int nbClients) {
 * en paramètre à la liste de commande
 */
 void Table::commander(Plat* plat) {
-	if (nbPlats_ == capacite_) {
-		capacite_ *= 2;
-	}
 	commande_.push_back(plat);
 	nbPlats_++;
 }

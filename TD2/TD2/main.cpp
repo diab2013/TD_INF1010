@@ -22,23 +22,23 @@ int main() {
 	int nbclient5 = 2;
 
 	//placer les clients 
-	//poly.placerClients(nbclient1);
-	//poly.placerClients(nbclient2);
-	//poly.placerClients(nbclient3);
-	//poly.placerClients(nbclient4);
-	//poly.placerClients(nbclient5);
+	poly.placerClients(nbclient1);
+	poly.placerClients(nbclient2);
+	poly.placerClients(nbclient3);
+	poly.placerClients(nbclient4);
+	poly.placerClients(nbclient5);
 
 	// commander des plats 
-	//poly.commanderPlat("Poisson", 1);
-	//poly.commanderPlat("Poulet", 2);
-	//poly.commanderPlat("Pizza", 2);
-	//poly.commanderPlat("Poulet", 4);
-	//poly.commanderPlat("Muffin", 4);
-	//poly.commanderPlat("Oeuf", 4);
+	poly.commanderPlat("Poisson", 1);
+	poly.commanderPlat("Poulet", 2);
+	poly.commanderPlat("Pizza", 2);
+	poly.commanderPlat("Poulet", 4);
+	poly.commanderPlat("Muffin", 4);
+	poly.commanderPlat("Oeuf", 4);
 
 
 	//Creation d'une copie du poly restaurant 
-	//Restaurant poly2(poly);
+	Restaurant poly2(poly);
 	//poly2.setNom("PolyFood2");
 
 	//Affichage du restaurant poly 
