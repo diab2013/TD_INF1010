@@ -111,6 +111,10 @@ string Restaurant::getNom() const {
 	return *nom_;
 }
 
+/*
+* Out: variable de type TypeMenu
+* Renvoie la varaible momentJournee_
+*/
 TypeMenu Restaurant::getMoment() const {
 	return momentJournee_;
 }
