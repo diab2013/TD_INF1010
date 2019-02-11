@@ -7,7 +7,11 @@
 
 #include "Restaurant.h"
 
-//constructeurs
+/*
+* Constructeur par défaut de la classe Restaurant
+* Le nom sera "inconnu", le moment de la journée est MATIN et le chiffre d'affaire est null
+* Les menu du matin, midi et soir pointent vers rien
+*/
 Restaurant::Restaurant() {
 	nom_ = new string("Inconnu");
 
@@ -23,6 +27,14 @@ Restaurant::Restaurant() {
 	nbTables_ = 0;
 }
 
+/*
+* Constructeur avec paramétres de la classe Restauraut
+* Prend en paramètre l'adresse d'un fichier, l'addresse d'un nom et le moment de la journée (Matin, midi, soir)
+* Les variables correspondantes au paramètres sont initialisées
+* La liste de table est initialisé avec une capacité
+* Les différents menu de la journée sont initialisés
+* La fonction lireTable charge les valeurs des tables progvenant du document
+*/
 Restaurant::Restaurant(const string& fichier,  const string& nom, TypeMenu moment) {
 	nom_ = new string(nom);
 
@@ -39,7 +51,11 @@ Restaurant::Restaurant(const string& fichier,  const string& nom, TypeMenu momen
 	
 	lireTable(fichier);
 }
-
+/*
+* In: Variable de type Restaurant
+* Creer un objet Restaurant ayant les memes attributs que ce restaurant-ci
+* et ajoute ses tables dans le vecteur de tables
+*/
 Restaurant::Restaurant(const Restaurant& resto){
 	menuMatin_ = new Menu(*resto.menuMatin_);
 	menuMidi_ = new Menu(*resto.menuMidi_);
@@ -57,7 +73,7 @@ Restaurant::Restaurant(const Restaurant& resto){
 	}
 }
 
-//destructeur
+//destructeur de la classe
 Restaurant::~Restaurant() {
 	delete nom_;
 	delete menuMatin_;
@@ -67,21 +83,36 @@ Restaurant::~Restaurant() {
 	tables_.clear();
 }
 
-//setter
+/*
+* in: moment de la journee de type TypeMenu
+* out: variable privee de la classe ayant la valeur du in
+* Set la variable privee momentJournee_ à la variable in
+*/
 void Restaurant::setMoment(TypeMenu moment) {
 	momentJournee_ = moment;
 }
 
+/*
+* in: nom du restautant
+* out: variable privee de la classe ayant la valeur du in
+* Set la variable privee nom_ à la variable in
+*/
 void Restaurant::setNom(const string& nom){
 	nom_ = new string(nom);
 }
 
-//getters
+/*
+* Out: pointeur string
+* Renvoie un pointeur vers nom_
+*/
 string Restaurant::getNom() const {
 	return *nom_;
 }
 
-
+/*
+* Out: variable de type TypeMenu
+* Renvoie la variable privee momentJournee
+*/
 TypeMenu Restaurant::getMoment() const {
 	return momentJournee_;
 }
