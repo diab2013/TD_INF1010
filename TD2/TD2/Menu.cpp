@@ -238,6 +238,7 @@ Menu& Menu::operator=(Menu & menu){
 	type_ = menu.type_;
 
 	listePlats_.clear();
+	cout << "copie des plats" << endl;
 	for (int i = 0; i < menu.nbPlats_; i++) {
 		listePlats_.push_back(menu.listePlats_[i]);
 	}
