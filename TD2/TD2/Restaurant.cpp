@@ -40,6 +40,19 @@ Restaurant::Restaurant(const string& fichier,  const string& nom, TypeMenu momen
 	
 	lireTable(fichier);
 }
+
+Restaurant::Restaurant(const Restaurant & resto){
+	menuMatin_ = new Menu(*resto.menuMatin_);
+	menuMidi_ = new Menu(*resto.menuMidi_);
+	menuSoir_ = new Menu(*resto.menuSoir_);
+	nom_ = new string(*resto.nom_);
+	chiffreAffaire_ = resto.chiffreAffaire_;
+
+	for (int i = 0; i < resto.tables_.size(); i++) {
+		tables_.push_back(resto.tables_[i]);
+	}
+}
+
 //destructeur
 Restaurant::~Restaurant() {
 	delete nom_;
@@ -53,6 +66,10 @@ Restaurant::~Restaurant() {
 //setter
 void Restaurant::setMoment(TypeMenu moment) {
 	momentJournee_ = moment;
+}
+
+void Restaurant::setNom(const string& nom){
+	nom_ = new string(nom);
 }
 
 //getters
@@ -187,10 +204,9 @@ Restaurant& Restaurant::operator=(const Restaurant& resto) {
 	nom_ = new string(*resto.nom_);
 	chiffreAffaire_ = resto.chiffreAffaire_;
 
-	//for (int i = 0; i < vecteur.size(); i++){
-	//     Table* table = new Table(resto.vecteur_[i]);
-	//     resto.push_back(table);
-    //}
-
+	tables_.clear();
+	for (int i = 0; i < resto.tables_.size(); i++){
+	    tables_.push_back(resto.tables_[i]);
+    }
 	return *this;
 }

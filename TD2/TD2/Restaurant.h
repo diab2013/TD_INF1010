@@ -15,12 +15,14 @@ public:
 	//constructeurs
 	Restaurant();
 	Restaurant(const string& fichier, const string& nom,  TypeMenu moment);
+	Restaurant(const Restaurant& resto);
 
 	//destructeur
 	~Restaurant();
 
 	//setters
 	void setMoment(TypeMenu moment);
+	void setNom(const string& nom);
 
 	//getters
 	string getNom() const;
@@ -28,9 +30,7 @@ public:
 
 	//Autres methodes
 	void lireTable(const string& fichier);
-	void ajouterTable(int id, int nbPlaces);
 	void libererTable(int id);
-	void afficher(const Restaurant& resto) const ; // A MODIFIER
 	void commanderPlat(const string& nom, int idTable); 
 
 	//override d'opérateurs
@@ -50,8 +50,6 @@ private:
 	Menu* menuMatin_;
 	Menu* menuMidi_;
 	Menu* menuSoir_;
-
-	// A MODIFIER
 
 	//liste des tables
 	int capaciteTables_;
