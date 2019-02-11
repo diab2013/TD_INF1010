@@ -228,4 +228,21 @@ bool Restaurant::operator<(const Restaurant & resto) {
 
 Restaurant& Restaurant::operator=(const Restaurant& resto) {
 
+	delete nom_;
+	delete menuMatin_;
+	delete menuMidi_;
+	delete menuSoir_;
+
+	menuMatin_ = new Menu(*resto.menuMatin_);
+	menuMidi_ = new Menu(*resto.menuMidi_);
+	menuSoir_ = new Menu(*resto.menuSoir_);
+	nom_ = new string(*resto.nom_);
+	chiffreAffaire_ = resto.chiffreAffaire_;
+
+	//for (int i = 0; i < vecteur.size(); i++){
+	//     Table* table = new Table(resto.vecteur_[i]);
+	//     resto.push_back(table);
+    //}
+
+	return *this;
 }
