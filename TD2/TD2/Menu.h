@@ -8,6 +8,7 @@
 #define MENU_H
 
 #include "Plat.h"
+#include <vector>
 #include <fstream>
 
 enum TypeMenu{Matin, Midi, Soir};
@@ -30,13 +31,16 @@ public:
 	//methodes en plus
 	Plat* trouverPlat(const string& nom) const; // A MODIFIER
 	Plat * trouverPlatMoinsCher() const; // Utilise les vecteurs (NE PAS MODIFIER)
-	void ajouterPlat(const Plat & plat); // A MODIFIER
 	bool lireMenu(const string& fichier);
+
+	///override
+	friend ostream& operator<<(ostream& o, const Menu& menu);
+	friend void operator+=(Menu& menu, Plat* plat);
 
 private :
 	// A MODIFIER
 	int capacite_;
-	Plat** listePlats_;
+	vector<Plat*> listePlats_;
 	int nbPlats_;
 	TypeMenu type_;
 

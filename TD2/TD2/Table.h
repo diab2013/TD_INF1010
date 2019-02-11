@@ -39,7 +39,6 @@ public:
 	friend ostream& operator<<(ostream& o, const Table& table);
 
 private:
-	//A MODIFIER
 	int capacite_;
 	vector<Plat*> commande_;
 	int nbPlats_;

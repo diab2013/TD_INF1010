@@ -33,7 +33,11 @@ int main() {
 	cout << table;
 	table.libererTable();
 	cout << table;
-	delete &table;
+
+	
+	Menu menu("polyfood.txt", Soir);
+	menu += plat2;
+	cout << menu;
 
 	//placer les clients 
 	//poly.placerClients(nbclient1);

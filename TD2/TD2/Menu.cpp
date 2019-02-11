@@ -3,26 +3,22 @@
 * Date : 18 Janvier 2019
 * Auteur : Allan BEDDOUK
 */
-
 #include "Menu.h"
 
 //constructeurs
-
 Menu::Menu() {
 	capacite_ = MAXPLAT;
-	listePlats_ = new Plat*[capacite_];
 	nbPlats_ = 0;
 	type_ = Matin;
 }
 
 Menu::Menu(string fichier, TypeMenu type) {
 	capacite_ = MAXPLAT;
-	listePlats_ = new Plat*[capacite_];
 	nbPlats_ = 0;
 	type_ = type;
 
 	//lecture du fichier -- creation du menu
-	lireMenu(fichier);
+	//lireMenu(fichier);
 }
 
 //destructeur
@@ -30,26 +26,23 @@ Menu::~Menu() {
 	// A MODIFIER
 	for (int i = 0; i < nbPlats_; i++)
 		delete listePlats_[i];
-	delete[] listePlats_;
+	//delete[] listePlats_;
 }
 
 //getters
-
 int Menu::getNbPlats() const {
 	return nbPlats_;
 }
 
 //autres methodes
-
 void Menu::afficher() const {
-
 	for (int i = 0; i < nbPlats_; i++) {
 		cout << "\t";
 		//listePlats_[i]->afficher();
-
 	}
 }
 
+/*
 void Menu::ajouterPlat(const Plat &  plat) {
 	// A MODIFIER
 	if (nbPlats_ == capacite_) {
@@ -57,7 +50,6 @@ void Menu::ajouterPlat(const Plat &  plat) {
 			capacite_ = 1;
 			delete[] listePlats_;
 			listePlats_ = new Plat*[1];
-
 		}
 		else {
 			capacite_ *= 2;
@@ -65,26 +57,22 @@ void Menu::ajouterPlat(const Plat &  plat) {
 			for (int i = 0; i < nbPlats_; i++) {
 				listeTemp[i] = listePlats_[i];
 			}
-
 			delete[] listePlats_;
 			listePlats_ = listeTemp;
-
 		}
 	}
-
 	listePlats_[nbPlats_] = new Plat(plat);
 	nbPlats_++;
 }
+*/
 
 
 bool Menu::lireMenu(const string& fichier) {
 	ifstream file(fichier, ios::in);
-
 	if (!file) {
 		//cout << "ERREUR : le fichier n'a pas pu etre ouvert" << endl;
 		return false;
-	}
-	else {
+	} else {
 		string type;
 		switch (type_) {
 		case Matin :
@@ -97,16 +85,9 @@ bool Menu::lireMenu(const string& fichier) {
 			type = "-SOIR";
 			break;
 		}
-		string ligne;
-
-		string nom;
-
-		string prixString;
+		string ligne, nom, prixString, coutString;
 		double prix;
-
-		string coutString;
 		int cout;
-
 
 		// lecture
 		while (!file.eof()) {
@@ -125,37 +106,32 @@ bool Menu::lireMenu(const string& fichier) {
 						}
 						nom += ligne[i];
 					}
-					//trouver le prix
 
+					//trouver le prix
 					for (int i = curseur + 1; i < int(ligne.size()); i++) {
 						if (ligne[i] == ' ') {
 							curseur = i;
 							break;
 						}
 						prixString += ligne[i];
-
 					}
+
 					//passer le prixString en double --- indice dans l'enonce
 					prix = stof(prixString.c_str());
-
 					for (int i = curseur + 1; i < int(ligne.size()); i++) {
 						if (ligne[i] == ' ')
 							break;
 						coutString += ligne[i];
 					}
-
-					cout =int( stof(coutString.c_str()));
-
-					ajouterPlat( Plat(nom, prix, cout));
+					cout = int( stof(coutString.c_str()));
+					//ajouterPlat(Plat(nom, prix, cout));
 					nom = "";
 					prixString = "";
 					coutString = "";
-
 					getline(file, ligne);
 				}
 			}
 		}
-
 		file.close();
 		return true;
 	}
@@ -164,18 +140,13 @@ bool Menu::lireMenu(const string& fichier) {
 Plat * Menu::trouverPlatMoinsCher() const{
 	Plat minimum(*listePlats_[0]);
 	int found = -1;
-	/*
-	for (unsigned i = 0; i < listePlats_.size(); ++i)
-	{
-		if (*listePlats_[i] < minimum)
-		{
+	for (unsigned i = 0; i < listePlats_.size(); ++i){
+		if (*listePlats_[i] < minimum){
 			minimum = *listePlats_[i];
 			found = i;
 		}
 	}
-	*/
 	return listePlats_[found];
-
 }
 
 Plat* Menu::trouverPlat(const string& nom) const {
@@ -184,4 +155,32 @@ Plat* Menu::trouverPlat(const string& nom) const {
 			return listePlats_[i];
 	}
 	return nullptr;
+}
+
+ostream & operator<<(ostream & o, const Menu & menu){
+	switch (menu.type_) {
+		case Matin: 
+			cout << "Menu du Matin:" << endl;
+			break;
+		case Midi:
+			cout << "Menu du Midi:" << endl;
+			break;
+		case Soir:
+			cout << "Menu du Soir:" << endl;
+			break;
+	}
+	for (int i = 0; i < menu.getNbPlats(); i++) {
+		cout << "\t";
+		cout << *menu.listePlats_[i];
+	}
+	return o;
+}
+
+void operator+=(Menu& menu, Plat* plat){
+	//if (menu.nbPlats_ < menu.capacite_) {
+		menu.listePlats_.push_back(plat);
+		menu.nbPlats_++;
+	//} else {
+		//cout << "Capacité de plat atteinte!" << endl;
+	//}
 }

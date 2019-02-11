@@ -25,7 +25,7 @@ Table::Table(int id, int nbPlaces) {
 
 //destructeur
 Table::~Table() {
-	//A MODIFIER¸
+	//A MODIFIER
 	libererTable();
 }
 
