@@ -22,10 +22,12 @@ Menu::Menu(string fichier, TypeMenu type) {
 	lireMenu(fichier);
 }
 
-Menu::Menu(const Menu & menu)
+Menu::Menu(const Menu& menu)
 	: capacite_(menu.capacite_), nbPlats_(menu.nbPlats_), type_(menu.type_){
 	for (int i = 0; i < menu.nbPlats_; i++) {
-		listePlats_.push_back(menu.listePlats_[i]);
+		Plat* plat = new Plat(menu.listePlats_[i]->getNom(), menu.listePlats_[i]->getPrix(),
+			menu.listePlats_[i]->getCout());
+		listePlats_.push_back(plat);
 	}
 }
 
@@ -174,13 +176,15 @@ Menu& Menu::operator+=(Plat* plat){
 }
 
 Menu& Menu::operator=(Menu & menu){
-	capacite_ = menu.capacite_;
-	nbPlats_ = menu.nbPlats_;
-	type_ = menu.type_;
+	if (this != &menu) {
+		capacite_ = menu.capacite_;
+		nbPlats_ = menu.nbPlats_;
+		type_ = menu.type_;
 
-	listePlats_.clear();
-	for (int i = 0; i < menu.nbPlats_; i++) {
-		listePlats_.push_back(menu.listePlats_[i]);
+		listePlats_.clear();
+		for (int i = 0; i < menu.nbPlats_; i++) {
+			listePlats_.push_back(menu.listePlats_[i]);
+		}
 	}
 	return *this;
 }

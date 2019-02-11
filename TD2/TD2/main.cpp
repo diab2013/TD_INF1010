@@ -39,29 +39,27 @@ int main() {
 
 	//Creation d'une copie du poly restaurant 
 	Restaurant poly2(poly);
-	//poly2.setNom("PolyFood2");
+	poly2.setNom("PolyFood2");
 
 	//Affichage du restaurant poly 
 	cout << poly;
 
 	cout << "--------------------------------------------------------------------------------------------------" << endl;
 
-
 	//liberer les tables et calcule du chiffre d'affaire
-	//poly.libererTable(1);
-	//poly.libererTable(2);
-	//poly.libererTable(3);
-	//poly.libererTable(4);
+	poly.libererTable(1);
+	poly.libererTable(2);
+	poly.libererTable(3);
+	poly.libererTable(4);
 
 	cout << poly;
 
 	cout << "====================================================================================================" << endl;
 
 	// Le restaurant Poly2 ne doit pas encore avoir liberer ses tables
-	//cout << poly2;
+	cout << poly2;
 
 	//poly2 = poly;
-
 
 	cout << "--------------------------------------------------------------------------------------------------" << endl;
 	// Le restaurant Poly2 doit maintenant avoir toutes ses tables libérées

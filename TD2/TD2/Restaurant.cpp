@@ -34,22 +34,26 @@ Restaurant::Restaurant(const string& fichier,  const string& nom, TypeMenu momen
 	menuMidi_ = new Menu(fichier,  Midi);
 	menuSoir_ = new Menu(fichier,  Soir);
 
-
 	capaciteTables_ = INTTABLES;
 	nbTables_ = 0;
 	
 	lireTable(fichier);
 }
 
-Restaurant::Restaurant(const Restaurant & resto){
+Restaurant::Restaurant(const Restaurant& resto){
 	menuMatin_ = new Menu(*resto.menuMatin_);
 	menuMidi_ = new Menu(*resto.menuMidi_);
 	menuSoir_ = new Menu(*resto.menuSoir_);
 	nom_ = new string(*resto.nom_);
 	chiffreAffaire_ = resto.chiffreAffaire_;
+	momentJournee_ = resto.getMoment();
+	capaciteTables_ = resto.capaciteTables_;
+	nbTables_ = resto.nbTables_;
 
-	for (int i = 0; i < resto.tables_.size(); i++) {
-		tables_.push_back(resto.tables_[i]);
+	for (int i = 0; i < resto.nbTables_; i++) {
+		Table* table = new Table(resto.tables_[i]->getId(), resto.tables_[i]->getNbPlaces());
+		*table = *resto.tables_[i];
+		tables_.push_back(table);
 	}
 }
 
@@ -201,12 +205,15 @@ Restaurant& Restaurant::operator=(const Restaurant& resto) {
 	menuMatin_ = new Menu(*resto.menuMatin_);
 	menuMidi_ = new Menu(*resto.menuMidi_);
 	menuSoir_ = new Menu(*resto.menuSoir_);
-	nom_ = new string(*resto.nom_);
+	nom_ = resto.nom_;
 	chiffreAffaire_ = resto.chiffreAffaire_;
+	capaciteTables_ = resto.capaciteTables_;
+	momentJournee_ = resto.momentJournee_;
+	nbTables_ = resto.nbTables_;
 
 	tables_.clear();
 	for (int i = 0; i < resto.tables_.size(); i++){
-	    tables_.push_back(resto.tables_[i]);
+		tables_.push_back(resto.tables_[i]);
     }
 	return *this;
 }
