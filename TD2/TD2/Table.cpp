@@ -9,7 +9,6 @@
 //constructeurs
 Table::Table() {
 	capacite_ = MAXCAP;
-	commande_ = new Plat*[MAXCAP];
 	nbPlats_ = 0;
 	id_ = -1;
 	nbPlaces_ = 1;
@@ -18,7 +17,6 @@ Table::Table() {
 
 Table::Table(int id, int nbPlaces) {
 	capacite_ = MAXCAP;
-	commande_ = new Plat*[capacite_];
 	nbPlats_ = 0;
 	id_ = id;
 	nbPlaces_ = nbPlaces;
@@ -28,7 +26,7 @@ Table::Table(int id, int nbPlaces) {
 //destructeur
 Table::~Table() {
 	//A MODIFIER
-	delete[] commande_;
+	libererTable();
 }
 
 //getters
@@ -40,8 +38,7 @@ int Table::getNbPlaces() const {
 	return nbPlaces_;
 }
 
-int Table::getnbClientATable() const
-{
+int Table::getnbClientATable() const{
 	return nbClientsATable_;
 }
 
@@ -49,8 +46,7 @@ bool Table::estPleine() const {
 	return nbPlaces_==0;
 }
 
-bool Table::estOccupee() const
-{
+bool Table::estOccupee() const{
 	return nbClientsATable_!=0;
 }
 
@@ -62,9 +58,8 @@ void Table::setId(int id) {
 void Table::libererTable() {
 	nbPlaces_ += nbClientsATable_;
 	nbClientsATable_ = 0;
-	//A MODIFIER
 	for (int i = 0; i < nbPlats_; i++) {
-		commande_[i] = nullptr;
+		commande_.pop_back();
 	}
 	nbPlats_ = 0;
 }
@@ -76,19 +71,10 @@ void Table::placerClient(int nbClients) {
 
 //autres methodes
 void Table::commander(Plat* plat) {
-	// A MODIFIER
 	if (nbPlats_ == capacite_) {
 		capacite_ *= 2;
-		Plat** temp = new Plat*[capacite_];
-		for (int i = 0; i < nbPlats_; i++) {
-			temp[i] = commande_[i];
-		}
-
-		delete[] commande_;
-		commande_ = temp;
 	}
-
-	commande_[nbPlats_] = plat;
+	commande_.push_back(plat);
 	nbPlats_++;
 }
 
@@ -100,41 +86,22 @@ double Table::getChiffreAffaire() const {
 	return chiffre;
 }
 
-//affichage
-void Table::afficher() const {
-	cout << "La table numero " << id_;
-	if (estOccupee()) {
+//override
+ostream & operator<<(ostream & o, const Table & table){
+	cout << "La table numero " << table.getId();
+	if (table.estOccupee()) {
 		cout << " est occupee. ";
-		if (nbPlats_ != 0) {
+		if (table.nbPlats_ != 0) {
 			cout << "Voici la commande passee par les clients : " << endl;
-			for (int i = 0; i < nbPlats_; i++) {
+			for (int i = 0; i < table.nbPlats_; i++) {
 				cout << "\t";
-				//commande_[i]->afficher();
+				cout << *table.commande_[i];
 			}
-		}
-		else
+		} else {
 			cout << "Mais ils n'ont rien conmmande pour l'instant. " << endl;
-	}
-	else {
+		}
+	} else {
 		cout << " est libre. " << endl;
 	}
-}
-
-ostream & operator<<(ostream & o, const Table & table) {
-	string siOccupee = "";
-	string siCommande = "";
-	if (table.estOccupee) {
-		siOccupee = "est occupee. ";
-		if () {//if(vecteurTable.size() != 0)
-			siCommande = "Voici la commande passee par les clients : ";
-			//for qui add tous les elements du output au string
-		}
-		else {
-
-		}
-	}
-	else {
-		siOccupee = "est libre. ";
-	}
-	return o << "Le numero de table "<< table.getId << siOccupee << endl;
+	return o;
 }
