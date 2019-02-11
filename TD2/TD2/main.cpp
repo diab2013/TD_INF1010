@@ -10,7 +10,6 @@
 using namespace std;
 
 int main() {
-
 	//creation du restaurant 
 	Restaurant poly("polyFood.txt", "PolyFood", Soir);
 
@@ -36,7 +35,6 @@ int main() {
 	poly.commanderPlat("Muffin", 4);
 	poly.commanderPlat("Oeuf", 4);
 
-
 	//Creation d'une copie du poly restaurant 
 	Restaurant poly2(poly);
 	poly2.setNom("PolyFood2");
@@ -59,10 +57,9 @@ int main() {
 	// Le restaurant Poly2 ne doit pas encore avoir liberer ses tables
 	cout << poly2;
 
-	//poly2 = poly;
+	poly2 = poly;
 
 	cout << "--------------------------------------------------------------------------------------------------" << endl;
 	// Le restaurant Poly2 doit maintenant avoir toutes ses tables libérées
-	//cout << poly2;
-
+	cout << poly2;
 }

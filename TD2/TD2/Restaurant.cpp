@@ -180,7 +180,6 @@ ostream & operator<<(ostream & o, const Restaurant & resto){
 		cout << "\t";
 		cout << *resto.tables_[i];
 	}
-	
 	cout << "-Voici son menu : " << endl;
 	cout << *resto.menuMatin_;
 	cout << *resto.menuMidi_;
@@ -192,16 +191,12 @@ void Restaurant::operator+=(Table* table) {
 	tables_.push_back(table);
 	nbTables_++;
 }
+
 bool Restaurant::operator<(const Restaurant & resto) {
 	return (chiffreAffaire_ < resto.chiffreAffaire_);
 }
 
 Restaurant& Restaurant::operator=(const Restaurant& resto) {
-	delete nom_;
-	delete menuMatin_;
-	delete menuMidi_;
-	delete menuSoir_;
-
 	menuMatin_ = new Menu(*resto.menuMatin_);
 	menuMidi_ = new Menu(*resto.menuMidi_);
 	menuSoir_ = new Menu(*resto.menuSoir_);
