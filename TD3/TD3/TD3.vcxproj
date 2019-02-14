@@ -164,6 +164,9 @@
   <ItemGroup>
     <Text Include="polyFood.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\TP3_H19.pdf" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

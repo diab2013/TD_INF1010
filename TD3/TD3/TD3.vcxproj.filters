@@ -78,4 +78,7 @@
   <ItemGroup>
     <Text Include="polyFood.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\TP3_H19.pdf" />
+  </ItemGroup>
 </Project>
