@@ -48,8 +48,7 @@ bool Plat::operator<(const Plat& plat) const
 
 //autres methodes
 
-ostream& operator<<(ostream& os, const Plat& plat)
-{
+ostream& operator<<(ostream& os, const Plat& plat) {
 	os << plat.nom_ << " - " << plat.prix_ << " $ (" << plat.cout_ << "$ pour le restaurant)" << endl;
 	return os;
 }
