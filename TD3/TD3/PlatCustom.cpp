@@ -7,7 +7,6 @@
 
 #include "PlatCustom.h"
 
-
 PlatCustom::PlatCustom(string nom, double prix, double cout, int nbIngredients) {
 	nom_ = nom;
 	prix_ = prix;

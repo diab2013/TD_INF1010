@@ -2,11 +2,15 @@
 
 //constructeurs
 Client::Client(){
-
+	nom_ = "inconnu";
+	prenom_ = "inconnu";
+	statut_ = Occasionnel;
 }
 
 Client::Client(string nom, string prenom, int tailleGroupe){
-
+	nom_ = nom;
+	prenom_ = prenom;
+	tailleGroupe_ = tailleGroupe;
 }
 
 //destructur
@@ -23,22 +27,18 @@ int Client::getTailleGroupe(){
 	return 0;
 }
 
-string Client::getNom()
-{
+string Client::getNom(){
 	return string();
 }
 
-string Client::getPrenom()
-{
+string Client::getPrenom(){
 	return string();
 }
 
-ostream & operator<<(ostream & os, const Client & client)
-{
+ostream & operator<<(ostream & os, const Client & client){
 	// TODO: insert return statement here
 }
 
-string Client::convertirStatutString() const
-{
+string Client::convertirStatutString() const{
 	return string();
 }

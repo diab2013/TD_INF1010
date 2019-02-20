@@ -9,7 +9,7 @@
 #include <string>
 #include <iostream>
 
-enum StatutClient { Occasionnel,Fidele,Prestige };
+enum StatutClient { Occasionnel, Fidele, Prestige };
 
 class Client{
 public:
