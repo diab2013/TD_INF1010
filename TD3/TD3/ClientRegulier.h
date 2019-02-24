@@ -2,6 +2,8 @@
 #define CLIENT_REG
 #include "Client.h"
 #include <vector>
+#include <string>
+#include <iostream>
 
 const double TAUX_REDUC_REGULIER = 0.1;
 const double TAUX_REDUC_PRESTIGE = 0.2;

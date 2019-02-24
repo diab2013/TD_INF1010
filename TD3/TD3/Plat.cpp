@@ -1,7 +1,8 @@
 /*
 * Titre : Plat.cpp - Travail Pratique #3
-* Date : 18 Janvier 2019
-* Auteur : Allan BEDDOUK
+* Date : 25 Février 2019
+* Auteurs : Diab Khanafer et Charles-Etienne Désormeaux
+* Description : Creer un plat ainsi que ses attributs.
 */
 
 #include "Plat.h"

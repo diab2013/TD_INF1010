@@ -1,7 +1,8 @@
 /*
 * Titre : Table.cpp - Travail Pratique #3
-* Date : 11 Février 2019
-* Auteur :Fatou S. MOUNZEO
+* Date : 25 Février 2019
+* Auteurs : Diab Khanafer et Charles-Etienne Désormeaux
+* Description : Creer une table ainsi que ses attributs.
 */
 
 #include "Table.h"

@@ -12,7 +12,6 @@
 #include"PlatBio.h"
 
 
-
 enum TypeMenu{Matin, Midi, Soir};
 
 class Menu {
