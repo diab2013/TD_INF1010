@@ -2,7 +2,7 @@
 * Titre : clientRegulier.cpp - Travail Pratique #3
 * Date : 25 Février 2019
 * Auteurs : Diab Khanafer et Charles-Etienne Désormeaux
-* Description : Creer un plat ainsi que ses attributs.
+* Description : Creer un client de ainsi que ses attributs.
 */
 #include "ClientRegulier.h"
 
@@ -26,5 +26,6 @@ void ClientRegulier::augmenterNbPoints(int bonus) {
 }
 
 ostream & operator<<(ostream & os, const ClientRegulier & client) {
-	
+	os << "Le client principal est: \n" << client.getPrenom << " statut: " << client.convertirStatutString();//need repair
+	return os;
 }

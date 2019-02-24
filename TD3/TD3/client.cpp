@@ -35,10 +35,12 @@ string Client::getPrenom(){
 	return string();
 }
 
-ostream & operator<<(ostream & os, const Client & client){
-	// TODO: insert return statement here
-}
-
 string Client::convertirStatutString() const{
 	return string();
 }
+
+ostream & operator<<(ostream & os, const Client & client){
+	os << "Le client principal est: \n" << client.getPrenom << " statut: " << client.convertirStatutString();
+	return os;
+}
+
