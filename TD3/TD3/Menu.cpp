@@ -22,10 +22,8 @@ Menu::Menu(string fichier, TypeMenu type) {
 Menu::Menu(const Menu & menu): type_(menu.type_){
 	for (unsigned i = 0; i < menu.listePlats_.size(); i++){
 		if (menu.listePlats_[i]->getType() == Bio){
-			PlatBio* platBio = static_cast<PlatBio*> (menu.listePlats_[i]);
-			listePlats_.push_back(new PlatBio(menu.listePlats_[i]->getNom(), menu.listePlats_[i]->getPrix(), 
-				menu.listePlats_[i]->getCout(), platBio->getEcoTaxe()));
-		} else {
+			listePlats_.push_back(new PlatBio(*static_cast<PlatBio*>(menu.listePlats_[i])));
+		} else if (menu.listePlats_[i]->getType() == Regulier){
 			listePlats_.push_back(new Plat(*menu.listePlats_[i]));
 		}
 	}
@@ -76,10 +74,8 @@ Menu & Menu::operator=(const Menu & menu) {
 
 		for (unsigned i = 0; i < menu.listePlats_.size(); ++i) {
 			if (menu.listePlats_[i]->getType() == Bio) {
-				PlatBio* platBio = static_cast<PlatBio*> (menu.listePlats_[i]);
-				listePlats_.push_back(new PlatBio(menu.listePlats_[i]->getNom(), menu.listePlats_[i]->getPrix(),
-					menu.listePlats_[i]->getCout(), platBio->getEcoTaxe()));
-			} else {
+				listePlats_.push_back(new PlatBio(*static_cast<PlatBio*>(menu.listePlats_[i])));
+			} else if (menu.listePlats_[i]->getType() == Regulier){
 				listePlats_.push_back(new Plat(*menu.listePlats_[i]));
 			}
 		}

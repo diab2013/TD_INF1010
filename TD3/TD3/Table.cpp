@@ -77,8 +77,20 @@ void Table::commander(Plat* plat) {
 
 double Table::getChiffreAffaire() const {
 	double chiffre = 0;
-	for (unsigned i = 0; i < commande_.size(); ++i) 
-			chiffre += commande_[i]->getType.getPrix - commande_[i]->getCout(); //ajout de .getPrix
+	for (unsigned i = 0; i < commande_.size(); i++) {
+		PlatBio* platBio = static_cast<PlatBio*>(commande_[i]);
+		PlatCustom* platCustom = static_cast<PlatCustom*>(commande_[i]);
+		switch (commande_[i]->getType()) {
+			case Bio:
+				chiffre += (commande_[i]->getPrix() - commande_[i]->getCout() + platBio->getEcoTaxe());
+				break;
+			case Custom:
+				chiffre += (commande_[i]->getPrix() - commande_[i]->getCout() + platCustom->getSupplement());
+				break;
+			default:
+				chiffre += (commande_[i]->getPrix() - commande_[i]->getCout());
+		}
+	}
 	return chiffre;
 }
 

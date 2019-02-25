@@ -11,10 +11,8 @@
 * Constructeur par paramètre de la classe PlatBio
 * Initialise les attributs à des valeurs passées en paramètres
 */
-PlatBio::PlatBio(string nom, double prix, double cout, double ecotaxe) {
-	nom_ = nom;
-	prix_ = prix;
-	cout_ = cout;
+PlatBio::PlatBio(string nom, double prix, double cout, double ecotaxe) 
+	: Plat(nom, prix, cout){
 	ecoTaxe_ = ecotaxe;
 	type_ = Bio;
 }
@@ -42,6 +40,6 @@ void PlatBio::setEcoTaxe(double ecoTaxe) {
 * Surcharge de l'operateur <<. Remplace la methode d'affichage.
 */
 ostream & operator<<(ostream & os, const PlatBio & plat) {
-	os << plat.nom_ << " - " << (plat.prix_ + plat.prix_*plat.ecoTaxe_) << " $ (" << plat.cout_ << "$ pour le restaurant)" << endl;
+	os << static_cast<Plat>(plat) << "\t avec une taxe ecologique de : " << plat.ecoTaxe_ << "$" << endl;
 	return os;
 }

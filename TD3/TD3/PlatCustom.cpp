@@ -11,11 +11,10 @@
 * Constructeur par paramètre de la classe PlatCustim
 * Initialise les attributs à des valeurs passées en paramètres
 */
-PlatCustom::PlatCustom(string nom, double prix, double cout, int nbIngredients) {
-	nom_ = nom;
-	prix_ = prix;
-	cout_ = cout;
+PlatCustom::PlatCustom(string nom, double prix, double cout, int nbIngredients) 
+	: Plat(nom, prix, cout){
 	nbIngredients_ = nbIngredients;
+	supplement_ = calculerSupplement();
 	type_ = Custom;
 }
 
@@ -41,6 +40,7 @@ double PlatCustom::getSupplement() const {
 */
 void PlatCustom::setNbIngredients(int nIngredients) {
 	nbIngredients_ = nIngredients;
+	supplement_ = calculerSupplement();
 }
 
 /*
@@ -58,6 +58,7 @@ double PlatCustom::calculerSupplement() const {
 * Surcharge de l'operateur <<. Remplace la methode d'affichage.
 */
 ostream& operator<<(ostream& os, const PlatCustom& plat) {
-	os << plat.nom_ << " - " << (plat.prix_+ plat.supplement_) << " $ (" << plat.cout_ << "$ pour le restaurant)" << endl;
+	os << static_cast<Plat>(plat) << "\t et contient " << plat.nbIngredients_ << " ingredients pour "
+		<< plat.supplement_ << "$" << endl;
 	return os;
 }
