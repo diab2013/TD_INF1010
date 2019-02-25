@@ -19,12 +19,17 @@ PlatCustom::PlatCustom(string nom, double prix, double cout, int nbIngredients) 
 	type_ = Custom;
 }
 
+/*
+* Out: Variable de nombre d'ingredients de type int
+* Renvoie la variable privee nbIngredients_
+*/
 int PlatCustom::getNbIngredients() const {
 	return { nbIngredients_ };
 }
 
 /*
 * Out: Variable de supplement de type double
+* Renvoie la variable privee supplement_
 */
 double PlatCustom::getSupplement() const {
 	return { supplement_ };
