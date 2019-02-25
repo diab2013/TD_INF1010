@@ -20,7 +20,7 @@ Client::~Client(){
 
 //getters
 StatutClient Client::getStatut(){
-	return StatutClient();
+	return statut_;
 }
 
 int Client::getTailleGroupe(){
@@ -28,19 +28,27 @@ int Client::getTailleGroupe(){
 }
 
 string Client::getNom(){
-	return string();
+	return nom_;
 }
 
 string Client::getPrenom(){
-	return string();
+	return prenom_;
 }
 
 string Client::convertirStatutString() const{
-	return string();
+
+	switch (statut_) {
+	case (Occasionnel):
+		return "Occasionnel";
+	case (Fidele):
+		return "Regulier";
+	case (Prestige):
+		return "Prestige";
+	}
 }
 
 ostream & operator<<(ostream & os, const Client & client){
-	os << "Le client principal est: \n" << client.getPrenom << " statut: " << client.getStatut();
+	os << "Le client principal est: \n" << client.getPrenom << " " << client.nom_ << " statut: " << client.convertirStatutString();
 	return os;
 }
 

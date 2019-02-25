@@ -94,6 +94,11 @@ ostream& operator<<(ostream& os, const Table& table)
 	if (table.estOccupee())
 	{
 		os << " est occupee. ";
+		//
+		if (table.clientPrincipal_->getStatut() == Occasionnel) {
+			os << *(table.clientPrincipal_);
+		}
+		//
 		if (!table.commande_.empty())
 		{
 			os << "Voici la commande passee par les clients : " << endl;
