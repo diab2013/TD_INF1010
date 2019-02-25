@@ -21,7 +21,7 @@ string ClientPrestige::getAddressCodeString() const{
 			break;
 		case Zone2: return "Zone2";
 			break;
-		case Zone3: return "Zone3";
+		default: return "Zone3";
 			break;
 	}
 }

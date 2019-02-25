@@ -76,18 +76,26 @@ void Table::commander(Plat* plat) {
 }
 
 double Table::getChiffreAffaire() const {
-	///TODO
-	///Modifier pour que le chiffre d'Affaire prenne en compte le type de plat
-	///voir Énoncé
 	double chiffre = 0;
-	for (unsigned i = 0; i < commande_.size(); ++i) 
-			chiffre += commande_[i]->getType - commande_[i]->getCout(); //ajout de .getPrix
+	for (unsigned i = 0; i < commande_.size(); i++) {
+		PlatBio* platBio = static_cast<PlatBio*>(commande_[i]);
+		PlatCustom* platCustom = static_cast<PlatCustom*>(commande_[i]);
+		switch (commande_[i]->getType()) {
+		case Bio:
+			chiffre += (commande_[i]->getPrix() - commande_[i]->getCout() + platBio->getEcoTaxe());
+			break;
+		case Custom:
+			chiffre += (commande_[i]->getPrix() - commande_[i]->getCout() + platCustom->getSupplement());
+			break;
+		default:
+			chiffre += (commande_[i]->getPrix() - commande_[i]->getCout());
+		}
+	}
 	return chiffre;
 }
 
 
 //affichage
-
 ostream& operator<<(ostream& os, const Table& table)
 {
 	os << "La table numero " << table.id_;
@@ -98,10 +106,10 @@ ostream& operator<<(ostream& os, const Table& table)
 		if (table.clientPrincipal_->getStatut() == Occasionnel) {
 			os << *(table.clientPrincipal_);
 		}
-		else if (table.clientPrincipal_->getStatut == Fidele) {
+		else if (table.clientPrincipal_->getStatut() == Fidele) {
 			os << *(static_cast<ClientRegulier*>(table.clientPrincipal_));
 		}
-		else if (table.clientPrincipal_->getStatut == Prestige) {
+		else if (table.clientPrincipal_->getStatut() == Prestige) {
 			os << *(static_cast<ClientPrestige*>(table.clientPrincipal_));
 		}
 
