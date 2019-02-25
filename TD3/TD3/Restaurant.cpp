@@ -1,12 +1,16 @@
 /*
-* Titre : Restaurant.cpp - Travail Pratique #2
-* Date : 11 Février 2019
-* Auteur : Fatou S. MOUNZEO
+* Titre : Restaurant.cpp - Travail Pratique #3
+* Date : 25 Février 2019
+* Auteurs : Diab Khanafer et Charles-Etienne Désormeaux
+* Description : Créer un objet restaurant
 */
-
 #include "Restaurant.h"
 
-//constructeurs 
+//constructeurs
+/*
+* Constructeur par défaut de la classe Restaurant
+* Initialise les attributs à des valeurs par défaut
+*/
 Restaurant::Restaurant() {
 	nom_ = new string("Inconnu"); 
 
@@ -20,6 +24,10 @@ Restaurant::Restaurant() {
 
 }
 
+/*
+* Constructeur par paramètre de la classe Restaurant
+* Initialise les attributs à des valeurs passées en paramètres
+*/
 Restaurant::Restaurant(const string& fichier,  const string& nom, TypeMenu moment) {
 	nom_ = new string(nom); 
 
@@ -35,6 +43,10 @@ Restaurant::Restaurant(const string& fichier,  const string& nom, TypeMenu momen
 	lireAdresses(fichier);
 }
 
+/*
+* Constructeur par copie de la classe PlatCustim
+* Initialise les attributs à des valeurs de l'objet envoyer par paramètre
+*/
 Restaurant::Restaurant(const Restaurant & restau) : nom_(new string(*restau.nom_)),
 chiffreAffaire_(restau.chiffreAffaire_),
 momentJournee_(restau.momentJournee_),
@@ -49,7 +61,11 @@ menuSoir_(new Menu(*restau.menuSoir_))
 		fraisTransport_[i] = restau.getFraisTransports(i);
 }
 
-//destructeur 
+//destructeur
+/*
+* Destructeur de la classe PlatCustim
+* détruit l'object restaurant
+*/
 Restaurant::~Restaurant() {
 	delete nom_; 
 	delete menuMatin_; 
@@ -61,28 +77,54 @@ Restaurant::~Restaurant() {
 }
 
 //setter 
+/*
+* Setter de la variable momentJournee_
+* In: variable de Typemenu du moment de la journee
+* Set la variable privee momentJournee_ a la valeur en paramettre
+*/
 void Restaurant::setMoment(TypeMenu moment) {
 	momentJournee_ = moment; 
 }
 
+/*
+* Setter de la variable nom_
+* In: variable de string du moment de la restaurant
+* Set la variable privee nom_ a la valeur en paramettre
+*/
 void Restaurant::setNom(const string & nom){
 	nom_ = new string(nom);
 }
 
 //getters 
+/*
+* Getter de la variable nom_
+* Out: Variable de type string de la variable nom_
+*/
 string Restaurant::getNom() const {
 	return *nom_; 
 }
 
+/*
+* Getter de la variable momentJournee_
+* Out: Variable de type TypeMenu de la variable momentJournee_
+*/
 TypeMenu Restaurant::getMoment() const {
 	return momentJournee_; 
 }
 
+/*
+* Getter de la variable fraisTransport_
+* Out: Variable de type double de la variable fraisTransport_
+*/
 double Restaurant::getFraisTransports(int index) const{
 	return fraisTransport_[index];
 }
 
 //autres methodes 
+/*
+* Libere la table selon l'id envoyé en paramètre et calcule le chiffre d'affaires
+* In: Variable de type int du id de la table
+*/
 void Restaurant::libererTable(int id) {
 	bool livraison = false;
 	for (unsigned i = 0; i < tables_.size(); ++i) {
@@ -110,6 +152,11 @@ void Restaurant::libererTable(int id) {
 	}
 }
 
+/*
+* Override d'opérateur << pour l'affichage des attributs de la classe restaurant
+* In: variable de type ostream pour le output
+*	  variable de type const restaurant pour l'accès aux attributs
+*/
 ostream& operator<<(ostream& os, const Restaurant& restau){
 	os << "Le restaurant " << *restau.nom_;
 	if (restau.chiffreAffaire_ != 0)
@@ -134,6 +181,14 @@ ostream& operator<<(ostream& os, const Restaurant& restau){
 	return os;
 }
 
+/*
+* Commande un plat selon les paramètres envoyé et l'ajoute à la liste de commande selon 
+* l'id de la tabl
+* In: variable de type const string pour le nom du plat
+*	  variable de type int pour l'id de la table
+*	  variable de type TypePlat pour le type de plat
+*	  variable de type int pour le nombre ingredients d'un plat custom
+*/
 void Restaurant::commanderPlat(const string& nom, int idTable,TypePlat type, int nbIngredients) {
 	Plat* plat = nullptr; 
 	int index; 
@@ -167,10 +222,20 @@ void Restaurant::commanderPlat(const string& nom, int idTable,TypePlat type, int
 	}
 }
 
+/*
+* Override de l'opérateur < pour la comparaison
+* Out: variable de type bool qui indique si le chiffre d'affaire est inférieur à celui de 
+*		l'objet passé en paramètre
+*/
 bool Restaurant::operator<(const Restaurant & restau) const {
 	return this->chiffreAffaire_ < restau.chiffreAffaire_;
 }
 
+/*
+* Override de l'opérateur = pour ll'égalité d'objet
+* Out: variable de type bool qui indique si le chiffre d'affaire est inférieur à celui de
+*		l'objet passé en paramètre
+*/
 Restaurant & Restaurant::operator=(const Restaurant & restau){
 	if (this != &restau)
 	{
@@ -197,6 +262,10 @@ Restaurant & Restaurant::operator=(const Restaurant & restau){
 	return *this;
 }
 
+/*
+* Lecture du fichier et création des tables et ajoute à la liste de table
+* In: variable de type string qui est le nom du fichier
+*/
 void Restaurant::lireTable(const string& fichier) {
 	ifstream file(fichier, ios::in); 
 
@@ -240,11 +309,19 @@ void Restaurant::lireTable(const string& fichier) {
 	}
 }
 
+/*
+* Override de l'operateur += pour ajouter une table à liste
+* In: variable de type Table* qui est un poiteur vers un objet table
+*/
 Restaurant& Restaurant::operator+=(Table* table) {
 	tables_.push_back(new Table(*table)); 
 	return *this;
 }
 
+/*
+* Placer un client la table la plus optimale
+* In: variable de type Client* qui est un pointeur vers le client à placer
+*/
 void Restaurant::placerClients(Client* client) {
 	int indexTable = -1;
 	int minimum = 100;
@@ -265,6 +342,11 @@ void Restaurant::placerClients(Client* client) {
 		cout << "Il n'y pas de table disponible pour les clients." << endl;
 }
 
+/*
+* Livraison d'une liste de plat à un client
+* In: variable de type Client* qui est un pointeur vers le client qui commande
+*	  variable de type vector<string> qui est la liste de plat à commander
+*/
 void Restaurant::livrerClient(Client * client, vector<string> commande){
 	Table* tableLivraison = tables_[INDEX_TABLE_LIVRAISON];
 	if (client->getStatut() == Prestige) {
@@ -285,6 +367,13 @@ void Restaurant::livrerClient(Client * client, vector<string> commande){
 		" ne lui permet pas la livraison." << endl;
 }
 
+/*
+* Calcul des réductions selon le type du client
+* In: variable de type Client* qui est un pointeur vers un objet client
+*	  variable de type double indiquant le montant de départ
+*	  variable de type bool qui indique si le client peut avoir une livraison
+* Out: return une variable de type double représenté la valeur de décution
+*/
 double Restaurant::calculerReduction(Client* client, double montant, bool livraison) {
 	if (client->getStatut() == Fidele) {
 		if (static_cast<ClientRegulier*>(client)->getNbPoints() > SEUIL_DEBUT_REDUCTION) {
@@ -301,6 +390,10 @@ double Restaurant::calculerReduction(Client* client, double montant, bool livrai
 	}
 }
 
+/*
+* Lit les addresses des clients contenues dans un fichier
+* In: variable de type const string qui est le nom du fichier
+*/
 void Restaurant::lireAdresses(const string & fichier){
 	ifstream file(fichier, ios::in);
 	if (file) {
