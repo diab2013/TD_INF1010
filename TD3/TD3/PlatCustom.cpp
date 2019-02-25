@@ -53,7 +53,7 @@ double PlatCustom::calculerSupplement() const {
 
 /*
 * In/out: stream de l'output
-* In: Plat a afficher
+* In: Plat custom a afficher
 * Out: String contenant tous les informations d'un plat custom
 * Surcharge de l'operateur <<. Remplace la methode d'affichage.
 */

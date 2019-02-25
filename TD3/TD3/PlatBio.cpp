@@ -2,7 +2,7 @@
 * Titre : PlatBio.cpp - Travail Pratique #3
 * Date : 25 Février 2019
 * Auteurs : Diab Khanafer et Charles-Etienne Désormeaux
-* Description : Creer un plat biologique.
+* Description : Creer un plat biologique ainsi que ses attributs.
 */
 
 #include "PlatBio.h"
@@ -27,7 +27,7 @@ double PlatBio::getEcoTaxe() const {
 
 /*
 * In: variable de taxe ecologique de type double
-* Set la variable privee ecoTaxe_ a la valeur en paramettre
+* Set la variable privee ecoTaxe_ a la valeur en parametre
 */
 void PlatBio::setEcoTaxe(double ecoTaxe) {
 	ecoTaxe_ = ecoTaxe;
@@ -35,7 +35,7 @@ void PlatBio::setEcoTaxe(double ecoTaxe) {
 
 /*
 * In/out: stream de l'output
-* In: Plat a afficher
+* In: Plat biologique a afficher
 * Out: String contenant tous les informations d'un plat biologique
 * Surcharge de l'operateur <<. Remplace la methode d'affichage.
 */

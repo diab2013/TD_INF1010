@@ -75,6 +75,10 @@ void Table::commander(Plat* plat) {
 	commande_.push_back(plat);
 }
 
+/*
+* Out: variable du chiffre d'affaire de type double
+* Renvoie le chiffre d'affaire de la table
+*/
 double Table::getChiffreAffaire() const {
 	double chiffre = 0;
 	for (unsigned i = 0; i < commande_.size(); i++) {
@@ -94,8 +98,12 @@ double Table::getChiffreAffaire() const {
 	return chiffre;
 }
 
-
-//affichage
+/*
+* In/out: stream de l'output
+* In: Table a afficher
+* Out: String contenant tous les informations d'une table
+* Surcharge de l'operateur <<. Remplace la methode d'affichage.
+*/
 ostream& operator<<(ostream& os, const Table& table)
 {
 	os << "La table numero " << table.id_;

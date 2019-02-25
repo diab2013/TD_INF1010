@@ -1,7 +1,8 @@
 /*
 * Titre : Menu.cpp - Travail Pratique #3
-* Date : 11 Février 2019
-* Auteur : Diab Khanafer et Charles-Etienne Désormeaux
+* Date : 25 Février 2019
+* Auteurs : Diab Khanafer et Charles-Etienne Désormeaux
+* Description : Creer un menu ainsi que ses attributs.
 */
 
 #include "Menu.h"
@@ -19,6 +20,11 @@ Menu::Menu(string fichier, TypeMenu type) {
 	lireMenu(fichier); 
 }
 
+/*
+* In: Variable de type Menu
+* Creer un objet Menu ayant les memes attributs que ce menu-ci
+* et ajoute ses plats dans le vecteur de plats
+*/
 Menu::Menu(const Menu & menu): type_(menu.type_){
 	for (unsigned i = 0; i < menu.listePlats_.size(); i++){
 		if (menu.listePlats_[i]->getType() == Bio){
@@ -43,7 +49,12 @@ vector<Plat*> Menu::getListePlats() const{
 	return listePlats_;
 }
 
-//autres methodes
+/*
+* In/out: stream de l'output
+* In: Menu a afficher
+* Out: String contenant tous les informations d'un menu
+* Surcharge de l'operateur <<. Remplace la methode d'affichage.
+*/
 ostream& operator<<(ostream& os, const Menu& menu){
 	for (unsigned i = 0; i < menu.listePlats_.size(); ++i) {
 		if (menu.listePlats_[i]->getType() == Regulier){
@@ -62,11 +73,21 @@ Menu& Menu::operator+=(const Plat& plat) {
 	return *this;
 }
 
+/*
+* In: Menu a ajouter
+* Out: Return la reference au menu modifie
+* Surcharge de l'operateur +=. Ajoute un plat biologique dans la liste de plat.
+*/
 Menu& Menu::operator+=(const PlatBio& plat) {
 	listePlats_.push_back(new PlatBio(plat));
 	return *this;
 }
 
+/*
+* In: Menu a copier
+* Out: Return la reference au menu copie
+* Surcharge de l'operateur =. Copie le menu dans un autre objet.
+*/
 Menu & Menu::operator=(const Menu & menu) {
 	if (this != &menu) {
 		this->type_ = menu.type_;

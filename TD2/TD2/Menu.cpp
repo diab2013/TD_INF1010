@@ -213,7 +213,7 @@ ostream & operator<<(ostream & o, const Menu & menu){
 }
 
 /*
-* In: Plat a ajouter
+* In: Menu a ajouter
 * Out: Return la reference au menu modifie
 * Surcharge de l'operateur +=. Ajoute un plat dans la liste de plat.
 */

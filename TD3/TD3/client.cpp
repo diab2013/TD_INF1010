@@ -2,7 +2,7 @@
 * Titre : client.cpp - Travail Pratique #3
 * Date : 25 Février 2019
 * Auteurs : Diab Khanafer et Charles-Etienne Désormeaux
-* Description : Creer un client.
+* Description : Creer un client ainsi que ses attributs.
 */
 
 #include "Client.h"
@@ -79,7 +79,7 @@ string Client::convertirStatutString() const{
 
 /*
 * In/out: stream de l'output
-* In: Plat a afficher
+* In: Client a afficher
 * Out: String contenant tous les informations d'un client
 * Surcharge de l'operateur <<. Remplace la methode d'affichage.
 */
