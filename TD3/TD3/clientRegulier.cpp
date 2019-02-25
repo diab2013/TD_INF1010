@@ -7,14 +7,14 @@
 #include "ClientRegulier.h"
 
 ClientRegulier::ClientRegulier() : Client() {
-	nbPoints_ = NULL;
+	statut_ = Fidele;
+	nbPoints_ = 0;
 }
 
-ClientRegulier::ClientRegulier(string nom, string prenom, int tailleGroupe, int nbPoints) {
-	nom_ = nom;
-	prenom_ = prenom;
-	tailleGroupe_ = tailleGroupe;
+ClientRegulier::ClientRegulier(string nom, string prenom, int tailleGroupe, int nbPoints) 
+		: Client(nom, prenom, tailleGroupe) {
 	nbPoints_ = nbPoints;
+	statut_ = Fidele;
 }
 
 int ClientRegulier::getNbPoints() {

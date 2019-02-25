@@ -1,24 +1,32 @@
 #include "ClientPrestige.h"
 
 ClientPrestige::ClientPrestige() : ClientRegulier() {
-	status_ = Prestige;
+	statut_ = Prestige;
 	addresse_ = Zone3;
 }
 
 ClientPrestige::ClientPrestige(string nom, string prenom, int tailleGroupe, int nbPoints, 
 	AddressCode addresse) : ClientRegulier(nom, prenom, tailleGroupe, nbPoints) {
-	
+	statut_ = Prestige;
+	addresse_ = addresse;
 }
 
 AddressCode ClientPrestige::getAddresseCode(){
-	return AddressCode();
+	return addresse_;
 }
 
 string ClientPrestige::getAddressCodeString() const{
-	string
-	return string();
+	switch (addresse_) {
+		case Zone1: return "Zone1";
+			break;
+		case Zone2: return "Zone2";
+			break;
+		case Zone3: return "Zone3";
+			break;
+	}
 }
 
 ostream & operator<<(ostream & os, ClientPrestige client){
-	// TODO: insert return statement here
+	os << static_cast<ClientRegulier>(client) << " habite dans la " << client.getAddressCodeString() << endl;
+	return os;
 }
