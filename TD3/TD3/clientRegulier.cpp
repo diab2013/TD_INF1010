@@ -26,6 +26,6 @@ void ClientRegulier::augmenterNbPoints(int bonus) {
 }
 
 ostream & operator<<(ostream & os, const ClientRegulier & client) {
-	os << "Le client principal est: \n" << client.getPrenom << " statut: " << client.convertirStatutString();//need repair
+	os << "Le client principal est: \n" << client.getPrenom << " statut: " << client.getStatut();//need repair
 	return os;
 }

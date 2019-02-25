@@ -40,7 +40,7 @@ string Client::convertirStatutString() const{
 }
 
 ostream & operator<<(ostream & os, const Client & client){
-	os << "Le client principal est: \n" << client.getPrenom << " statut: " << client.convertirStatutString();
+	os << "Le client principal est: \n" << client.getPrenom << " statut: " << client.getStatut();
 	return os;
 }
 
