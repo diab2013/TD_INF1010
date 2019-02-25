@@ -18,11 +18,8 @@ AddressCode ClientPrestige::getAddresseCode(){
 string ClientPrestige::getAddressCodeString() const{
 	switch (addresse_) {
 		case Zone1: return "Zone1";
-			break;
 		case Zone2: return "Zone2";
-			break;
 		default: return "Zone3";
-			break;
 	}
 }
 
