@@ -1,9 +1,9 @@
 /*
 * Titre : main.cpp - Travail Pratique #3
-* Date : 11 Février 2019
-* Auteur : Fatou S. Mounzeo
+* Date : 25 Février 2019
+* Auteurs : Diab Khanafer et Charles-Etienne Désormeaux
+* Description : Créer un objet restaurant
 */
-
 #include "Restaurant.h"
 #include "ClientPrestige.h"
 
