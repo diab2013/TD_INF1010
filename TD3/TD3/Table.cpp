@@ -44,7 +44,7 @@ vector<Plat*> Table::getCommande() const {
 	return commande_;
 }
 
-Client * Table::getCliengtPrincipal() const {
+Client * Table::getClientPrincipal() const {
 	return { clientPrincipal_ };
 }
 
@@ -81,7 +81,7 @@ double Table::getChiffreAffaire() const {
 	///voir Énoncé
 	double chiffre = 0;
 	for (unsigned i = 0; i < commande_.size(); ++i) 
-			chiffre += commande_[i]->getType.getPrix - commande_[i]->getCout(); //ajout de .getPrix
+			chiffre += commande_[i]->getType - commande_[i]->getCout(); //ajout de .getPrix
 	return chiffre;
 }
 
