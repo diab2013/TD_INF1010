@@ -12,6 +12,7 @@ PlatCustom::PlatCustom(string nom, double prix, double cout, int nbIngredients) 
 	prix_ = prix;
 	cout_ = cout;
 	nbIngredients_ = nbIngredients;
+	type_ = Custom;
 }
 
 int PlatCustom::getNbIngredients() const {

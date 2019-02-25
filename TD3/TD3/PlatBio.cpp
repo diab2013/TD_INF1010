@@ -13,6 +13,7 @@ PlatBio::PlatBio(string nom, double prix, double cout, double ecotaxe) {
 	prix_ = prix;
 	cout_ = cout;
 	ecoTaxe_ = ecotaxe;
+	type_ = Bio;
 }
 
 double PlatBio::getEcoTaxe() const {

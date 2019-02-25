@@ -19,8 +19,8 @@ public:
 	// constructeurs
 	Menu(); 
 	Menu(string fichier, TypeMenu type);
-	///TODO
-	Menu(const Menu& menu); ///A modifier
+	~Menu();
+	Menu(const Menu& menu);
 
 
 	//getters
@@ -29,19 +29,15 @@ public:
 	//methodes en plus
 	Plat* trouverPlat(const string& nom) const; 
 	Menu& operator+=(const Plat& plat); 
-	///TODO
 	Menu& operator+=(const PlatBio& plat); 
-	///TODO 
-	Menu& operator=(const Menu& menu); ///A MODIFIER
+	Menu& operator=(const Menu& menu);
 	void lireMenu(const string& fichier); 
-	Plat* trouverPlatMoinsCher() const;
-	///TODO 
-	friend ostream& operator<<(ostream& os, const Menu& menu); ///A modifier
+	Plat* trouverPlatMoinsCher() const; 
+	friend ostream& operator<<(ostream& os, const Menu& menu);
 	
 private : 
 	vector<Plat*> listePlats_; 
 	TypeMenu type_; 
-
 };
 
 #endif // !MENU_H
