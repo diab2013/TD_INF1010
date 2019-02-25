@@ -6,20 +6,13 @@
 
 #include "Restaurant.h"
 #include "ClientPrestige.h"
-
-
 using namespace std; 
 
 int main() {
-
-
-
 	//creation du restaurant 
 	Restaurant poly("polyFood.txt", "PolyFood", Soir); 
-
+	
 	///creer plusieurs clients  
-
-
 	Client * cl1 = new Client("Martin", "b", 1);
 
 	vector<string> commandeMartin;
@@ -30,8 +23,6 @@ int main() {
 	Client * cl4 = new ClientRegulier("Moussa", "T", 3,45);
 	Client * cl5 = new ClientPrestige("Andree", "F", 2,150, Zone2);
 	Client * cl6 = new ClientPrestige("Marie", "C", 1,125, Zone1);
-
-
 
 	cout << "\t\t\t\t\tLIVRAISONS" << endl;
 	cout << "--------------------------------------------------------------------------------------------------" << endl;
@@ -49,7 +40,6 @@ int main() {
 	poly.placerClients(cl5); 
 
 	// commander des plats 
-
 	poly.commanderPlat("Poisson", 1,Custom,3);
 	poly.commanderPlat("Pizza", 2, Custom,4);
 	poly.commanderPlat("Poulet", 2);
@@ -66,7 +56,6 @@ int main() {
 	cout << poly;
 
 	cout << "--------------------------------------------------------------------------------------------------" << endl;
-
 
 	//liberer les tables et calcule du chiffre d'affaire
 	poly.libererTable(1);

@@ -86,7 +86,9 @@ double Restaurant::getFraisTransports(int index) const{
 void Restaurant::libererTable(int id) {
 	bool livraison = false;
 	for (unsigned i = 0; i < tables_.size(); ++i) {
+		cout << "*****************ICI*****************" << endl;
 		StatutClient statut = tables_[i]->getClientPrincipal()->getStatut();
+		cout << "*****************ICI*****************" << endl;
 		if (id == tables_[i]->getId()) {
 			livraison = false;
 			if (statut == Prestige) {
@@ -300,7 +302,7 @@ double Restaurant::calculerReduction(Client* client, double montant, bool livrai
 }
 
 void Restaurant::lireAdresses(const string & fichier){
-ifstream file(fichier, ios::in);
+	ifstream file(fichier, ios::in);
 	if (file) {
 		string ligne;
 		string addresseCodeStr;
