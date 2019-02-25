@@ -4,6 +4,7 @@
 Client::Client(){
 	nom_ = "inconnu";
 	prenom_ = "inconnu";
+	tailleGroupe_ = 0;
 	statut_ = Occasionnel;
 }
 
@@ -13,25 +14,20 @@ Client::Client(string nom, string prenom, int tailleGroupe){
 	tailleGroupe_ = tailleGroupe;
 }
 
-//destructur
-Client::~Client(){
-
-}
-
 //getters
-StatutClient Client::getStatut(){
+StatutClient Client::getStatut() const{
 	return statut_;
 }
 
-int Client::getTailleGroupe(){
-	return 0;
+int Client::getTailleGroupe() const{
+	return tailleGroupe_;
 }
 
-string Client::getNom(){
+string Client::getNom() const{
 	return nom_;
 }
 
-string Client::getPrenom(){
+string Client::getPrenom() const{
 	return prenom_;
 }
 
