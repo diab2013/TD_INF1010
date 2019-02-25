@@ -1,7 +1,7 @@
 /*
 * Titre : Menu.cpp - Travail Pratique #3
 * Date : 11 Février 2019
-* Auteur : Fatou S Mounzeo
+* Auteur : Diab Khanafer et Charles-Etienne Désormeaux
 */
 
 #include "Menu.h"
@@ -19,62 +19,73 @@ Menu::Menu(string fichier, TypeMenu type) {
 	lireMenu(fichier); 
 }
 
-Menu::Menu(const Menu & menu): type_(menu.type_)
-{
-	///TODO 
-	///Modifier
-	for (unsigned i = 0; i < menu.listePlats_.size(); ++i)
-	{			listePlats_.push_back(new Plat(*menu.listePlats_[i]));
-
+Menu::Menu(const Menu & menu): type_(menu.type_){
+	for (unsigned i = 0; i < menu.listePlats_.size(); i++){
+		if (menu.listePlats_[i]->getType() == Bio){
+			PlatBio* platBio = static_cast<PlatBio*> (menu.listePlats_[i]);
+			listePlats_.push_back(new PlatBio(menu.listePlats_[i]->getNom(), menu.listePlats_[i]->getPrix(), 
+				menu.listePlats_[i]->getCout(), platBio->getEcoTaxe()));
+		} else {
+			listePlats_.push_back(new Plat(*menu.listePlats_[i]));
+		}
 	}
 }
 
+//destructeur
+Menu::~Menu(){
+	for (unsigned i = 0; i < listePlats_.size(); i++){
+		delete listePlats_[i];
+		listePlats_[i] = nullptr;
+	}
+	listePlats_.clear();
+}
 
 //getters
-
-vector<Plat*> Menu::getListePlats() const
-{
+vector<Plat*> Menu::getListePlats() const{
 	return listePlats_;
 }
 
-//autres methodes 
-
-
-ostream& operator<<(ostream& os, const Menu& menu)
-{
+//autres methodes
+ostream& operator<<(ostream& os, const Menu& menu){
 	for (unsigned i = 0; i < menu.listePlats_.size(); ++i) {
-		
-		if(menu.listePlats_[i]->getType()==Regulier)
+		if (menu.listePlats_[i]->getType() == Regulier){
 			os << "\t" << *menu.listePlats_[i];
-
+		}
+		if (menu.listePlats_[i]->getType() == Bio){
+			PlatBio* platBio = static_cast<PlatBio*> (menu.listePlats_[i]);
+			os << "\t" << *platBio;
+		}
 	}
-
 	return os;
 }
-
-
 
 Menu& Menu::operator+=(const Plat& plat) {
 	listePlats_.push_back(new Plat(plat));
 	return *this;
 }
 
-
-Menu & Menu::operator=(const Menu & menu)
-{
-	///TODO
-	/// A Modifier
-	if (this != &menu)
-	{
-		this->type_ = menu.type_;
-		listePlats_.clear();
-
-		for (unsigned i = 0; i < menu.listePlats_.size(); ++i)
-			listePlats_.push_back(new Plat(*menu.listePlats_[i]));
-	}
+Menu& Menu::operator+=(const PlatBio& plat) {
+	listePlats_.push_back(new PlatBio(plat));
 	return *this;
 }
 
+Menu & Menu::operator=(const Menu & menu) {
+	if (this != &menu) {
+		this->type_ = menu.type_;
+		listePlats_.clear();
+
+		for (unsigned i = 0; i < menu.listePlats_.size(); ++i) {
+			if (menu.listePlats_[i]->getType() == Bio) {
+				PlatBio* platBio = static_cast<PlatBio*> (menu.listePlats_[i]);
+				listePlats_.push_back(new PlatBio(menu.listePlats_[i]->getNom(), menu.listePlats_[i]->getPrix(),
+					menu.listePlats_[i]->getCout(), platBio->getEcoTaxe()));
+			} else {
+				listePlats_.push_back(new Plat(*menu.listePlats_[i]));
+			}
+		}
+	}
+	return *this;
+}
 
 void Menu::lireMenu(const string& fichier) {
 	ifstream file(fichier, ios::in); 
@@ -199,22 +210,17 @@ void Menu::lireMenu(const string& fichier) {
 	}
 }
 
-Plat * Menu::trouverPlatMoinsCher() const
-{
+Plat* Menu::trouverPlatMoinsCher() const{
 	Plat minimum(*listePlats_[0]);
 	int found = -1;
 
-	for (unsigned i = 0; i < listePlats_.size(); ++i)
-	{
-		if (*listePlats_[i] < minimum)
-		{
+	for (unsigned i = 0; i < listePlats_.size(); ++i){
+		if (*listePlats_[i] < minimum){
 			minimum = *listePlats_[i];
 			found = i;
 		}
 	}
-
 	return listePlats_[found];
-
 }
 
 Plat* Menu::trouverPlat(const string& nom) const {
