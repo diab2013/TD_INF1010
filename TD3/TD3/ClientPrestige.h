@@ -13,7 +13,7 @@ class ClientPrestige : public ClientRegulier
 public:
 	ClientPrestige();
 	ClientPrestige(string nom, string prenom, int tailleGroupe, int nbPoints,AddressCode addresse);
-
+	
 	//Accesseur 
 	AddressCode getAddresseCode();
 

@@ -36,19 +36,18 @@ string Client::getPrenom(){
 }
 
 string Client::convertirStatutString() const{
-
 	switch (statut_) {
-	case (Occasionnel):
-		return "Occasionnel";
-	case (Fidele):
-		return "Regulier";
-	case (Prestige):
-		return "Prestige";
+		case Fidele:
+			return "Regulier";
+		case Prestige:
+			return "Prestige";
+		default:
+			return "Occasionnel";
 	}
 }
 
 ostream & operator<<(ostream & os, const Client & client){
-	os << "Le client principal est: \n" << "-" << client.getPrenom << " " << client.nom_ << " statut: " << client.convertirStatutString();
+	os << "Le client principal est: \n" << "-" << client.prenom_ << " " << client.nom_ << " statut: " << client.convertirStatutString();
 	return os;
 }
 
