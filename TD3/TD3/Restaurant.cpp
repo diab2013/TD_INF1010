@@ -86,22 +86,21 @@ double Restaurant::getFraisTransports(int index) const{
 void Restaurant::libererTable(int id) {
 	bool livraison = false;
 	for (unsigned i = 0; i < tables_.size(); ++i) {
-		cout << "*****************ICI*****************" << endl;
-		StatutClient statut = tables_[i]->getClientPrincipal()->getStatut();
-		cout << "*****************ICI*****************" << endl;
 		if (id == tables_[i]->getId()) {
 			livraison = false;
-			if (statut == Prestige) {
-				if (i = INDEX_TABLE_LIVRAISON) {
+			if (tables_[i]->getClientPrincipal()->getStatut() == Prestige) {
+				if (i = INDEX_TABLE_LIVRAISON) 
 					livraison = true;
-				}
+				
 				chiffreAffaire_ += tables_[i]->getChiffreAffaire() + 
 					calculerReduction(tables_[i]->getClientPrincipal(), 
 						tables_[i]->getChiffreAffaire(), livraison);
-			} else if (statut == Fidele) {
+
+			} else if (tables_[i]->getClientPrincipal()->getStatut() == Fidele) {
 				chiffreAffaire_ += tables_[i]->getChiffreAffaire() +
 					calculerReduction(tables_[i]->getClientPrincipal(),
 						tables_[i]->getChiffreAffaire(), livraison);
+
 			} else {
 				chiffreAffaire_ += tables_[i]->getChiffreAffaire(); 
 			}
@@ -292,12 +291,13 @@ double Restaurant::calculerReduction(Client* client, double montant, bool livrai
 			return { -montant * TAUX_REDUC_REGULIER };
 		} else
 			return 0;
-	} else {
+	}
+	else if (client->getStatut() == Prestige) {
 		double fraisLiv = 0;
 		if (static_cast<ClientPrestige*>(client)->getNbPoints() < SEUIL_LIVRAISON_GRATUITE && livraison) {
 			fraisLiv = fraisTransport_[static_cast<ClientPrestige*>(client)->getAddresseCode()];
 		}
-		return { -montant * TAUX_REDUC_PRESTIGE + fraisLiv};
+		return { -montant * TAUX_REDUC_PRESTIGE + fraisLiv };
 	}
 }
 

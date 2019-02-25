@@ -12,6 +12,7 @@ Client::Client(string nom, string prenom, int tailleGroupe){
 	nom_ = nom;
 	prenom_ = prenom;
 	tailleGroupe_ = tailleGroupe;
+	statut_ = Occasionnel;
 }
 
 //getters
@@ -43,7 +44,8 @@ string Client::convertirStatutString() const{
 }
 
 ostream & operator<<(ostream & os, const Client & client){
-	os << "Le client principal est: \n" << "-" << client.prenom_ << " " << client.nom_ << " statut: " << client.convertirStatutString();
+	os << "Le client principal est: \n" << "-" << client.prenom_ << " " << client.nom_ 
+		<< " statut: " << client.convertirStatutString();
 	return os;
 }
 

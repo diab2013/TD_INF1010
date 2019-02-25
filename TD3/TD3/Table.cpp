@@ -81,14 +81,14 @@ double Table::getChiffreAffaire() const {
 		PlatBio* platBio = static_cast<PlatBio*>(commande_[i]);
 		PlatCustom* platCustom = static_cast<PlatCustom*>(commande_[i]);
 		switch (commande_[i]->getType()) {
-		case Bio:
-			chiffre += (commande_[i]->getPrix() - commande_[i]->getCout() + platBio->getEcoTaxe());
-			break;
-		case Custom:
-			chiffre += (commande_[i]->getPrix() - commande_[i]->getCout() + platCustom->getSupplement());
-			break;
-		default:
-			chiffre += (commande_[i]->getPrix() - commande_[i]->getCout());
+			case Bio:
+				chiffre += (commande_[i]->getPrix() - commande_[i]->getCout() + platBio->getEcoTaxe());
+				break;
+			case Custom:
+				chiffre += (commande_[i]->getPrix() - commande_[i]->getCout() + platCustom->getSupplement());
+				break;
+			default:
+				chiffre += (commande_[i]->getPrix() - commande_[i]->getCout());
 		}
 	}
 	return chiffre;
