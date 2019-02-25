@@ -8,7 +8,7 @@
 
 #include "ClientRegulier.h"
 enum AddressCode{Zone1,Zone2,Zone3};
-class ClientPrestige : public Client
+class ClientPrestige : public ClientRegulier
 {
 public:
 	ClientPrestige();
@@ -19,7 +19,7 @@ public:
 
 	//Autres Fonctions??
 	friend ostream & operator<<(ostream & os, ClientPrestige client);
-	string getAddressCodeString();
+	string getAddressCodeString() const;
 
 
 

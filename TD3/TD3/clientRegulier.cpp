@@ -6,7 +6,7 @@
 */
 #include "ClientRegulier.h"
 
-ClientRegulier::ClientRegulier() {
+ClientRegulier::ClientRegulier() : Client() {
 	nbPoints_ = NULL;
 }
 
