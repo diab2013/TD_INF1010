@@ -94,11 +94,17 @@ ostream& operator<<(ostream& os, const Table& table)
 	if (table.estOccupee())
 	{
 		os << " est occupee. ";
-		//
+
 		if (table.clientPrincipal_->getStatut() == Occasionnel) {
 			os << *(table.clientPrincipal_);
 		}
-		//
+		else if (table.clientPrincipal_->getStatut == Fidele) {
+			os << *(static_cast<ClientRegulier*>(table.clientPrincipal_));
+		}
+		else if (table.clientPrincipal_->getStatut == Prestige) {
+			os << *(static_cast<ClientPrestige*>(table.clientPrincipal_));
+		}
+
 		if (!table.commande_.empty())
 		{
 			os << "Voici la commande passee par les clients : " << endl;
