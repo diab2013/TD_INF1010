@@ -176,7 +176,7 @@ ostream& operator<<(ostream& os, const Restaurant& restau){
 	os << "Midi : " << endl
 		<< *restau.menuMidi_<<endl << "Le plat le moins cher est : " << *restau.menuMidi_->trouverPlatMoinsCher() << endl;
 	os << "Soir : " << endl
-		<< *restau.menuSoir_<<endl << "Le plat le moins cher est : " << *restau.menuSoir_->trouverPlatMoinsCher() <<endl;
+		<< *restau.menuSoir_<<endl << "Le plat le moins cher est : " << *restau.menuSoir_->trouverPlatMoinsCher() << endl;
 
 	return os;
 }
