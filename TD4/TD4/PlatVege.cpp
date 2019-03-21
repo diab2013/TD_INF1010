@@ -7,8 +7,7 @@
 
 //TODO
 PlatVege::PlatVege(string nom, double prix, double cout,
-                   double vitamines, double proteines, double mineraux)
-{
+                   double vitamines, double proteines, double mineraux) {
     //TODO
 }
 PlatVege::~ PlatVege(){}
