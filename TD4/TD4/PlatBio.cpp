@@ -4,32 +4,32 @@
 */
 #include "PlatBio.h"
 
-PlatBio::PlatBio(string nom, double prix, double cout, double ecotaxe): Plat(nom, prix, cout), ecoTaxe_(ecotaxe)
-{
-}
+PlatBio::PlatBio(string nom, double prix, double cout, double ecotaxe): Plat(nom, prix, cout), ecoTaxe_(ecotaxe) {
 
+}
 
 PlatBio::~ PlatBio(){}
 
-double PlatBio::getEcoTaxe() const
-{
+double PlatBio::getEcoTaxe() const {
 	return ecoTaxe_;
 }
 
-void PlatBio::setEcoTaxe(double ecoTaxe)
-{
+void PlatBio::setEcoTaxe(double ecoTaxe) {
 	ecoTaxe_ = ecoTaxe;
 }
 
-//TODO
-Plat * PlatBio:: clone () const
-{
-
+Plat * PlatBio:: clone () const {
+	PlatBio* platBio = new PlatBio(*this);
+	return platBio;
 }
-double PlatBio:: getPrixDeRevient()
-{ //TODO}
 
-void PlatBio::afficherPlat(ostream& os) const
-{
-    //TODO
+double PlatBio::getPrixDeRevient() const {
+	return { prix_ - cout_ + ecoTaxe_ };
 }
+
+void PlatBio::afficherPlat(ostream& os) const {
+	((Plat)*this).afficherPlat(os);
+	os << "Plat Bio     comprend une taxe ecologique de :" << ecoTaxe_ << "$" << endl;
+}
+
+

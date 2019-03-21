@@ -12,8 +12,7 @@ using namespace std;
 
 Plat::Plat(string_view nom, double prix, double cout) : nom_(nom), prix_(prix), cout_(cout) {
 }
-Plat::~Plat()
-{
+Plat::~Plat() {
 }
 //getters 
 
@@ -37,19 +36,17 @@ void Plat::setPrix(double prix) {
 	prix_ = prix;
 }
 
-bool Plat::operator < (const Plat& plat) const
-{
+bool Plat::operator < (const Plat& plat) const {
 	return prix_ < plat.prix_;
 }
 
-void Plat::afficherPlat(ostream & os) const
-{ // TODO
-  
+void Plat::afficherPlat(ostream & os) const {
+	os << "PLAT ----" << nom_ << " - " << prix_ << " $ (" << cout_ << "$ pour le restaurant)" << endl;
 }
-double Plat::getPrixRevient()
-{  return prix_ - cout_;
-    
+double Plat::getPrixRevient() {
+	return prix_ - cout_;
 }
- Plat *  Plat:: clone () const
-{ //TODO
+ Plat *  Plat:: clone () const { 
+	 Plat* plat = new Plat(*this);
+	 return plat;
 }
