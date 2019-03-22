@@ -12,14 +12,14 @@ PlatVege::PlatVege(string nom, double prix, double cout,
 }
 PlatVege::~ PlatVege(){}
 
-Plat* PlatVege::clone()const
-{ //TODO
-    
+Plat* PlatVege::clone()const { //TODO
+	PlatVege* platVege = new PlatVege(*this);
+	return platVege;
 }
 
 
-void PlatVege::afficherPlat(ostream & os) const
-{   //TODO
+void PlatVege::afficherPlat(ostream & os) const {
+	((Plat)*this).afficherPlat(os);
 }
 
 double PlatVege::calculerApportNutritif() const
