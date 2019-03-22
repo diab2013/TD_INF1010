@@ -25,9 +25,9 @@ public:
     // setters
     void setTable(Table * ta);
 	//affichage
-        int getNbPoints() const;
-        void afficherClient(ostream & os) const; // TODO
-       double getReduction(const Restaurant & res, double montant, bool estLivraison)  ;
+    virtual int getNbPoints() const = 0;
+    void afficherClient(ostream & os) const; // TODO
+    virtual double getReduction(const Restaurant & res, double montant, bool estLivraison) = 0;
 
 protected:
 	string nom_;

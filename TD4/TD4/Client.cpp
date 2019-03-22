@@ -5,8 +5,8 @@
 
 #include "Client.h"
 
-Client::Client()
-{ tableOccupee_ = nullptr;
+Client::Client() {
+	tableOccupee_ = nullptr;
 }
 
 Client::Client(string_view nom, string_view prenom, int tailleGroupe) :
@@ -15,13 +15,11 @@ Client::Client(string_view nom, string_view prenom, int tailleGroupe) :
     tableOccupee_ = nullptr;
 }
 
-int Client::getTailleGroupe() const
-{
+int Client::getTailleGroupe() const {
 	return tailleGroupe_;
 }
 
-string Client::getNom() const
-{
+string Client::getNom() const {
 	return nom_;
 }
 
@@ -35,8 +33,13 @@ void Client:: setTable(Table * ta)
 Table * Client:: getTable() const
 { return tableOccupee_;}
 
-void Client::afficherClient(ostream & os) const
-{ // TODO
-
+void Client::afficherClient(ostream & os) const {
+	os << prenom_ << nom_;
+	if (tableOccupee_ != nullptr) {
+		os << tableOccupee_ << endl;
+	}
+	else {
+		os << endl;
+	}
 }
 

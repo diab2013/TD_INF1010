@@ -19,5 +19,5 @@ void ClientOccasionnel::afficherClient(ostream & os) const
         //TODO
 
 }
-double ClientOccasionnel::getReduction(const Restaurant & res, double montant, bool estLivraison)
-{ // TODO}
+double ClientOccasionnel::getReduction(const Restaurant & res, double montant, bool estLivraison) { // TODO}
+}
