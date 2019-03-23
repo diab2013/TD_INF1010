@@ -22,6 +22,8 @@ Plat* PlatVege::clone()const { //TODO
 void PlatVege::afficherPlat(ostream & os) const {
 	os << "PLAT VEGE " << (*this).Plat::nom_ << " "; //a revoir
 	(*this).afficherVege(os);
+	os << endl;
+	os << (*this).calculerApportNutritif() << endl;
 }
 
 double PlatVege::calculerApportNutritif() const {

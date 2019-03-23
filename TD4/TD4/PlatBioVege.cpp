@@ -12,7 +12,7 @@ PlatBioVege:: ~PlatBioVege(){}
 void PlatBioVege::afficherPlat(ostream & os) const {
 	((PlatBio)*this).afficherPlat(os);
 	os << "ET ";
-	(*this).afficherVege(os);
+	(*this).afficherVege(os);//ajouter calculerApportNutritif?
 }
 
 Plat * PlatBioVege::clone() const {

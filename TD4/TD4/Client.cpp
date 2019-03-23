@@ -34,9 +34,9 @@ Table * Client:: getTable() const
 { return tableOccupee_;}
 
 void Client::afficherClient(ostream & os) const {
-	os << prenom_ << nom_;
+	os << prenom_ << " "<< nom_ << " avec "<< tailleGroupe_ << " personne(s)";
 	if (tableOccupee_ != nullptr) {
-		os << tableOccupee_ << endl;
+		os << tableOccupee_ << endl; //a revoir
 	}
 	else {
 		os << endl;

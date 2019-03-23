@@ -5,27 +5,23 @@
 #include "ClientPrestige.h"
 #include "Restaurant.h"
 
-ClientPrestige::ClientPrestige()
-{
+ClientPrestige::ClientPrestige() {
 	adresse_ = ZoneHabitation::Zone3;
 }
 
 ClientPrestige::ClientPrestige(string_view nom, string_view prenom, int tailleGroupe, int nbPoints, ZoneHabitation adresse)
-{
-   //TODO
-}
+:ClientRegulier(nom,prenom,tailleGroupe,nbPoints),adresse_(adresse)
+{}
 
-ZoneHabitation ClientPrestige::getAdresseCode() const
-{
+ZoneHabitation ClientPrestige::getAdresseCode() const {
 	return adresse_;
 }
 
-void ClientPrestige::afficherClient(ostream & os) const
-{
-        // TODO
+void ClientPrestige::afficherClient(ostream & os) const {
+	((ClientRegulier)*this).afficherClient(os);
+	//ajout de plus?
 }
-string ClientPrestige::getAdressCodeString() const
-{
+string ClientPrestige::getAdressCodeString() const {
 	string zone;
 	switch (adresse_)
 	{
@@ -45,6 +41,10 @@ string ClientPrestige::getAdressCodeString() const
 	}
 	return zone;
 }
-double ClientPrestige :: getReduction(const Restaurant & res, double montant , bool estLivraison)
-{   //TODO
+double ClientPrestige :: getReduction(const Restaurant & res, double montant , bool estLivraison) {
+	estLivraison = 1;
+	if (nbPoints_ >= SEUIL_LIVRAISON_GRATUITE) {
+		//wtf?
+	}
+	return -montant * TAUX_REDUC_PRESTIGE;
 }
