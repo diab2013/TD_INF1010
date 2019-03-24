@@ -26,7 +26,7 @@ public:
     void setTable(Table * ta);
 	//affichage
     virtual int getNbPoints() const = 0;
-    void afficherClient(ostream & os) const; // TODO
+    void afficherClient(ostream & os) const; 
     virtual double getReduction(const Restaurant & res, double montant, bool estLivraison) = 0;
 
 protected:

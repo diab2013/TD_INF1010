@@ -14,8 +14,7 @@
 #include<vector>
 using namespace std;
 
-int main()
-{
+int main(){
 	initDebogageMemoire();
 
 	vector<pair<string, bool>> tests;

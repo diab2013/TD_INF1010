@@ -15,9 +15,9 @@ using namespace std;
 class PlatBio: public Plat {
 public:
 	// constructeurs
-        PlatBio(string nom = "inconnu", double prix = 0,
+    PlatBio(string nom = "inconnu", double prix = 0,
                 double cout = 0, double ecotaxe = 0);//TODO
-        ~ PlatBio();
+    ~ PlatBio();
 	//getters 
 	double getEcoTaxe() const;
 	//setters 

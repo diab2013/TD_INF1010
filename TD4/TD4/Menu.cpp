@@ -112,4 +112,5 @@ Plat* Menu::lirePlatDe(LectureFichierEnSections& fichier)
 ostream& operator<<(ostream& os, const Menu& menu)
 {   
         //TODO
+	return os;
 }
