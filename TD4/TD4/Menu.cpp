@@ -9,52 +9,92 @@
 using namespace std;
 
 // Constructeurs.
-
+/*
+ * Conctructeur par défaut de la classe
+*/
 Menu::Menu() :
 	type_{TypeMenu::Matin}
 {
 }
 
+/*
+ * Constructeur par paramètres de la classe
+ * IN:
+*/
 Menu::Menu(string fichier, TypeMenu type) :
-	type_{type}
-{
+	type_{type} {
 	lireMenu(fichier); 
 }
 
-Menu::~Menu()
-{
-	//TODO
+/*
+ * Destructeur de la classe
+*/
+Menu::~Menu(){
+	//jpenses
+	listePlats_.clear();
+	listePlatsVege_.clear();
 }
 
 Plat* Menu::allouerPlat(Plat* plat) {
     return plat->clone();
 }
 
-
-Menu::Menu(const Menu & menu) : type_(menu.type_)
-{
-	//TODO
-  
+/*
+ * Constructeur par copie de la classe
+*/
+Menu::Menu(const Menu & menu) : type_(menu.type_){
+	//vraiment pas sure
+	for (unsigned i = 0; i < menu.listePlats_.size(); i++) {
+		listePlats_.push_back(menu.listePlats_[i]);
+	}
+	for (unsigned i = 0; i < menu.listePlatsVege_.size(); i++) {
+		listePlatsVege_.push_back(menu.listePlatsVege_[i]);
+	}
 }
 
-Menu & Menu::operator=(const Menu & menu)
-{
-        //TODO
+/*
+ * Override de l'opérateur = 
+ * IN: référence du menu dont les attributs seront copiés
+*/
+Menu & Menu::operator=(const Menu & menu) {
+	//je pense vraimentpas mais a revoir
+	if (this != &menu) {
+		this->type_ = menu.type_;
+		listePlats_.clear();
+		listePlatsVege_.clear();
+
+		for (unsigned i = 0; i < menu.listePlats_.size(); i++) {
+			listePlats_.push_back(allouerPlat(menu.listePlats_[i]));
+		}
+		for (unsigned i = 0; i < menu.listePlatsVege_.size(); i++) {
+		}
+	}
+	return *this;
 }
 
 // Getters.
-
-vector<Plat*> Menu::getListePlats() const
-{
+/*
+ * Getter de l'attribut listePlats_
+ * OUT: return l'attribut listePlats_ de l'objet
+*/
+vector<Plat*> Menu::getListePlats() const{
 	return listePlats_;
 }
 
 // Autres methodes.
-
+/*
+ * Override de l'opérateur +=
+ * IN: la référence du plat que l'on ajoute à la liste
+*/
 Menu& Menu::operator+=(owner<Plat*> plat) {
-        //TODO
+	listePlats_.push_back(plat);
+	return *this;
 }
 
+/*
+ * Méthode pour lire les menu du fichier
+ * IN: le nom du fichier que l'on va lire
+*/
 void Menu::lireMenu(const string& nomFichier) {
 	LectureFichierEnSections fichier{nomFichier};
 	fichier.allerASection(entetesDesTypesDeMenu[static_cast<int>(type_)]);
@@ -62,8 +102,11 @@ void Menu::lireMenu(const string& nomFichier) {
 		*this += lirePlatDe(fichier);
 }
 
-Plat* Menu::trouverPlatMoinsCher() const
-{
+/*
+ * Méthode pour trouver le plat le moins cher
+ * Traverse la liste de plats et trouve le plat le moins cher
+*/
+Plat* Menu::trouverPlatMoinsCher() const{
 	assert(!listePlats_.empty() && "La liste de plats de doit pas etre vide pour trouver le plat le moins cher.");
 	Plat* minimum = listePlats_[0];
 	for (Plat* plat : listePlats_)
@@ -73,16 +116,24 @@ Plat* Menu::trouverPlatMoinsCher() const
 	return minimum;
 }
 
-Plat* Menu::trouverPlat(string_view nom) const
-{
+/*
+ * Méthode pour trouver un plat selon avec l'aide de son nom
+ * On cherche un plat dans la liste par son nom
+ * IN: un nom de type string que l'on cherche dans la liste
+*/
+Plat* Menu::trouverPlat(string_view nom) const{
 	for (Plat* plat : listePlats_)
 		if (plat->getNom() == nom)
 			return plat; 
 
 	return nullptr; 
 }
-Plat* Menu::lirePlatDe(LectureFichierEnSections& fichier)
-{
+
+/*
+ * Méthode pour lire les plats d'un fichier
+ * IN: fichier lu par la méthode
+*/
+Plat* Menu::lirePlatDe(LectureFichierEnSections& fichier){
     auto lectureLigne = fichier.lecteurDeLigne();
     
     string nom, typeStr;
@@ -104,13 +155,22 @@ Plat* Menu::lirePlatDe(LectureFichierEnSections& fichier)
         default:
             return new Plat{nom, prix, coutDeRevient};
     }
-    
 }
 
 // Fonctions globales.
-
-ostream& operator<<(ostream& os, const Menu& menu)
-{   
-        //TODO
+/*
+ * Override de l'opérateur <<
+ * Permet l'affichage des attributs de la classe menu
+ * IN: référence d'un ostream pour l'affichage
+ *	   référence du menu dont les attributs seront affichés
+*/
+ostream& operator<<(ostream& os, const Menu& menu){   
+	for (unsigned i = 0; i < menu.listePlats_.size(); i++) {
+		menu.listePlats_[i]->afficherPlat(os);
+	}
+	os << "MENU ENTIEREMENT  VEGETARIEN" << endl;
+	for (unsigned i = 0; i < menu.listePlats_.size(); i++) {
+		menu.listePlatsVege_[i]->afficherVege(os);
+	}
 	return os;
 }

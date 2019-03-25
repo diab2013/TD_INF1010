@@ -14,7 +14,7 @@ public:
 	ClientPrestige();
 	ClientPrestige(string_view nom, string_view prenom, int tailleGroupe, 
 		           int nbPoints, ZoneHabitation adresse);// TODO
-     ~ClientPrestige(){};
+	~ClientPrestige();
 	//Accesseur 
 	ZoneHabitation getAdresseCode() const;
 

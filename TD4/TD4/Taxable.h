@@ -11,7 +11,7 @@
 class Taxable
 {
 public:
-    virtual void setTaxe () = 0;
+    virtual void setTaxe (double taxe) = 0;
     virtual double getTaxe()const = 0;
 };
 

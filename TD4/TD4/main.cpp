@@ -32,7 +32,7 @@ int main(){
 	clients.push_back(new ClientPrestige("Marie", "C", 1, 225, ZoneHabitation::Zone1));
 	
       // placer les clients dans le restaurant
-    for  ( int i = 0 ; i< clients.size(); i++)
+    for  ( int i = 0 ; i < clients.size(); i++)
         if (poly.placerClients(clients[i]))
             cout << clients[i]-> getNom()<< " a une place au resto "<<endl;
         else
@@ -101,7 +101,7 @@ int main(){
          cout << "polyFodd gagne plus d'argent" << endl;
                         
        
-        // creer des plats vŽgŽ et des boissons
+    // creer des plats vŽgŽ et des boissons
     vector<Taxable *> listeTaxable;
     listeTaxable.push_back(new Boisson("coke",2.2));
     listeTaxable.push_back(new PlatVege("Saucisse",7.2));
