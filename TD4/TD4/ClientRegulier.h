@@ -20,9 +20,9 @@ class ClientRegulier : public Client
 
 	//Autres Methodes
 	void augmenterNbPoints(int bonus);
-    void afficherClient(ostream & os) const; // TODO
+    virtual void afficherClient(ostream & os) const override;
     double getReduction(const Restaurant & res, double montant , bool estLivraison);// TODO
-//
+	
 protected:
 	int nbPoints_;
 };

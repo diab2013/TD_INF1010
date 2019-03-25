@@ -36,7 +36,7 @@ Plat* PlatVege::clone() const {
  * IN: la référence à un ostream pour l'affichage
 */
 void PlatVege::afficherPlat(ostream & os) const {
-	(*this).afficherPlat(os);
+	((Plat)*this).afficherPlat(os);
 	(*this).afficherVege(os);
 	os << "(Apport nutritif " << (*this).calculerApportNutritif() << " mg)" << endl;
 }

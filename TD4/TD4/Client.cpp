@@ -67,10 +67,5 @@ Table * Client:: getTable() const{
  * IN: une référence à un ostream pour l'affichage
 */
 void Client::afficherClient(ostream & os) const {
-	os << prenom_ << " "<< nom_ << " avec "<< tailleGroupe_ << " personne(s)";
-	if (tableOccupee_ != nullptr) {
-		os << tableOccupee_ << endl; //a revoir
-	} else {
-		os << endl;
-	}
+	
 }

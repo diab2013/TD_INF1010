@@ -88,6 +88,11 @@ vector<Plat*> Menu::getListePlats() const{
 */
 Menu& Menu::operator+=(owner<Plat*> plat) {
 	listePlats_.push_back(plat);
+	if (typeid(*plat).name() == typeid(PlatVege).name()) {
+		listePlatsVege_.push_back((PlatVege*) plat);
+	} else if (typeid(*plat).name() == typeid(PlatBioVege).name()) {
+		listePlatsVege_.push_back((PlatBioVege*)plat);
+	}
 	return *this;
 }
 
@@ -164,12 +169,13 @@ Plat* Menu::lirePlatDe(LectureFichierEnSections& fichier){
  * IN: référence d'un ostream pour l'affichage
  *	   référence du menu dont les attributs seront affichés
 */
-ostream& operator<<(ostream& os, const Menu& menu){   
+ostream& operator<<(ostream& os, const Menu& menu){
 	for (unsigned i = 0; i < menu.listePlats_.size(); i++) {
 		menu.listePlats_[i]->afficherPlat(os);
 	}
+	os << endl;
 	os << "MENU ENTIEREMENT  VEGETARIEN" << endl;
-	for (unsigned i = 0; i < menu.listePlats_.size(); i++) {
+	for (unsigned i = 0; i < menu.listePlatsVege_.size(); i++) {
 		menu.listePlatsVege_[i]->afficherVege(os);
 	}
 	return os;

@@ -30,7 +30,13 @@ int ClientOccasionnel::getNbPoints() const {
  * IN: une référence à un ostream pour l'affichage
 */
 void ClientOccasionnel::afficherClient(ostream & os) const {
-	(*this).afficherClient(os);
+	os << prenom_ << " " << nom_ << " avec " << tailleGroupe_ << " personne(s)";
+	if (tableOccupee_ != nullptr) {
+		os << tableOccupee_ << endl; //a revoir
+	}
+	else {
+		os << endl;
+	}
 }
 
 /*

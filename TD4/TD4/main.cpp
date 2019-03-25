@@ -116,8 +116,8 @@ int main(){
     double taxe;
     Boisson * b;
     PlatVege * v;
-    for (size_t i = 0; i < listeTaxable.size(); i++)
-    {   taxe =listeTaxable[i]->getTaxe();
+    for (size_t i = 0; i < listeTaxable.size(); i++){   
+		taxe =listeTaxable[i]->getTaxe();
         b = dynamic_cast<Boisson *>(listeTaxable[i]);
         v = dynamic_cast<PlatVege *>(listeTaxable[i]);
         if (b)
@@ -125,7 +125,7 @@ int main(){
         if (v)
             sommeTaxe += taxe * (v->getPrix());
     }
-    cout << "la taxe a paye est "<<  sommeTaxe<< endl;
+    cout << "la taxe a paye est "<<  sommeTaxe << endl;
     
 	for (size_t i = 0; i < clients.size(); i++)
 	{

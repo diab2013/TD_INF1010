@@ -45,8 +45,13 @@ void ClientRegulier::augmenterNbPoints(int bonus) {
  * IN: une référence à un ostream pour l'affichage
 */
 void ClientRegulier::afficherClient(ostream & os) const {
-	(*this).afficherClient(os);
-	//ajout de plus?
+	os << prenom_ << " " << nom_ << " avec " << tailleGroupe_ << " personne(s)";
+	if (tableOccupee_ != nullptr) {
+		os << tableOccupee_ << endl; //a revoir
+	}
+	else {
+		os << endl;
+	}
 }
 
 /*

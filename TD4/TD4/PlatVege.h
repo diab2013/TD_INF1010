@@ -17,8 +17,8 @@ public:
              double proteines = 0, double mineraux = 0);//TODO
      ~ PlatVege();
      virtual Plat * clone() const; // TODO
-     void afficherPlat(ostream & os) const override;
-     double calculerApportNutritif() const override; // TODO
+     void afficherPlat(ostream & os) const;
+     double calculerApportNutritif() const;
 	 virtual void setTaxe(double taxe) override;
 	 virtual double getTaxe()const override;
 protected:
