@@ -1,6 +1,8 @@
 /*
-* Date : 25 février 2019
-* Auteur : AbdeB
+* Titre : Menu.cpp - Travail Pratique #4
+* Date : 25 Mars 2019
+* Auteurs : Diab Khanafer et Charles-Etienne Désormeaux
+* Description : Creet un objet de menu ainsi que ses attributs.
 */
 
 #include "Menu.h"
@@ -19,7 +21,7 @@ Menu::Menu() :
 
 /*
  * Constructeur par paramètres de la classe
- * IN:
+ * IN: nom du fichier de lecture, type de menu
 */
 Menu::Menu(string fichier, TypeMenu type) :
 	type_{type} {

@@ -1,6 +1,8 @@
 /*
-* Date : 25 février 2019
-* Auteur : AbdeB
+* Titre : Client.cpp - Travail Pratique #4
+* Date : 25 Mars 2019
+* Auteurs : Diab Khanafer et Charles-Etienne Désormeaux
+* Description : Creer un objet de client ainsi que ses attributs.
 */
 
 #include "Client.h"
@@ -14,7 +16,7 @@ Client::Client() {
 
 /*
  * Constructeur par paramètres de la classe
- * IN: 
+ * IN: nom du client, prenom du client, taille du groupe du client
 */
 Client::Client(string_view nom, string_view prenom, int tailleGroupe) :
 	nom_(nom), prenom_(prenom), tailleGroupe_(tailleGroupe)

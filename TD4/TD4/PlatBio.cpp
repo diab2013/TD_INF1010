@@ -1,12 +1,14 @@
 /*
-* Date : 25 février 2019
-* Auteur : AbdeB
+* Titre : PlatBio.cpp - Travail Pratique #4
+* Date : 25 Mars 2019
+* Auteurs : Diab Khanafer et Charles-Etienne Désormeaux
+* Description : Créer un objet de plat biologique ainsi que ses attributs.
 */
 #include "PlatBio.h"
 
 /*
  * Constructeur par paramètres de la classe PlatBio
- * IN:
+ * IN: nom du plat, prix du plat, cout du plat, prix de la taxe ecologique
 */
 PlatBio::PlatBio(string nom, double prix, double cout, double ecotaxe)
 	: Plat(nom, prix, cout), ecoTaxe_(ecotaxe) {

@@ -1,12 +1,14 @@
 /*
-* Date : 25 février 2019
-* Auteur : AbdeB
+* Titre : ClientOccasionnel.cpp - Travail Pratique #4
+* Date : 25 Mars 2019
+* Auteurs : Diab Khanafer et Charles-Etienne Désormeaux
+* Description : Creet un objet de client occasionnel ainsi que ses attributs.
 */
 #include "ClientOccasionnel.h"
 
 /*
  * Constructeur par paramètres de la classe
- * IN:
+ * IN: nom du client, prenom du client, taille du groupe du clients
 */
 ClientOccasionnel::ClientOccasionnel(string_view nom, string_view prenom, int tailleGroupe)
 :Client(nom,prenom,tailleGroupe)

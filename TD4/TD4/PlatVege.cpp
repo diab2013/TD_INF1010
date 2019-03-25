@@ -1,12 +1,15 @@
 /*
-* Date : 25 février 2019
-* Auteur : AbdeB
+* Titre : PlatVege.cpp - Travail Pratique #4
+* Date : 25 Mars 2019
+* Auteurs : Diab Khanafer et Charles-Etienne Désormeaux
+* Description : Creet un objet de plat vegetarien ainsi que ses attributs.
 */
 #include "PlatVege.h"
 
 /*
  * Constructeur par paramètres de la classe
- * IN:
+ * IN: nom du plat, prix du plat, cout du plat, quantite de vitamines,
+ *     quantite de proteines, quantite de mineraux
 */
 PlatVege::PlatVege(string nom, double prix, double cout,
                    double vitamines, double proteines, double mineraux)

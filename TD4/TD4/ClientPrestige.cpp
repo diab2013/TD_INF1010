@@ -1,6 +1,8 @@
 /*
-* Date : 25 février 2019
-* Auteur : AbdeB
+* Titre : ClientPrestige.cpp - Travail Pratique #4
+* Date : 25 Mars 2019
+* Auteurs : Diab Khanafer et Charles-Etienne Désormeaux
+* Description : Creet un objet de client prestige ainsi que ses attributs.
 */
 #include "ClientPrestige.h"
 #include "Restaurant.h"
@@ -14,7 +16,8 @@ ClientPrestige::ClientPrestige() {
 
 /*
  * Constructeur par paramètres de la classe
- * IN:
+ * IN: nom du client, prenom du client, taille du groupe du client,
+ *     nombre de points du client, adresse du client
 */
 ClientPrestige::ClientPrestige(string_view nom, string_view prenom, int tailleGroupe, int nbPoints, ZoneHabitation adresse)
 	: ClientRegulier(nom,prenom,tailleGroupe,nbPoints),adresse_(adresse)

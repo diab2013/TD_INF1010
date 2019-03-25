@@ -1,10 +1,9 @@
-//
-//  Boisson.cpp
-//  intra
-//
-//  Created by Martine Bellaiche on 2019-03-10.
-//  Copyright © 2019 Martine Bellaiche. All rights reserved.
-//
+/*
+* Titre : Boisson.cpp - Travail Pratique #4
+* Date : 25 Mars 2019
+* Auteurs : Diab Khanafer et Charles-Etienne Désormeaux
+* Description : Creet un objet de boisson ainsi que ses attributs.
+*/
 #include "Boisson.h"
 
 /*

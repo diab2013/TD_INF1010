@@ -1,12 +1,16 @@
 /*
-* Date : 25 février 2019
-* Auteur : AbdeB
+* Titre : PlatBioVege.cpp - Travail Pratique #4
+* Date : 25 Mars 2019
+* Auteurs : Diab Khanafer et Charles-Etienne Désormeaux
+* Description : Créer un objet de plat vegetarien et 
+*				biologique ainsi que ses attributs.
 */
 #include "PlatBioVege.h"
 
 /*
  * Contructeurs par paramètres de la classe
- * IN:
+ * IN: nom du plat, prix du plat, cout du plat, prix de la taxe ecologique
+ *     quantite de vitamines, quantite de proteines, quantite de mineraux
 */
 PlatBioVege::PlatBioVege(string nom, double prix, double cout, double ecotaxe, double vitamines, double proteines, double mineraux)
 			:PlatBio(nom, prix, cout,ecotaxe), Vege(nom, vitamines, proteines, mineraux)

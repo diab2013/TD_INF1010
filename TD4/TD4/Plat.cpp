@@ -1,6 +1,8 @@
 /*
-* Date : 25 février 2019
-* Auteur : AbdeB
+* Titre : Plat.cpp - Travail Pratique #4
+* Date : 25 Mars 2019
+* Auteurs : Diab Khanafer et Charles-Etienne Désormeaux
+* Description : Créer un objet de plat ainsi que ses attributs.
 */
 
 #include "Plat.h"
@@ -12,7 +14,7 @@ using namespace std;
 
 /*
  * Constructeurs par paramètres de la classe Plat
- * IN: 
+ * IN: nom du plat, prix du plat, cout du plat
 */
 Plat::Plat(string_view nom, double prix, double cout) : nom_(nom), prix_(prix), cout_(cout) {
 }
