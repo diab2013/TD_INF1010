@@ -25,3 +25,19 @@ protected:
 	C conteneur_;
 };
 
+template<typename T, typename C>
+inline C GestionnaireGenerique<T, C>::getConteneur() const {
+	C copie;
+	copy(conteneur_.begin(),conteneur_.end(),copie);
+	return copie;
+}
+
+template<typename T, typename C>
+inline void GestionnaireGenerique<T, C>::ajouter(T t) {
+	
+}
+
+template<typename T, typename C>
+inline int GestionnaireGenerique<T, C>::getNombreElements() const {
+	return conteneur_.size();
+}
