@@ -13,8 +13,12 @@ using namespace std;
 
 
 class FoncteurPlatMoinsCher {
-	// TODO
+public:
+	FoncteurPlatMoinsCher() {};
 
+	bool operator()(pair<string, Plat*>plat1, pair<string, Plat*>plat2) { //a modifier
+		return { ((plat1).second->getPrix()) < ((plat2).second->getPrix()) };
+	}
     
 };
 

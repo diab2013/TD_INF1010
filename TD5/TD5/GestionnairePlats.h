@@ -30,7 +30,7 @@ public:
 
 	Plat* allouerPlat(Plat*);
 
-	Plat* trouverPlatMoinsCher() const; // TODO
+	Plat* trouverPlatMoinsCher() const; 
 	Plat* trouverPlatPlusCher() const; // TODO
 
 	Plat* trouverPlat(const string& nom) const; // TODO

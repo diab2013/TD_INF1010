@@ -52,6 +52,10 @@ Plat * GestionnairePlats::allouerPlat(Plat * plat) {
 	return { new Plat(*plat) };
 }
 
+Plat* GestionnairePlats::trouverPlatMoinsCher() const { //a revoir
+	return { min_element(conteneur_.begin(), conteneur_.end(), FoncteurPlatMoinsCher())->second };
+}
+
 //pas fait par nous
 void GestionnairePlats::lirePlats(const string& nomFichier, TypeMenu type) {
 	LectureFichierEnSections fichier{ nomFichier };
