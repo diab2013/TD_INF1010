@@ -12,14 +12,13 @@
 using namespace std;
 
 
-class FoncteurPlatMoinsCher
-{ // TODO
+class FoncteurPlatMoinsCher {
+	// TODO
 
     
 };
 
-class FoncteurIntervalle
-{
+class FoncteurIntervalle {
    // TODO
 };
 

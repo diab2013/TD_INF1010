@@ -8,7 +8,7 @@
 
 #include "Plat.h"
 #include "Vege.h"
-#include "gestionnaireGenerique.h"
+#include "GestionnaireGenerique.h"
 #include "Foncteur.h"
 
 #include <utility>
@@ -18,17 +18,17 @@
 
 using namespace std;
 
-class GestionnairePlats // TODO : Ajouter l'héritage 
+class GestionnairePlats : public GestionnaireGenerique<pair<string, Plat*>, map<string, Plat*>>
 {
 public:
-	GestionnairePlats(const string& nomFichier, TypeMenu type); //TODO
-	GestionnairePlats(GestionnairePlats* gestionnaire); // TODO
+	GestionnairePlats(const string& nomFichier, TypeMenu type); 
+	GestionnairePlats(GestionnairePlats* gestionnaire); 
 
-	~GestionnairePlats(); // TODO
+	~GestionnairePlats();
 
-	TypeMenu getType() const; // TODO
+	TypeMenu getType() const; 
 
-	Plat* allouerPlat(Plat*); // TODO
+	Plat* allouerPlat(Plat*);
 
 	Plat* trouverPlatMoinsCher() const; // TODO
 	Plat* trouverPlatPlusCher() const; // TODO
