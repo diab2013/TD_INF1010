@@ -56,6 +56,10 @@ Plat* GestionnairePlats::trouverPlatMoinsCher() const { //a revoir
 	return { min_element(conteneur_.begin(), conteneur_.end(), FoncteurPlatMoinsCher())->second };
 }
 
+Plat * GestionnairePlats::trouverPlatPlusCher() const {
+	return ; //ehhhhhhhhhhhhhhhhhhhh c quoi une fonction lambda
+}
+
 //pas fait par nous
 void GestionnairePlats::lirePlats(const string& nomFichier, TypeMenu type) {
 	LectureFichierEnSections fichier{ nomFichier };
