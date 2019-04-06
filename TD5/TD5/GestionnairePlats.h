@@ -15,6 +15,7 @@
 #include <map>
 #include <algorithm>
 #include <functional>
+#include <vector> //ajout
 
 using namespace std;
 

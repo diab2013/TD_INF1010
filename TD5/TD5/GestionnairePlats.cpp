@@ -82,7 +82,7 @@ void GestionnairePlats::lirePlats(const string& nomFichier, TypeMenu type) {
 	LectureFichierEnSections fichier{ nomFichier };
 	fichier.allerASection(entetesDesTypesDeMenu[static_cast<int>(type)]);
 	while (!fichier.estFinSection())
-		ajouter(lirePlatDe(fichier));
+		ajouter(lirePlatDe(fichier)); 
 }
 
 //pas fait par nous
