@@ -10,8 +10,6 @@
 #include "PlatVege.h"
 #include "PlatBioVege.h"
 
-
-
 /*
 * In: nom du fichier de lecture et type du menu
 * Constructeur de GestionnairePlats. Lit un fichier de plat selon le type de menu.
@@ -20,10 +18,10 @@ GestionnairePlats::GestionnairePlats(const string & nomFichier, TypeMenu type) :
 	lirePlats(nomFichier, type);
 }
 
-//
 /*
 * In: Pointeur vers un GestionnairePlats
-* Constructeur par copie. "Clear" le conteneur du gestionnaire a copier et met le contenu de ce dernier dans un autre objet de conteneur
+* Constructeur par copie. "Clear" le conteneur du gestionnaire a copier et 
+*  met le contenu de ce dernier dans un autre objet de conteneur
 */
 GestionnairePlats::GestionnairePlats(GestionnairePlats * gestionnaire) {
 	this->conteneur_.clear();
@@ -33,7 +31,6 @@ GestionnairePlats::GestionnairePlats(GestionnairePlats * gestionnaire) {
 	for (auto it = gestionnaire->conteneur_.begin(); it != gestionnaire->conteneur_.end(); it++) {
 		ajouter(make_pair(it->first, allouerPlat(it->second)));
 	}
-
 }
 
 //Destructeur
@@ -41,7 +38,6 @@ GestionnairePlats::~GestionnairePlats() {
 	for (auto it = conteneur_.begin(); it != conteneur_.end(); it++) {
 		delete(it->second);
 	}
-
 }
 
 TypeMenu GestionnairePlats::getType() const {
@@ -57,7 +53,28 @@ Plat* GestionnairePlats::trouverPlatMoinsCher() const { //a revoir
 }
 
 Plat * GestionnairePlats::trouverPlatPlusCher() const {
+	// pas grand idée quoi écrire
+	//max_element(conteneur_.begin(), conteneur_.end(), FoncteurPlatPlusCher()));
 	return ; //ehhhhhhhhhhhhhhhhhhhh c quoi une fonction lambda
+}
+
+// À faire
+Plat * GestionnairePlats::trouverPlat(const string & nom) const{
+	for (auto it = conteneur_.begin(); it != conteneur_.end(); it++) {
+		if (it->first == nom) {
+			return { it->second }; // le plat à été trouvé
+		}
+	}
+	return nullptr;	// le plat n'existe pas ou n'a pas été trouvé
+}
+
+// À faire
+vector<pair<string, Plat*>> GestionnairePlats::getPlatsEntre(double borneInf, double borneSup){
+	vector<pair<string, Plat*>> ret;
+	//Something
+	// Copie le plat dans un vector s'il est inclue dans l'intervalle
+	copy_if(conteneur_.begin(), conteneur_.end(), ret.back(), FoncteurIntervalle(borneInf, borneSup));
+	return ret;
 }
 
 //pas fait par nous
@@ -97,4 +114,9 @@ pair<string, Plat*> GestionnairePlats::lirePlatDe(LectureFichierEnSections& fich
 	return pair<string, Plat*>(plat->getNom(), plat);
 }
 
-
+// Done?
+void GestionnairePlats::afficherPlats(ostream & os){
+	for (auto it = conteneur_.begin(); it != conteneur_.end(); it++) {
+		it->second->afficherPlat(os);
+	}
+}

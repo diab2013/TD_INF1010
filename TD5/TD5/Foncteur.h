@@ -23,6 +23,18 @@ public:
 };
 
 class FoncteurIntervalle {
-   // TODO
-};
+public:
+	FoncteurIntervalle(double borneInf, double borneSup) { borneInf_ = borneInf;
+															borneSup_ = borneSup; };
+	bool operator() (pair<string, Plat*> p) {
+		if (p.second->getPrix() >= borneInf_ && p.second->getPrix() <= borneSup_) {
+			return true;
+		} else {
+			return false;
+		}
+	};
 
+private:
+	double borneInf_;
+	double borneSup_;
+};
