@@ -19,9 +19,9 @@ Restaurant::Restaurant(const string& nomFichier, string_view nom, TypeMenu momen
 	nom_{nom},
 	momentJournee_{moment},
 	chiffreAffaire_{0},
-	menuMatin_{new Menu{nomFichier, TypeMenu::Matin}},
-	menuMidi_ {new Menu{nomFichier, TypeMenu::Midi }},
-	menuSoir_ {new Menu{nomFichier, TypeMenu::Soir }},
+	menuMatin_{new GestionnairePlats{nomFichier, TypeMenu::Matin}},
+	menuMidi_ {new GestionnairePlats{nomFichier, TypeMenu::Midi }},
+	menuSoir_ {new GestionnairePlats{nomFichier, TypeMenu::Soir }},
 	fraisLivraison_{}
 {
 	lireTables(nomFichier); 
@@ -124,22 +124,6 @@ bool Restaurant::operator <(const Restaurant& autre) const
 	return chiffreAffaire_ < autre.chiffreAffaire_;
 }
 
-void Restaurant::lireTables(const string& nomFichier)
-{
-	LectureFichierEnSections fichier{nomFichier};
-	fichier.allerASection("-TABLES");
-	while (!fichier.estFinSection()) {
-		int id, nbPlaces;
-		fichier >> id >> nbPlaces;
-		*this += new Table(id, nbPlaces);
-	}
-}
-
-Restaurant& Restaurant::operator+=(owner<Table*> table)
-{
-	tables_.push_back(table); 
-	return *this;
-}
 bool Restaurant::placerClients(Client* client)
 {
 	const int tailleGroupe = client->getTailleGroupe();
@@ -215,7 +199,17 @@ double Restaurant::getChiffreAffaire() {
 	return chiffreAffaire_;
 }
 
+/*
+* Out: Variable privee table_
+* Return la variable privee table.
+*/
+GestionnaireTables * Restaurant::getTables() const {
+	return tables_;
+}
+
 string getNomTypeMenu(TypeMenu typeMenu)
 {
 	return string{nomsDesTypesDeMenu[static_cast<int>(typeMenu)]};
 }
+
+
