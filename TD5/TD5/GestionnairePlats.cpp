@@ -114,7 +114,7 @@ pair<string, Plat*> GestionnairePlats::lirePlatDe(LectureFichierEnSections& fich
 	return pair<string, Plat*>(plat->getNom(), plat);
 }
 
-// Done?
+// Done i think (?)
 void GestionnairePlats::afficherPlats(ostream & os){
 	for (auto it = conteneur_.begin(); it != conteneur_.end(); it++) {
 		it->second->afficherPlat(os);
