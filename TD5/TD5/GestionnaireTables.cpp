@@ -8,8 +8,9 @@
 #include "GestionnaireTables.h"
 #include "LectureFichierEnSections.h"
 
-void GestionnaireTables::lireTables(const string& nomFichier)
-{
+
+//pas fait par nous
+void GestionnaireTables::lireTables(const string& nomFichier) {
 	LectureFichierEnSections fichier{ nomFichier };
 	fichier.allerASection("-TABLES");
 	while (!fichier.estFinSection()) {
