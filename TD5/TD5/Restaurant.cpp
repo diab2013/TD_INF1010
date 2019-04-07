@@ -37,7 +37,7 @@ Restaurant::~Restaurant()
 	delete menuSoir_;
 	
 	for (auto it = tables_->getConteneur().begin(); it != tables_->getConteneur().end(); it++) {
-		delete (*it);
+		delete (*(it));
 	}
 	delete tables_;
 	/*

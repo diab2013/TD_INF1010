@@ -10,8 +10,8 @@
 
 Table * GestionnaireTables::getTable(int id) const{
 	for (auto it = conteneur_.begin(); it != conteneur_.end(); it++) {
-		if ((*it)->getId() == id) {
-			return (*it);
+		if ((*(it))->getId() == id) {
+			return (*(it));
 		}
 	}
 	return nullptr;
@@ -22,7 +22,7 @@ Table * GestionnaireTables::getMeilleureTable(int tailleGroupe) const{
 	bool tableTrouvee = false;
 	
 	for (auto it = conteneur_.begin(); it != conteneur_.end(); it++) {
-		if (!((*it)->estOccupee()) && ((*it)->getNbPlaces() >= tailleGroupe)) {
+		if (!((*(it))->estOccupee()) && ((*(it))->getNbPlaces() >= tailleGroupe)) {
 			meilleurTable = (*it);
 			tableTrouvee = true;
 		}
@@ -33,10 +33,10 @@ Table * GestionnaireTables::getMeilleureTable(int tailleGroupe) const{
 	}
 
 	for (auto it = conteneur_.begin(); it != conteneur_.end(); it++) {
-		if ( ((*it)->getNbPlaces() < meilleurTable->getNbPlaces()) 
-			 && !(*it)->estOccupee()
-			 && ((*it)->getNbPlaces() >= tailleGroupe) ) {
-			meilleurTable = (*it);
+		if ( ((*(it))->getNbPlaces() < meilleurTable->getNbPlaces()) 
+			 && !(*(it))->estOccupee()
+			 && ((*(it))->getNbPlaces() >= tailleGroupe) ) {
+			meilleurTable = (*(it));
 		}
 	}
 
@@ -61,6 +61,6 @@ GestionnaireTables& GestionnaireTables::operator+=(Table* table) {
 
 void GestionnaireTables::afficherTables(ostream & os) const{
 	for (auto it = conteneur_.begin(); it != conteneur_.end(); it++) {
-		os << (*it);
+		os << (*(it));
 	}
 }
