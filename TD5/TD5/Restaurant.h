@@ -44,7 +44,7 @@ public:
 	TypeMenu getMoment() const;
     double getChiffreAffaire();
 	GestionnaireTables* getTables() const; // TODO : À implémenter DONE
-	Menu* getMenu(TypeMenu typeMenu) const; // TODO: retourner un GestionnairePlats* a la place DONE
+	GestionnairePlats* getMenu(TypeMenu typeMenu) const; // TODO: retourner un GestionnairePlats* a la place DONE
 	double getFraisLivraison(ZoneHabitation zone) const;
 	string getNomTypeMenu(TypeMenu typeMenu);
 
@@ -62,11 +62,10 @@ public:
 	double calculerReduction(Client* client, double montant, bool livraison);
 	friend ostream& operator<<(ostream& os, const Restaurant& restau);
 	
-	friend ostream& operator<<(ostream& os, const Restaurant& restaurent);
 
 private:
-	Menu* menuActuel() const; // TODO : retourner GestionnairePlats 
-	Table* getTable(int id) const; // TODO : À retirer, utiliser GestionnaireTables
+	GestionnairePlats* menuActuel() const; // TODO : retourner GestionnairePlats 
+	//Table* getTable(int id) const; // TODO : À retirer, utiliser GestionnaireTables
 
 	string nom_;
 	TypeMenu momentJournee_;

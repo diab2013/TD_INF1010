@@ -35,7 +35,7 @@ Table * GestionnaireTables::getMeilleureTable(int tailleGroupe) const{
 	for (auto it = conteneur_.begin(); it != conteneur_.end(); it++) {
 		if ( ((*it)->getNbPlaces() < meilleurTable->getNbPlaces()) 
 			 && !(*it)->estOccupee()
-			 && ((*it)->getNbPlaces >= tailleGroupe) ) {
+			 && ((*it)->getNbPlaces() >= tailleGroupe) ) {
 			meilleurTable = (*it);
 		}
 	}
