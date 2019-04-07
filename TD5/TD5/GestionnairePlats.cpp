@@ -29,14 +29,14 @@ GestionnairePlats::GestionnairePlats(GestionnairePlats * gestionnaire) {
 	type_ = gestionnaire->type_;
 	copy(gestionnaire->conteneur_.begin(), gestionnaire->conteneur_.end(), conteneur_.begin());
 	for (auto it = gestionnaire->conteneur_.begin(); it != gestionnaire->conteneur_.end(); it++) {
-		ajouter(make_pair(it->first, allouerPlat(it->second)));
+		ajouter(make_pair((it)->first, allouerPlat((it)->second)));
 	}
 }
 
 //Destructeur
 GestionnairePlats::~GestionnairePlats() {
 	for (auto it = conteneur_.begin(); it != conteneur_.end(); it++) {
-		delete(it->second);
+		delete((it)->second);
 	}
 }
 
@@ -55,14 +55,14 @@ Plat* GestionnairePlats::trouverPlatMoinsCher() const { //a revoir
 Plat * GestionnairePlats::trouverPlatPlusCher() const {
 	// pas grand idée quoi écrire
 	//max_element(conteneur_.begin(), conteneur_.end(), FoncteurPlatPlusCher()));
-	return ; //ehhhhhhhhhhhhhhhhhhhh c quoi une fonction lambda
+	return false; //ehhhhhhhhhhhhhhhhhhhh c quoi une fonction lambda
 }
 
 // À faire
-Plat * GestionnairePlats::trouverPlat(const string & nom) const{
+Plat * GestionnairePlats::trouverPlat(const string_view & nom) const{
 	for (auto it = conteneur_.begin(); it != conteneur_.end(); it++) {
-		if (it->first == nom) {
-			return { it->second }; // le plat à été trouvé
+		if ((it)->first == nom) {
+			return { (it)->second }; // le plat à été trouvé
 		}
 	}
 	return nullptr;	// le plat n'existe pas ou n'a pas été trouvé
@@ -117,6 +117,6 @@ pair<string, Plat*> GestionnairePlats::lirePlatDe(LectureFichierEnSections& fich
 // Done i think (?)
 void GestionnairePlats::afficherPlats(ostream & os){
 	for (auto it = conteneur_.begin(); it != conteneur_.end(); it++) {
-		it->second->afficherPlat(os);
+		(it)->second->afficherPlat(os);
 	}
 }

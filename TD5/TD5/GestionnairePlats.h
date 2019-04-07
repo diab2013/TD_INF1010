@@ -34,7 +34,7 @@ public:
 	Plat* trouverPlatMoinsCher() const; 
 	Plat* trouverPlatPlusCher() const; // TODO
 
-	Plat* trouverPlat(const string& nom) const; // TODO
+	Plat* trouverPlat(const string_view& nom) const; // TODO
 	vector<pair<string, Plat*>> getPlatsEntre(double borneInf, double borneSup); // TODO
 	void lirePlats(const string& nomFichier, TypeMenu type);
 	pair<string, Plat*> lirePlatDe(LectureFichierEnSections& fichier);
