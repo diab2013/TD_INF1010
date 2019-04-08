@@ -33,7 +33,11 @@ GestionnairePlats::GestionnairePlats(GestionnairePlats * gestionnaire) {
 	}
 }
 
-//Destructeur
+/*
+* In: rien
+* Out: rien
+* Destructeur de la classe GestionnairePlats
+*/
 GestionnairePlats::~GestionnairePlats() {
 	for (auto it = conteneur_.begin(); it != conteneur_.end(); it++) {
 		delete((it)->second);
@@ -47,11 +51,21 @@ TypeMenu GestionnairePlats::getType() const {
 Plat * GestionnairePlats::allouerPlat(Plat * plat) {
 	return { new Plat(*plat) };
 }
-
+/*
+* In: rien
+* Out: Pointeur vers un objet Plat
+* Trouve le plat le moins cher dans le gestionnaire de plats
+*/
 Plat* GestionnairePlats::trouverPlatMoinsCher() const { //a revoir
 	return { min_element(conteneur_.begin(), conteneur_.end(), FoncteurPlatMoinsCher())->second };
 }
 
+/*
+* In: rien
+* Out: Pointeur vers un objet Plat*
+* Trouve le plas le plus cher, dans le gestionnaire de plats, 
+* en utilisant une fonction lambda
+*/
 Plat * GestionnairePlats::trouverPlatPlusCher() const {
 	Plat* plusCher = conteneur_.begin()->second;
 	// fonction lambda pour trouver le plat le plus cher
@@ -70,7 +84,11 @@ Plat * GestionnairePlats::trouverPlatPlusCher() const {
 	return plusCher;
 }
 
-// À faire
+/*
+* In: Réference vers un objet string_view
+* Out: Pointeur vers un objet Plat
+* Trouve le plat dans le gestionnaire de plats, sinon retourne nullptr
+*/
 Plat * GestionnairePlats::trouverPlat(const string_view & nom) const{
 	for (auto it = conteneur_.begin(); it != conteneur_.end(); it++) {
 		if ((it)->first == nom) {
@@ -80,7 +98,11 @@ Plat * GestionnairePlats::trouverPlat(const string_view & nom) const{
 	return nullptr;	// le plat n'existe pas ou n'a pas été trouvé
 }
 
-// À faire
+/*
+* In: Une valeur d'une borne inférieur, Une valeur d'une borne supérieur
+* Out: Un vecteur fesant un pair entre un string et une pointeur de Plat
+* Trouve les plats dans le gestionnaire de Plat entre un certain intervalle
+*/
 vector<pair<string, Plat*>> GestionnairePlats::getPlatsEntre(double borneInf, double borneSup){
 	vector<pair<string, Plat*>> ret;
 	//Something
@@ -126,7 +148,11 @@ pair<string, Plat*> GestionnairePlats::lirePlatDe(LectureFichierEnSections& fich
 	return pair<string, Plat*>(plat->getNom(), plat);
 }
 
-// Done i think (?)
+/*
+* In: Pointeur vers un objet ostream
+* Out: rien
+* Affiche tout les plats du gestionnaire de Plat
+*/
 void GestionnairePlats::afficherPlats(ostream & os){
 	for (auto it = conteneur_.begin(); it != conteneur_.end(); it++) {
 		(it)->second->afficherPlat(os);
