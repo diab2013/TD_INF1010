@@ -13,6 +13,7 @@ using namespace  std;
 
 //              T   = pair<string, Plat*> ou Table*; 
 //              C   = map<string, Plat*> ou set<Table*>; 
+
 template<typename T, typename C>
 class GestionnaireGenerique
 {
@@ -25,6 +26,10 @@ protected:
 	C conteneur_;
 };
 
+/*
+* Out: Copie du conteneur
+* Creer une copie du conteneur et la renvoie
+*/
 template<typename T, typename C>
 inline C GestionnaireGenerique<T, C>::getConteneur() const {
 	C copie;
@@ -32,11 +37,19 @@ inline C GestionnaireGenerique<T, C>::getConteneur() const {
 	return copie;
 }
 
+/*
+* In: Template de type T
+* Ajoute un objet au conteneur
+*/
 template<typename T, typename C>
 inline void GestionnaireGenerique<T, C>::ajouter(T t) {
 	conteneur_.insert(t);
 }
 
+/*
+* Out: Nombre d'element contenu dans le conteneur
+* Renvoie le nombre d'element du conteneur
+*/
 template<typename T, typename C>
 inline int GestionnaireGenerique<T, C>::getNombreElements() const {
 	return conteneur_.size();
