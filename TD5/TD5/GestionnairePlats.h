@@ -28,7 +28,7 @@ public:
 	~GestionnairePlats();
 
 	TypeMenu getType() const; 
-
+	
 	Plat* allouerPlat(Plat*);
 
 	Plat* trouverPlatMoinsCher() const; 

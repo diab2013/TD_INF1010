@@ -21,6 +21,7 @@ public:
 	}
 };
 
+
 class FoncteurIntervalle {
 public:
 	FoncteurIntervalle(double borneInf, double borneSup) { borneInf_ = borneInf;

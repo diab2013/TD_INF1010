@@ -53,9 +53,21 @@ Plat* GestionnairePlats::trouverPlatMoinsCher() const { //a revoir
 }
 
 Plat * GestionnairePlats::trouverPlatPlusCher() const {
-	// pas grand idée quoi écrire
-	//max_element(conteneur_.begin(), conteneur_.end(), FoncteurPlatPlusCher()));
-	return false; //ehhhhhhhhhhhhhhhhhhhh c quoi une fonction lambda
+	Plat* plusCher = conteneur_.begin()->second;
+	// fonction lambda pour trouver le plat le plus cher
+	auto platPlusCher = [](double x, double y) -> bool {
+		if (x < y) {
+			return true;
+		} else {
+			return false;
+		}
+	};
+	for (auto it = conteneur_.begin(); it != conteneur_.end(); it++) {
+		if (platPlusCher((*it).second->getPrix(), (*(++it)).second->getPrix())) {
+			plusCher = (*it).second;
+		}
+	}
+	return plusCher;
 }
 
 // À faire
