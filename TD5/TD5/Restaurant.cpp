@@ -186,6 +186,10 @@ string Restaurant::getNomTypeMenu(TypeMenu typeMenu){
 	}
 }
 
+/*
+* In: enum TypeMenu
+* Renvoie un pointeur vers un objet de type GestionnairePlats selon le type de menu
+*/
 GestionnairePlats* Restaurant::getMenu(TypeMenu typeMenu) const
 {
 	switch (typeMenu) {
