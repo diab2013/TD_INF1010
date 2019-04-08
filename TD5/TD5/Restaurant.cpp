@@ -30,6 +30,11 @@ Restaurant::Restaurant(const string& nomFichier, string_view nom, TypeMenu momen
 }
 
 // Destructeur.
+/*
+* In: Rien
+* Out: Rien
+* Destructeur de la classe Restaurants
+*/
 Restaurant::~Restaurant()
 {
 	delete menuMatin_;
@@ -110,6 +115,11 @@ ostream& operator<<(ostream& os, const Restaurant& restaurent)
 	return os;
 }
 
+/*
+* In: Un string_view pour le nom, Un int pour l'id de la table
+* Out: Rien
+* Commander un plat selon le nom et l'ajouter à la commande de la table
+*/
 void Restaurant::commanderPlat(string_view nom, int idTable)
 {
 	if (Table* table = tables_->getTable(idTable); table && table->estOccupee())
@@ -125,6 +135,11 @@ bool Restaurant::operator <(const Restaurant& autre) const
 	return chiffreAffaire_ < autre.chiffreAffaire_;
 }
 
+/*
+* In: Pointeur vers un objet Client
+* Out: Un boolean
+* Place les client à une table si possible
+*/
 bool Restaurant::placerClients(Client* client)
 {
 	const int tailleGroupe = client->getTailleGroupe();
@@ -141,6 +156,11 @@ bool Restaurant::placerClients(Client* client)
 	//TODO : Si possible assigner la table au client sinon retourner false.
 }
 
+/*
+* In: Un pointeur d'un objet client, Une référence d'un vecteur de string const
+* Out: Un boolean
+* Si le client est un client prestige, faire la livraison de ce client
+*/
 bool Restaurant::livrerClient(Client* client, const vector<string>& commande)
 {
 	if (dynamic_cast<ClientPrestige*>(client)) {
@@ -172,6 +192,11 @@ double Restaurant::getFraisLivraison(ZoneHabitation zone) const
 	return fraisLivraison_[static_cast<int>(zone)];
 }
 
+/*
+* In: Variable de type TypeMenu
+* Out: Un string du type de menu
+* Retourne le type de menu
+*/
 string Restaurant::getNomTypeMenu(TypeMenu typeMenu){
 	switch (typeMenu) {
 		case TypeMenu::Matin :
