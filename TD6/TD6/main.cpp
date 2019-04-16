@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
         //Connecter les mises a jour de la vue en fonction du modele (plats filtres + plats commande + prix)
         QObject::connect(&commande, SIGNAL(commandeModifie()), &mainGui, SLOT(mettreAJourPlatsCommande()));
         QObject::connect(&commande, SIGNAL(commandeModifie()), &mainGui, SLOT(mettreAJourPrix()));
-        QObject::connect(&commande, &Filtre::choixFiltrageModifie, &mainGui, &MainWindow::mettreAJourPlatsFiltres);
+        QObject::connect(&filtre, &Filtre::choixFiltrageModifie, &mainGui, &MainWindow::mettreAJourPlatsFiltres);
 
         mainGui.show();
         return a.exec();
