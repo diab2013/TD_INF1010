@@ -68,13 +68,13 @@ void Menu::lirePlats(QString nomFichier, TypeMenu typeMenu, map<QString, Plat*>&
             QString type;
             switch (typeMenu) {
             case TypeMenu::Matin :
-                type = "-MATIN\r\n";
+                type = "-MATIN\n";
                 break;
             case TypeMenu::Midi :
-                type = "-MIDI\r\n";
+                type = "-MIDI\n";
                 break;
             case TypeMenu::Soir :
-                type = "-SOIR\r\n";
+                type = "-SOIR\n";
                 break;
             }
             QString ligne;

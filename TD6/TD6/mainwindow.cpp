@@ -51,7 +51,8 @@ void MainWindow::creerWidgetPlatsFiltres(){
 
 //TODO
 void MainWindow::creerWidgetCommande() {
-
+    widgetCommande_ = new QListWidget(this);
+    widgetCommande_->setSortingEnabled(true);
 }
 
 void MainWindow::creerWidgetBoutonsAjouterRetirer() {
@@ -68,19 +69,54 @@ void MainWindow::creerWidgetPrix() {
 
 //TODO
 void MainWindow::creerWidgetCommander() {
-
+    widgetCommander_ = new QPushButton(this);
+    widgetCommander_->setText(COMMANDER);
 }
-
 
 
 //TODO
 void MainWindow::designLayout() {
+    //Ajouter les widgets du type de menu, et les choix de plat bio et vege
+    QVBoxLayout* upLeft = new QVBoxLayout(this);
+    upLeft->addWidget(widgetTypeMenu_);
+    upLeft->addWidget(widgetPlatsBios_);
+    upLeft->addWidget(widgetPlatsVeges_);
 
+    //Ajouter les widgets pour ajouter et retirer un plat
+    QHBoxLayout* ajouterRetierPlat = new QHBoxLayout(this);
+    ajouterRetierPlat->addWidget(widgetAjouterPlat_);
+    ajouterRetierPlat->addWidget(widgetRetirerPlat_);
+
+    //Ajouter la liste de plats filtré et le layout ajouter/enlever un plat
+    QVBoxLayout* upRight = new QVBoxLayout(this);
+    upRight->addWidget(widgetPlatsFiltres_);
+    upRight->addLayout(ajouterRetierPlat);
+
+    //Ajouter les layouts du haut gauche et droite
+    QHBoxLayout* topLayout = new QHBoxLayout(this);
+    topLayout->addLayout(upLeft);
+    topLayout->addLayout(upRight);
+
+    //Création d'une ligne séparatrice
     QFrame* hLine = new QFrame();
     hLine->setFrameShape(QFrame::HLine);
 
+    //Ajouter les widget de pris et le bouton commander
+    QHBoxLayout* prisCommanderLayout = new QHBoxLayout(this);
+    prisCommanderLayout->addWidget(widgetPrix_);
+    prisCommanderLayout->addWidget(widgetCommander_);
+
+    //Ajouter le layout de pris et commander ainsi que la liste de la commande
+    QVBoxLayout* bottomLayout = new QVBoxLayout(this);
+    bottomLayout->addWidget(widgetCommande_);
+    bottomLayout->addLayout(prisCommanderLayout);
+
+    //Ajouter le tout au layout principal
     QVBoxLayout* mainBox = new QVBoxLayout(this);
+    mainBox->addLayout(topLayout);
     mainBox->addWidget(hLine);
+    mainBox->addLayout(bottomLayout);
+
     QWidget* mainWidget = new QWidget();
     mainWidget->setLayout(mainBox);
     setCentralWidget(mainWidget);
@@ -103,11 +139,16 @@ void MainWindow::connecterSignauxAuxSlots() {
 
     //TODO
     //connecter boutons ajouterPlat et retirerPlat
+    QObject::connect(widgetAjouterPlat_, SIGNAL(clicked()),
+                     this, SLOT(insererPlatsChoisisDansCommande()));
+    QObject::connect(widgetRetirerPlat_, SIGNAL(clicked()),
+                     this, SLOT(retirerPlatsChoisisDeCommande()));
 
     //connecter bouton commander
     QObject::connect(widgetCommander_, SIGNAL(clicked()),
                      this, SLOT(commander()));
 }
+
 void MainWindow::mettreAJourPlatsFiltres(){
     QStringList plats = filtre_->getNomPlatsFiltres();
     widgetPlatsFiltres_->clear();
