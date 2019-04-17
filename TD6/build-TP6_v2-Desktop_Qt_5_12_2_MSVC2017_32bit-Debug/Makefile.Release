@@ -200,8 +200,6 @@ compiler_moc_header_clean:
 release\moc_Commande.cpp: ..\TD6\Commande.h \
 		..\TD6\Plat.h \
 		..\TD6\def.h \
-		..\TD6\plat.h \
-		..\TD6\erreurplatintrouvable.h \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\QString \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\qstring.h \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\qchar.h \
@@ -234,6 +232,7 @@ release\moc_Commande.cpp: ..\TD6\Commande.h \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\qstringalgorithms.h \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\qstringview.h \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\qstringbuilder.h \
+		..\TD6\erreurplatintrouvable.h \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\QException \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\qexception.h \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\qshareddata.h \
@@ -265,7 +264,7 @@ release\moc_Commande.cpp: ..\TD6\Commande.h \
 
 release\moc_Filtre.cpp: ..\TD6\Filtre.h \
 		..\TD6\def.h \
-		..\TD6\plat.h \
+		..\TD6\Plat.h \
 		..\TD6\erreurplatintrouvable.h \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\QString \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\qstring.h \
@@ -313,7 +312,6 @@ release\moc_Filtre.cpp: ..\TD6\Filtre.h \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\qregexp.h \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\qstringmatcher.h \
 		..\TD6\Menu.h \
-		..\TD6\Plat.h \
 		..\TD6\erreurfichierintrouvable.h \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\QFile \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\qfile.h \
@@ -338,8 +336,6 @@ release\moc_mainwindow.cpp: ..\TD6\mainwindow.h \
 		..\TD6\Commande.h \
 		..\TD6\Plat.h \
 		..\TD6\def.h \
-		..\TD6\plat.h \
-		..\TD6\erreurplatintrouvable.h \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\QString \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\qstring.h \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\qchar.h \
@@ -372,6 +368,7 @@ release\moc_mainwindow.cpp: ..\TD6\mainwindow.h \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\qstringalgorithms.h \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\qstringview.h \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\qstringbuilder.h \
+		..\TD6\erreurplatintrouvable.h \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\QException \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\qexception.h \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\qshareddata.h \
@@ -525,8 +522,6 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_ui
 release\Commande.obj: ..\TD6\Commande.cpp ..\TD6\Commande.h \
 		..\TD6\Plat.h \
 		..\TD6\def.h \
-		..\TD6\plat.h \
-		..\TD6\erreurplatintrouvable.h \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\QString \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\qstring.h \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\qchar.h \
@@ -559,6 +554,7 @@ release\Commande.obj: ..\TD6\Commande.cpp ..\TD6\Commande.h \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\qstringalgorithms.h \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\qstringview.h \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\qstringbuilder.h \
+		..\TD6\erreurplatintrouvable.h \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\QException \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\qexception.h \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\qshareddata.h \
@@ -587,7 +583,7 @@ release\Commande.obj: ..\TD6\Commande.cpp ..\TD6\Commande.h \
 
 release\Filtre.obj: ..\TD6\Filtre.cpp ..\TD6\Filtre.h \
 		..\TD6\def.h \
-		..\TD6\plat.h \
+		..\TD6\Plat.h \
 		..\TD6\erreurplatintrouvable.h \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\QString \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\qstring.h \
@@ -635,7 +631,6 @@ release\Filtre.obj: ..\TD6\Filtre.cpp ..\TD6\Filtre.h \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\qregexp.h \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\qstringmatcher.h \
 		..\TD6\Menu.h \
-		..\TD6\Plat.h \
 		..\TD6\erreurfichierintrouvable.h \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\QFile \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\qfile.h \
@@ -657,8 +652,6 @@ release\main.obj: ..\TD6\main.cpp ..\TD6\mainwindow.h \
 		..\TD6\Commande.h \
 		..\TD6\Plat.h \
 		..\TD6\def.h \
-		..\TD6\plat.h \
-		..\TD6\erreurplatintrouvable.h \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\QString \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\qstring.h \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\qchar.h \
@@ -691,6 +684,7 @@ release\main.obj: ..\TD6\main.cpp ..\TD6\mainwindow.h \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\qstringalgorithms.h \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\qstringview.h \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\qstringbuilder.h \
+		..\TD6\erreurplatintrouvable.h \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\QException \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\qexception.h \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\qshareddata.h \
@@ -826,8 +820,6 @@ release\mainwindow.obj: ..\TD6\mainwindow.cpp ..\TD6\mainwindow.h \
 		..\TD6\Commande.h \
 		..\TD6\Plat.h \
 		..\TD6\def.h \
-		..\TD6\plat.h \
-		..\TD6\erreurplatintrouvable.h \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\QString \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\qstring.h \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\qchar.h \
@@ -860,6 +852,7 @@ release\mainwindow.obj: ..\TD6\mainwindow.cpp ..\TD6\mainwindow.h \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\qstringalgorithms.h \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\qstringview.h \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\qstringbuilder.h \
+		..\TD6\erreurplatintrouvable.h \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\QException \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\qexception.h \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\qshareddata.h \
@@ -983,13 +976,27 @@ release\mainwindow.obj: ..\TD6\mainwindow.cpp ..\TD6\mainwindow.h \
 		C:\Qt\5.12.2\msvc2017\include\QtWidgets\QMessageBox \
 		C:\Qt\5.12.2\msvc2017\include\QtWidgets\qmessagebox.h \
 		C:\Qt\5.12.2\msvc2017\include\QtWidgets\qdialog.h \
-		ui_mainwindow.h
+		ui_mainwindow.h \
+		C:\Qt\5.12.2\msvc2017\include\QtCore\QVariant \
+		C:\Qt\5.12.2\msvc2017\include\QtWidgets\QApplication \
+		C:\Qt\5.12.2\msvc2017\include\QtWidgets\qapplication.h \
+		C:\Qt\5.12.2\msvc2017\include\QtCore\qcoreapplication.h \
+		C:\Qt\5.12.2\msvc2017\include\QtCore\qeventloop.h \
+		C:\Qt\5.12.2\msvc2017\include\QtWidgets\qdesktopwidget.h \
+		C:\Qt\5.12.2\msvc2017\include\QtGui\qguiapplication.h \
+		C:\Qt\5.12.2\msvc2017\include\QtGui\qinputmethod.h \
+		C:\Qt\5.12.2\msvc2017\include\QtWidgets\QMenuBar \
+		C:\Qt\5.12.2\msvc2017\include\QtWidgets\qmenubar.h \
+		C:\Qt\5.12.2\msvc2017\include\QtWidgets\qmenu.h \
+		C:\Qt\5.12.2\msvc2017\include\QtWidgets\QStatusBar \
+		C:\Qt\5.12.2\msvc2017\include\QtWidgets\qstatusbar.h \
+		C:\Qt\5.12.2\msvc2017\include\QtWidgets\QToolBar \
+		C:\Qt\5.12.2\msvc2017\include\QtWidgets\qtoolbar.h \
+		C:\Qt\5.12.2\msvc2017\include\QtWidgets\QWidget
 
 release\Menu.obj: ..\TD6\Menu.cpp ..\TD6\Menu.h \
 		..\TD6\Plat.h \
 		..\TD6\def.h \
-		..\TD6\plat.h \
-		..\TD6\erreurplatintrouvable.h \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\QString \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\qstring.h \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\qchar.h \
@@ -1022,6 +1029,7 @@ release\Menu.obj: ..\TD6\Menu.cpp ..\TD6\Menu.h \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\qstringalgorithms.h \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\qstringview.h \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\qstringbuilder.h \
+		..\TD6\erreurplatintrouvable.h \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\QException \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\qexception.h \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\qshareddata.h \
@@ -1052,8 +1060,6 @@ release\Menu.obj: ..\TD6\Menu.cpp ..\TD6\Menu.h \
 
 release\Plat.obj: ..\TD6\Plat.cpp ..\TD6\Plat.h \
 		..\TD6\def.h \
-		..\TD6\plat.h \
-		..\TD6\erreurplatintrouvable.h \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\QString \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\qstring.h \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\qchar.h \
@@ -1086,6 +1092,7 @@ release\Plat.obj: ..\TD6\Plat.cpp ..\TD6\Plat.h \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\qstringalgorithms.h \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\qstringview.h \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\qstringbuilder.h \
+		..\TD6\erreurplatintrouvable.h \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\QException \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\qexception.h \
 		C:\Qt\5.12.2\msvc2017\include\QtCore\qshareddata.h \

@@ -175,13 +175,19 @@ void MainWindow::mettreAJourPlatsCommande(){
 
 //TODO
 void MainWindow::insererPlatsChoisisDansCommande() {
-    widgetCommande_->addItem(widgetPlatsFiltres_->currentItem());
+    commande_->ajouterPlat(widgetPlatsFiltres_->currentItem()->text());
+    //widgetCommande_->addItem(widgetPlatsFiltres_->currentItem());
+    mettreAJourPlatsCommande();
+    mettreAJourPrix();
 }
 
 //TODO
 void MainWindow::retirerPlatsChoisisDeCommande() {
     try {
-        widgetCommande_->removeItemWidget(widgetPlatsFiltres_->currentItem());
+        commande_->retirerPlat(widgetPlatsFiltres_->currentItem()->text());
+        //widgetCommande_->removeItemWidget(widgetPlatsFiltres_->currentItem());
+        mettreAJourPlatsCommande();
+        mettreAJourPrix();
     } catch (ErreurPlatIntrouvable erreur) {
         message(erreur.what());
     }
