@@ -73,7 +73,6 @@ void MainWindow::creerWidgetCommander() {
     widgetCommander_->setText(COMMANDER);
 }
 
-
 //TODO
 void MainWindow::designLayout() {
     //Ajouter les widgets du type de menu, et les choix de plat bio et vege
@@ -150,6 +149,7 @@ void MainWindow::connecterSignauxAuxSlots() {
 }
 
 void MainWindow::mettreAJourPlatsFiltres(){
+    cout << "plat filtres chnager" << endl;
     QStringList plats = filtre_->getNomPlatsFiltres();
     widgetPlatsFiltres_->clear();
     widgetPlatsFiltres_->addItems(plats);
@@ -176,16 +176,19 @@ void MainWindow::mettreAJourPlatsCommande(){
 
 //TODO
 void MainWindow::insererPlatsChoisisDansCommande() {
-
+    widgetCommande_->addItem(widgetPlatsFiltres_->currentItem());
 }
 
 //TODO
 void MainWindow::retirerPlatsChoisisDeCommande() {
-
+    try {
+        widgetCommande_->removeItemWidget(widgetPlatsFiltres_->currentItem());
+    } catch (ErreurPlatIntrouvable erreur) {
+        message(erreur.what());
+    }
 }
 
 void MainWindow::mettreAJourPrix() {
-
     widgetPrix_->setText(PRIX_STRING +
                          QString::number(calculerPrixCommande()) +
                          DOLLAR_SIGN);
