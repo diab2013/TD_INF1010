@@ -82,14 +82,14 @@ void MainWindow::designLayout() {
     upLeft->addWidget(widgetPlatsVeges_);
 
     //Ajouter les widgets pour ajouter et retirer un plat
-    QHBoxLayout* ajouterRetierPlat = new QHBoxLayout(this);
-    ajouterRetierPlat->addWidget(widgetAjouterPlat_);
-    ajouterRetierPlat->addWidget(widgetRetirerPlat_);
+    QHBoxLayout* ajouterRetirerPlat = new QHBoxLayout(this);
+    ajouterRetirerPlat->addWidget(widgetAjouterPlat_);
+    ajouterRetirerPlat->addWidget(widgetRetirerPlat_);
 
     //Ajouter la liste de plats filtré et le layout ajouter/enlever un plat
     QVBoxLayout* upRight = new QVBoxLayout(this);
     upRight->addWidget(widgetPlatsFiltres_);
-    upRight->addLayout(ajouterRetierPlat);
+    upRight->addLayout(ajouterRetirerPlat);
 
     //Ajouter les layouts du haut gauche et droite
     QHBoxLayout* topLayout = new QHBoxLayout(this);
@@ -149,7 +149,6 @@ void MainWindow::connecterSignauxAuxSlots() {
 }
 
 void MainWindow::mettreAJourPlatsFiltres(){
-    cout << "plat filtres chnager" << endl;
     QStringList plats = filtre_->getNomPlatsFiltres();
     widgetPlatsFiltres_->clear();
     widgetPlatsFiltres_->addItems(plats);

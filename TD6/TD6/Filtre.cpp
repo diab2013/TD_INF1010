@@ -32,7 +32,6 @@ void Filtre::filtrerPlats(map<QString, Plat*>& plats) {
 	};
 }
 
-
 void Filtre::clicOptionVege() {
 	isVegeOption_ = !isVegeOption_;
     emit choixFiltrageModifie();
